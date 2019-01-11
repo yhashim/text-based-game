@@ -1,3 +1,3 @@
 # Zork
-project ISP for ICS3U course
+Project ISP for ICS3U.
 Group: Yosra, Julia, Erica, Brianna
