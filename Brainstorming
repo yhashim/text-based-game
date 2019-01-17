@@ -1,13 +1,19 @@
 Responsibilities:
 Yosra:
-  - parser
-  - commands
+  - create the parser (make it 3-word first, then make it 4-word!)
+  - code the commands for the player to execute
 Kiara:
-  - design game-map
+  - design the game-map
   - come up with objects + where they are found
 Kaavya:
-  - come up with story
-  - come up with characters
+  - come up with:
+    - story
+    - characters
+  - be in charge of wiki (however ALL group members will contribute!)
+Alan:
+  - test game and find bugs
+    - make "tickets"/push issues in github for us to look at
+    - revise after edits are made to ensure that the issue is solved
  
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -18,6 +24,7 @@ Main theme for game ideas:
 - Sherlock Holmes (investigate a case while collecting evidence as "trophies" which you put together at the end)
 - Star Wars (you sneak onto the death star, planning to find the self-destrut button and escape)
 - Guardians of the Galaxy (explore the cave/temple on a deserted planet, trying to locate the orb containing the "power" stone)
+- Jurassic Park 
 
 Notes:
 - it will be easier to choose a location with actual rooms as opposed to exploring open space (makes it easier for us
