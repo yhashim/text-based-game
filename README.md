@@ -1,3 +1,3 @@
 # Zork
 Project ISP for ICS3U.
-Group: Yosra, Julia, Erica, Brianna
+Group: Yosra, Kiara, Kaavya and Alan
