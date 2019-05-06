@@ -1,0 +1,12 @@
+Room Name: Lounge
+Room Description:  Welcome to the lounge. You are located on the first floor.<br>To the east is the door to the office, and downstairs is the door to the basement.
+Exit Rooms: E-Office, D-Basement
+Room Name: Office
+Room Description:  Welcome to the office.
+Exit Rooms: W-Lounge, U-Room 3
+Room Name: Room 3
+Room Description:  You are upstairs.
+Exit Rooms: D-Office
+Room Name: Basement
+Room Description:  Welcome to your secret lab in the basement.<br>Your pet robot, Astro greets you.
+Exit Rooms: U-Lounge
