@@ -91,7 +91,7 @@ class Game {
 	public Game() {
 		try {
 			initRooms("data/Rooms.dat");
-			currentRoom = masterRoomMap.get("CLASSROOM");
+			currentRoom = masterRoomMap.get("LOUNGE");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -119,11 +119,11 @@ class Game {
 	 * Print out the opening message for the player.
 	 */
 	private void printWelcome() {
-		System.out.println();
-		System.out.println("Welcome to Zork!");
-		System.out.println("Zork is a new, incredibly boring adventure game.");
-		System.out.println("Type 'help' if you need help.");
-		System.out.println();
+//		System.out.println();
+//		System.out.println("Welcome to Zork!");
+//		System.out.println("Zork is a new, incredibly boring adventure game.");
+//		System.out.println("Type 'help' if you need help.");
+//		System.out.println();
 		System.out.println(currentRoom.longDescription());
 	}
 
