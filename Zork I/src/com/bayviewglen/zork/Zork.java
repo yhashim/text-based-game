@@ -24,7 +24,7 @@ public class Zork {
 		}
 		print("Glancing outside the window, you can see the side of the school.\r\nA black blur suddenly falls from the sky.\r\n" , lapse);
 
-		// "Type 'help' if you need help.");
+		// Type 'help' if you need help.
 		// Game game = new Game();
 		// game.play();
 	}
