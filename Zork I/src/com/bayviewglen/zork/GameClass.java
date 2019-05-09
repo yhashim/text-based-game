@@ -22,7 +22,7 @@ import java.util.Scanner;
  * the parser returns.
  */
 class Game {
-	private Parser parser;
+	private Parser parser; 
 	private Room currentRoom;
 	// This is a MASTER object that contains all of the rooms and is easily
 	// accessible.
