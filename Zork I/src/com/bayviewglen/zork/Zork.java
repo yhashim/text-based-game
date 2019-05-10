@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 // https://stackoverflow.com/questions/24104313/how-do-i-make-a-delay-in-java
 
 public class Zork {
-	private static int lapse = 0;
+	private static int lapse = 75;
 
 	public static void main(String[] args) {
 		// Tutorial

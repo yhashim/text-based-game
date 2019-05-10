@@ -139,7 +139,7 @@ class Game {
 		String commandWord = command.getCommandWord();
 		if (commandWord.equals("help"))
 			printHelp();
-		else if (commandWord.equals("go"))
+		else if (commandWord.equals("go")||commandWord.equals("walk")||commandWord.equals("proceed")||commandWord.equals("run"))
 			goRoom(command);
 		else if (commandWord.equals("quit")) {
 			if (command.hasSecondWord())
@@ -172,7 +172,7 @@ class Game {
 	private void goRoom(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println("Go where?");
+			System.out.println(command + "where?");
 			return;
 		}
 		String direction = command.getSecondWord();
