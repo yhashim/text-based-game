@@ -8,6 +8,13 @@ public class Zork {
 
 	public static void main(String[] args) {
 		// Tutorial
+		preGame();
+		// Type 'help' if you need help.
+		Game game = new Game();
+		game.play();
+	}
+	
+	private static void preGame() {
 		print("Welcome to Death Note!\r\n", lapse);
 		try {
 			TimeUnit.MILLISECONDS.sleep(250);
@@ -76,11 +83,89 @@ public class Zork {
 			e.printStackTrace();
 		}
 		print("You walk towards the tree. Upon closer look, you are able to see that the object is a black notebook titled \"Death Note\".", lapse);
-		// Type 'help' if you need help.
-		// Game game = new Game();
-		// game.play();
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("You pick up the book.\r\n", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("...\r\n", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("It begins to rain. You decide to return home.\r\n", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("...\r\n", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("You are inside your bedroom. Perhaps you should open the book to see what's inside…\r\n", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("The first page reads: \r\n" + 
+				"\r\n" + 
+				"	Death Note: How To Use It\r\n" + 
+				"	\r\n" + 
+				"	- the human whose name in written in this note shall die \r\n" + 
+				"	- if the cause of death is not specified the person will simply die of a heart attack\r\n" + 
+				"	- the human who uses this note can neither go to Heaven nor Hell\r\n" + 
+				"	- this note shall become property of the human world once it touches the ground of (arrives in) the human world\r\n" + 
+				"", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("\r\nThunder and lightning interrupts your thoughts. You hear rustling behind you.\r\n", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("You turn around. A large dark figure looms over you, smiling sinisterly.\r\nIts red eyes appear to glow in the dark startling you, causing you to fall over.\r\n", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("\r\n\"No reason to be surprised. I am the Shinigami Ryuk. That used to be my notebook. As you've probably noticed already, this is no ordinary notebook.\r\n" +  
+				"As the notebook has found its way into your hands, you must take on my role. Test it out. \r\nUsing this notebook, you can eliminate evil and bring justice to the world. Your first task is to use the Death Note to kill 5 people.\r\n" + 
+				"Report back to me when you have finished :) I'll be waiting right here\"\r\n" + 
+				"", lapse);
+		try {
+			TimeUnit.MILLISECONDS.sleep(250);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		print("\r\n3... 2... 1... Game start!\r\n\r\n", lapse);
 	}
-
+	
 	private static void print(String temp, int lapse) {
 		for (int i = 0; i < temp.length(); i++) {
 			try {
