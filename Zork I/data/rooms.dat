@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Room Name: Light's Room
 Room Description:  You are standing in your bedroom. Against the wall to your right is a large desk. A bag of potato chips and a pen lies on the desk. 
 Exit Rooms: N-Hallway
@@ -150,23 +149,3 @@ Exit Rooms: S-4th Floor Hallway
 Room Name: L's Office
 Room Description: You are standing in a small room. There are cabinets lined against every wall in the room. Papers are messily lying on a desk in the center of the room. In the very centre of the desk is a plate with a slice of strawberry shortcake. 
 Exit Rooms: N-4th Floor Hallway
-=======
-Room Name: Lounge 
-Room Description:  Welcome to the lounge. You are located on the first floor.<br>To the east is the door to the office, and downstairs is the door to the basement.
-Exit Rooms: E-Office, D-Basement, U-Attic
-Room Name: Office
-Room Description:  Welcome to the office.
-Exit Rooms: W-Lounge, U-Room 3
-Room Name: Room 3
-Room Description:  You are upstairs.
-Exit Rooms: D-Office
-Room Name: Basement
-Room Description:  Welcome to your secret lab in the basement.<br>Your pet robot, Astro greets you.
-Exit Rooms: U-Lounge
-Room Name: Attic
-Room Description:  Welcome to your secret attic in the basement.<br>Your pet robot, Astro greets you.
-Exit Rooms: D-Lounge
-Room Name: Backyard
-Room Description:  Welcome to your secret treehouse in the backyard.<br>Your pet tree, Groot greets you.
-Exit Rooms: D-Lounge
->>>>>>> refs/remotes/origin/master
