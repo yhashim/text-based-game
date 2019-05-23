@@ -22,7 +22,7 @@ import java.util.Scanner;
  * the parser returns.
  */
 class Game {
-	private Parser parser;
+	private Parser parser; 
 	private Room currentRoom;
 	// This is a MASTER object that contains all of the rooms and is easily
 	// accessible.
@@ -91,7 +91,7 @@ class Game {
 	public Game() {
 		try {
 			initRooms("data/Rooms.dat");
-			currentRoom = masterRoomMap.get("ROOM_1");
+			currentRoom = masterRoomMap.get("LOUNGE");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -119,11 +119,11 @@ class Game {
 	 * Print out the opening message for the player.
 	 */
 	private void printWelcome() {
-		System.out.println();
-		System.out.println("Welcome to Zork!");
-		System.out.println("Zork is a new, incredibly boring adventure game.");
-		System.out.println("Type 'help' if you need help.");
-		System.out.println();
+//		System.out.println();
+//		System.out.println("Welcome to Zork!");
+//		System.out.println("Zork is a new, incredibly boring adventure game.");
+//		System.out.println("Type 'help' if you need help.");
+//		System.out.println();
 		System.out.println(currentRoom.longDescription());
 	}
 
@@ -139,7 +139,7 @@ class Game {
 		String commandWord = command.getCommandWord();
 		if (commandWord.equals("help"))
 			printHelp();
-		else if (commandWord.equals("go"))
+		else if (commandWord.equals("go")||commandWord.equals("walk")||commandWord.equals("proceed")||commandWord.equals("run"))
 			goRoom(command);
 		else if (commandWord.equals("quit")) {
 			if (command.hasSecondWord())
@@ -172,7 +172,7 @@ class Game {
 	private void goRoom(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println("Go where?");
+			System.out.println(command + "where?");
 			return;
 		}
 		String direction = command.getSecondWord();
