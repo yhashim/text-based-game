@@ -2,7 +2,7 @@ package com.bayviewglen.zork;
 
 /**
  * Class Command - Part of the "Zork" game.
- * 
+ * test
  * author: Michael Kolling version: 1.0 date: July 1999
  *
  * This class holds information about a command that was issued by the user. A
