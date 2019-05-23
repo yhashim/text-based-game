@@ -32,7 +32,7 @@ class Command {
 
 	/**
 	 * Create a command object. The command word should be null to indicate that
-	 * this was a command that is not recognized by this game.
+	 * this was a command that is not recognized by this game
 	 */
 	public Command(String word1, String word2, String word3, String word4, String word5) {
 		commandWords = new ArrayList<String>();
