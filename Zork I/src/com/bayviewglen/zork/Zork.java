@@ -174,7 +174,6 @@ public class Zork {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
-
+ 
 /**
  * Class Game - the main class of the "Zork" game.
  *
@@ -55,12 +55,9 @@ class Game {
 				for (String s : rooms) {
 					temp.put(s.split("-")[0].trim(), s.split("-")[1]);
 				}
-
 				exits.put(roomName.substring(10).trim().toUpperCase().replaceAll(" ", "_"), temp);
-
 				// This puts the room we created (Without the exits in the masterMap)
 				masterRoomMap.put(roomName.toUpperCase().substring(10).trim().replaceAll(" ", "_"), room);
-
 				// Now we better set the exits.
 			}
 

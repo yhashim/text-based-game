@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 class Parser {
-	private CommandWords commands; // holds all valid command words
+	private CommandWords commands; // holds all valid command words!
 
 	public Parser() {
 		commands = new CommandWords();
