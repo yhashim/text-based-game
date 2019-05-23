@@ -71,11 +71,8 @@ class Game {
 					String roomName2 = tempExits.get(s.trim());
 					Room exitRoom = masterRoomMap.get(roomName2.toUpperCase().replaceAll(" ", "_"));
 					roomTemp.setExit(s.trim().charAt(0), exitRoom);
-
 				}
-
 			}
-
 			roomScanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

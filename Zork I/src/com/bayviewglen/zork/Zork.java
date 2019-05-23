@@ -8,7 +8,7 @@ public class Zork {
 
 	public static void main(String[] args) {
 		// Tutorial
-		//preGame();
+		// preGame();
 		// Type 'help' if you need help.
 		Game game = new Game();
 		game.play();
