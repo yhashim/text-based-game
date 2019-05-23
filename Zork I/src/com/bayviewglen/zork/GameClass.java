@@ -22,7 +22,7 @@ import java.util.Scanner;
  * the parser returns.
  */
 class Game {
-	private Parser parser; 
+	private Parser parser;
 	private Room currentRoom;
 	// This is a MASTER object that contains all of the rooms and is easily
 	// accessible.
@@ -91,7 +91,7 @@ class Game {
 	public Game() {
 		try {
 			initRooms("data/Rooms.dat");
-			currentRoom = masterRoomMap.get("LOUNGE");
+			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,7 +104,7 @@ class Game {
 	 */
 	public void play() {
 		printWelcome();
-// Enter the main command loop.  Here we repeatedly read commands and
+		// Enter the main command loop.  Here we repeatedly read commands and
 		// execute them until the game is over.
 
 		boolean finished = false;
@@ -122,8 +122,8 @@ class Game {
 //		System.out.println();
 //		System.out.println("Welcome to Zork!");
 //		System.out.println("Zork is a new, incredibly boring adventure game.");
-//		System.out.println("Type 'help' if you need help.");
-//		System.out.println();
+		System.out.println("The game will now commence. Type 'help' if you ever need help!");
+		System.out.println();
 		System.out.println(currentRoom.longDescription());
 	}
 
@@ -139,7 +139,8 @@ class Game {
 		String commandWord = command.getCommandWord();
 		if (commandWord.equals("help"))
 			printHelp();
-		else if (commandWord.equals("go")||commandWord.equals("walk")||commandWord.equals("proceed")||commandWord.equals("run"))
+		else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
+				|| commandWord.equals("run"))
 			goRoom(command);
 		else if (commandWord.equals("quit")) {
 			if (command.hasSecondWord())
@@ -158,9 +159,6 @@ class Game {
 	 * and a list of the command words.
 	 */
 	private void printHelp() {
-		System.out.println("You are lost. You are alone. You wander");
-		System.out.println("around at Monash Uni, Peninsula Campus.");
-		System.out.println();
 		System.out.println("Your command words are:");
 		parser.showCommands();
 	}
@@ -172,11 +170,11 @@ class Game {
 	private void goRoom(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println(command + "where?");
+			System.out.println(command.toString() + " where?");
 			return;
 		}
-		String direction = command.getSecondWord();
-// Try to leave current room.
+		String direction = command.getDirection();
+		// Try to leave current room.
 		Room nextRoom = currentRoom.nextRoom(direction);
 		if (nextRoom == null)
 			System.out.println("There is no door!");

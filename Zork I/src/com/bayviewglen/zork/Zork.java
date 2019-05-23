@@ -8,7 +8,7 @@ public class Zork {
 
 	public static void main(String[] args) {
 		// Tutorial
-		preGame();
+		//preGame();
 		// Type 'help' if you need help.
 		Game game = new Game();
 		game.play();
@@ -164,7 +164,7 @@ public class Zork {
 		print("\r\n3... 2... 1... Game start!\r\n\r\n", lapse);
 	}
 
-	private static void print(String temp, int lapse) {
+	public static void print(String temp, int lapse) {
 		for (int i = 0; i < temp.length(); i++) {
 			try {
 				TimeUnit.MILLISECONDS.sleep(lapse);
