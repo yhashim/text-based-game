@@ -23,6 +23,7 @@ import java.util.ArrayList;
  * should probably be changed to be an item rather than a String.
  */
 class Command {
+	// variables
 	private ArrayList<String> commandWords;
 	private String commandWord;
 	private String character;
