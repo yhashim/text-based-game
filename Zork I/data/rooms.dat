@@ -1,5 +1,5 @@
 Room Name: Light's Room
-Room Description:  You are standing in your bedroom. Against the wall to your right is a large desk. A bag of potato chips and a pen lies on the desk. 
+Room Description:  You are standing in your bedroom. Against the wall to your right is a large desk.
 Exit Rooms: N-Hallway
 
 Room Name: Hallway 
@@ -19,7 +19,7 @@ Room Description:  This is your father's office. Against the far wall is a large
 Exit Rooms: S-End Of Hallway
 
 Room Name: Sister's Room
-Room Description:  You are standing in your sister's room. There is a bed in the corner of the room next to a large window. On top of the windowsill lies a small flashlight.
+Room Description:  You are standing in your sister's room. There is a bed in the corner of the room next to a large window.
 Exit Rooms: N-End Of Hallway
 
 Room Name: Foyer 
@@ -27,7 +27,7 @@ Room Description:  This is the foyer of the house. To the south is the front doo
 Exit Rooms: N-Kitchen, S-Front Yard, W-Living Room, U-Hallway
 
 Rome Name: Kitchen 
-Room Description:  You are standing in the kitchen. On the counter is a fruit bowl with a single apple in it. 
+Room Description:  You are standing in the kitchen. 
 Exit Rooms: S-Foyer, W-Dining Room 
 
 Room Name: Dining Room
@@ -39,7 +39,7 @@ Room Description:  You are standing in the living room. There is a large couch f
 Exit Rooms: N-Dining Room, E- Foyer
 
 Room Name: Back Yard
-Room Description:  You are standing in the back yard. The back yard in enclosed by fencing. There are several plants along the sides of fence. Along the side of the house is a small bench. A teddy bear sits peacefully on the bench. 
+Room Description:  You are standing in the back yard. The back yard in enclosed by fencing. There are several plants along the sides of fence. Along the side of the house is a small bench.
 Exit Rooms: S-Dining Room
 
 Room Name: Front Yard
@@ -55,7 +55,7 @@ Room Description:  You are standing on Pac Street. To the west, directly in fron
 Exit Rooms: N-Green Odori Street, E-Pac Street (East), S-Meiji-Dori Avenue, W-Anteiku Cafe 
 
 Room Name: Anteiku Cafe
-Room Description:  You are standing in a small café. There are several coffee tables and chairs positioned around the room. An apple has been left at an empty table.
+Room Description:  You are standing in a small café. There are several coffee tables and chairs positioned around the room.
 Exit Rooms: E-Pac Street (West)
 
 Room Name: Green Odori Street
@@ -119,23 +119,23 @@ Room Description:   You are standing in the south end of the hallway. There is a
 Exit Rooms: N-2nd Floor Hallway, E-Meeting Room Three
 
 Room Name: Meeting Room Three
-Room Description:  Inside the meeting room is a long rectangular table. An apple was left at the end of the table.
+Room Description:  Inside the meeting room is a long rectangular table.
 Exit Rooms: W-2nd Floor Hallway (South)
 
 Room Name: 3rd Floor Hallway 
 Room Description:  You are on the 3rd floor of the building. There is an elevator here. A large meeting room is directly in front of you to the east. To the north and south are two private offices. There are plaques next to these rooms.
-Exit Rooms: N-Touta Matsuda's Office, E-Large Meeting Room, S-Soichiro Yagami's Office, U-4th Floor Hallway, D-2nd Floor Hallway
+Exit Rooms: N-Mr. Matsuda's Office, E-Large Meeting Room, S-Mr. Yagami's Office, U-4th Floor Hallway, D-2nd Floor Hallway
 
 Room Name: Large Meeting Room
 Room Description:  You are standing in a very large meeting room. In the center of the room is a large rectangular table. 
 Exit Rooms: W-3rd Floor Hallway
 
-Room Name: Touta Matsuda's Office
-Room Description:  This is Touta Matsuda's office. There is a large desk in the center of the room. 
+Room Name: Mr. Matsuda's Office
+Room Description:  This is Mr Matsuda's office. There is a large desk in the center of the room. 
 Exit Rooms: S-3rd Floor Hallway
 
-Room Name: Soichiro Yagami's Office
-Room Description:  This is Soichiro Matsuda's office. There is a large desk in the center of the room. 
+Room Name: Mr. Yagami's Office
+Room Description:  This is Mr. Yagami's office. There is a large desk in the center of the room. 
 Exit Rooms: N-3rd Floor Hallway
 
 Room Name: 4th Floor Hallway
