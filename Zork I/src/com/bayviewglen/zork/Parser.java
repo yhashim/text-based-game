@@ -29,7 +29,7 @@ class Parser {
 	}
 
 	public Command getCommand() {
-		String inputLine = ""; // will hold the full input line
+		String inputLine = ""; // will hold the full input line...
 		ArrayList<String> input = new ArrayList<String>(); // will duplicate input elements after separating them, and
 															// then removes irrelevant information
 		

@@ -30,7 +30,7 @@ class Game {
 	// underscore -> Great Room would have a key of GREAT_ROOM
 	// In a hashmap keys are case sensitive.
 	// masterRoomMap.get("GREAT_ROOM") will return the Room Object that is the Great
-	// Room (assuming you have one).
+	// Room (assuming you have one)
 	private HashMap<String, Room> masterRoomMap;
 
 	private void initRooms(String fileName) throws Exception {
