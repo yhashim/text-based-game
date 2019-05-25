@@ -1,0 +1,48 @@
+Item Name: Death Note
+Item Description:  This is a leather black notebook with "Death Note" written in white ink across the cover. 
+Item Weight: 5
+Functions: write, read, take, examine
+Item Name: Television
+Item Description:  This is a flat screen TV, the news channel is playing.
+Item Weight: 20
+Functions: watch, examine 
+Item Name: Computer 
+Item Description: This is a computer. A password is required to unlock it.
+Item Weight: 20
+Functions: unlock, read, examine
+Item Name: Pen
+Item Description:  This is a black pen that is used as a writing utensil.
+Item Weight: 5
+Functions: take, drop, examine 
+Item Name: Apple
+Item Description: This is an apple. Ryuk likes apples…
+Item Weight: 1
+Functions: eat, give, take, drop, examine
+Item Name: Bag of Potato Chips
+Item Description: This is a bag of potato chips. Yum.
+Item Weight: 1
+Functions: eat, take, drop, give, examine
+Item Name: Task Force Employee List
+Item Description: This is a list of all the employees in the task force. 
+Item Weight: 1
+Functions: read, take, drop, examine
+Item Name: Flashlight
+Item Description: This is a flashlight, it is used to illuminate rooms and areas that are dark.
+Item Weight: 2
+Functions: turn on, take, drop, examine
+Item Name: Stuffed Bear 
+Item Description: It is a stuffed animal, it belongs to your sister.
+Item Weight: 2
+Functions: take, give, drop, examine
+Item Name: "The Kira Case" File
+Item Description: This is a large folder. On the cover, written in black letters is "The Kira Case File".
+Item Weight: 1
+Functions: take, read, drop, examine 
+Item Name: "Most Wanted" File
+Item Description: This is a thin folder containing a single sheet of paper. On the sheet is a list of names, all of which are crossed out except for one, Kiyomi Takada.
+Item Weight: 1
+Functions: take, read, drop, examine
+Item Name: "Taxes" File
+Item Description: This is a large folder filed with papers. Are you sure this is what you're looking for?
+Item Weight: 1
+Functions: take, read, drop, examine
