@@ -32,6 +32,7 @@ class Game {
 	// masterRoomMap.get("GREAT_ROOM") will return the Room Object that is the Great
 	// Room (assuming you have one)
 	private HashMap<String, Room> masterRoomMap;
+	private HashMap<String, Item> masterItemMap;
 
 	private void initRooms(String fileName) throws Exception {
 		masterRoomMap = new HashMap<String, Room>();
@@ -78,6 +79,43 @@ class Game {
 			e.printStackTrace();
 		}
 	}
+	
+	private void initItems(String fileName) throws Exception {
+		masterItemMap = new HashMap<String, Item>();
+		Scanner itemScanner;
+		try {
+			HashMap<String, HashMap<String, String>> exits = new HashMap<String, HashMap<String, String>>();
+			itemScanner = new Scanner(new File(fileName));
+			while (itemScanner.hasNext()) {
+				Item item = new Item();
+				// Read the Name
+				String itemName = itemScanner.nextLine();
+				item.setItemName(itemName.split(":")[1].trim());
+				// Read the Description
+				String itemDescription = itemScanner.nextLine();
+				item.setDescription(itemDescription.split(":")[1].replaceAll("<br>", "\n").trim());
+				// Read the Weight
+				String itemWeight = itemScanner.nextLine();
+				item.setWeight(itemWeight.split(":")[1].trim());
+				// Read the Functions
+				String itemFunctions = itemScanner.nextLine();
+				item.setFunctions(itemFunctions.split(":")[1].trim());
+				// An array of strings in the format F-ItemName
+				String[] items = itemFunctions.split(":")[1].split(",");
+				HashMap<String, String> temp = new HashMap<String, String>();
+				for (String s : items) {
+					temp.put(s.split("-")[0].trim(), s.split("-")[1]);
+				}
+				functions.put(itemName.substring(10).trim().toUpperCase().replaceAll(" ", "_"), temp);
+				// This puts the item we created (Without the functions in the masterMap)
+				masterItemMap.put(itemName.toUpperCase().substring(10).trim().replaceAll(" ", "_"), item);
+				// Now we better set the functions.
+			}
+			itemScanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Create the game and initialise its internal map.
@@ -85,6 +123,7 @@ class Game {
 	public Game() {
 		try {
 			initRooms("data/Rooms.dat");
+			initItems("data/Items.dat");
 			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
