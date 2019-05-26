@@ -7,10 +7,12 @@ import java.util.Iterator;
 class Item {
 	private String itemName;
 	private String description;
+	private String weight;
 	private HashMap<String, Item> functions; // stores functions of this item.
 	
-	public Item (String description) {
+	public Item (String description, String weight) {
 		this.description = description;
+		this.setWeight(weight);
 		functions = new HashMap<String, Item>();
 	}
 	
@@ -61,5 +63,13 @@ class Item {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
 	}
 }
