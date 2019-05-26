@@ -16,6 +16,13 @@ class Item {
 		functions = new HashMap<String, Item>();
 	}
 	
+	public Item() {
+		// default constructor.
+		itemName = "DEFAULT ITEM";
+		description = "DEFAULT DESCRIPTION";
+		functions = new HashMap<String, Item>();
+	}
+	
 	public void setFunction(String function, Item i) throws Exception {
 		functions.put(function, i);
 	}
