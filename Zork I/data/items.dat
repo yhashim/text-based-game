@@ -58,12 +58,10 @@ Item Name: Mail Package
 Item Description:  This is a mail package. The front of the package reads "Task Force Soichiro Yagami".
 Item Weight: 1
 Functions: take, open, drop, examine
-
 Item Name: Task Force Key Card
 Item Description:  This is the key card found in the mail package for your father. "Task Force Mr. Yagami" is in black letters on the back of the key card.
 Item Weight: 2
 Functions: take, drop, examine, use
-
 Item Name: Task Force File 
 Item Description:  This file was found in the mail package for your father. 
 Item Weight: 1
