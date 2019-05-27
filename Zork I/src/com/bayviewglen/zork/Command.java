@@ -38,21 +38,27 @@ class Command {
 	public Command(String word1, String word2, String word3, String word4, String word5) {
 		commandWords = new ArrayList<String>();
 		commandWords.add(word1);
+		commandWords.add(word2);
+		commandWords.add(word3);
+		commandWords.add(word4);
+		commandWords.add(word5);
 		
 		for (String w : commandWords) {
-		if (Parser.stringIsCommand(w)) {
-			commandWord = w;
-		} else if (Parser.stringIsCharacter(w)) {
-			character = w;
-		} else if (Parser.stringIsItem(w)) {
-			object = w;
-		} else if (Parser.stringIsAdverb(w)){
-			adverb = w;
-		} else if (Parser.stringIsDirection(w)) {
-			direction = w;
+			if (w != null) {
+				if (Parser.stringIsCommand(w)) {
+					commandWord = w;
+				} else if (Parser.stringIsCharacter(w)) {
+					character = w;
+				} else if (Parser.stringIsItem(w)) {
+					object = w;
+				} else if (Parser.stringIsAdverb(w)){
+					adverb = w;
+				} else if (Parser.stringIsDirection(w)) {
+					direction = w;
+				}
+			}
 		}
 	}
-}
 	
 	/**
 	 * Return the command word of this command. If the command was not understood,

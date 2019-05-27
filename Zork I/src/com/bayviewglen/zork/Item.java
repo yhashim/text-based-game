@@ -1,6 +1,7 @@
 package com.bayviewglen.zork;
 
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -8,23 +9,23 @@ class Item {
 	private String itemName;
 	private String description;
 	private String weight;
-	private HashMap<String, Item> functions; // stores functions of this item.
+	private ArrayList<String> functions; // stores functions of this item.
 	
 	public Item (String description, String weight) {
 		this.description = description;
 		this.setWeight(weight);
-		functions = new HashMap<String, Item>();
+		functions = new ArrayList<String>();
 	}
 	
 	public Item() {
 		// default constructor.
 		itemName = "DEFAULT ITEM";
 		description = "DEFAULT DESCRIPTION";
-		functions = new HashMap<String, Item>();
+		functions = new ArrayList<String>();
 	}
 	
-	public void setFunction(String function, Item i) throws Exception {
-		functions.put(function, i);
+	public void addFunction(String function) throws Exception {
+		functions.add(function);
 	}
 
 	/**
@@ -40,7 +41,6 @@ class Item {
 	 * Exits: north west
 	 */
 	public String longDescription() {
-
 		return "Item: " + itemName + "\n\n" + description + "\n" + functionString();
 	}
 
@@ -50,9 +50,9 @@ class Item {
 	 */
 	private String functionString() {
 		String returnString = "Functions:";
-		Set keys = functions.keySet();
-		for (Iterator iter = keys.iterator(); iter.hasNext();)
-			returnString += " " + iter.next();
+//		Set keys = functions.keySet();
+//		for (Iterator iter = keys.iterator(); iter.hasNext();)
+//			returnString += " " + iter.next();
 		return returnString;
 	}
 

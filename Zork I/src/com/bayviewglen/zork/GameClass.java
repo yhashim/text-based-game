@@ -84,7 +84,6 @@ class Game {
 		masterItemMap = new HashMap<String, Item>();
 		Scanner itemScanner;
 		try {
-			HashMap<String, HashMap<String, String>> exits = new HashMap<String, HashMap<String, String>>();
 			itemScanner = new Scanner(new File(fileName));
 			while (itemScanner.hasNext()) {
 				Item item = new Item();
@@ -99,17 +98,21 @@ class Game {
 				item.setWeight(itemWeight.split(":")[1].trim());
 				// Read the Functions
 				String itemFunctions = itemScanner.nextLine();
-				item.setFunctions(itemFunctions.split(":")[1].trim());
-				// An array of strings in the format F-ItemName
-				String[] items = itemFunctions.split(":")[1].split(",");
-				HashMap<String, String> temp = new HashMap<String, String>();
+				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(":")+1);
+				String[] items = itemFunctions.split(",| ");
 				for (String s : items) {
-					temp.put(s.split("-")[0].trim(), s.split("-")[1]);
+					item.addFunction(s);
 				}
-				functions.put(itemName.substring(10).trim().toUpperCase().replaceAll(" ", "_"), temp);
-				// This puts the item we created (Without the functions in the masterMap)
-				masterItemMap.put(itemName.toUpperCase().substring(10).trim().replaceAll(" ", "_"), item);
-				// Now we better set the functions.
+//				// An array of strings in the format F-ItemName
+//				String[] items = itemFunctions.split(":")[1].split(",");
+//				HashMap<String, String> temp = new HashMap<String, String>();
+//				for (String s : items) {
+//					temp.put(s.split("-")[0].trim(), s.split("-")[1]);
+//				}
+//				functions.put(itemName.substring(10).trim().toUpperCase().replaceAll(" ", "_"), temp);
+//				// This puts the item we created (Without the functions in the masterMap)
+//				masterItemMap.put(itemName.toUpperCase().substring(10).trim().replaceAll(" ", "_"), item);
+//				// Now we better set the functions.
 			}
 			itemScanner.close();
 		} catch (FileNotFoundException e) {
