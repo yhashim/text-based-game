@@ -184,12 +184,14 @@ class Game {
 			else
 				return true; // signal that we want to quit
 		} else if (commandWord.equals("eat")) {
-			System.out.println("Do you really think you should be eating at a time like this?");
+			if (command.hasSecondWord()) {
+				eat(command);
+			}
 		}
 		return false;
 	}
 
-// implementations of user commands:
+	// implementations of user commands:
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic message
 	 * and a list of the command words.
@@ -218,6 +220,11 @@ class Game {
 			currentRoom = nextRoom;
 			System.out.println(currentRoom.longDescription());
 		}
+	}
+	
+	private void eat(Command command) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

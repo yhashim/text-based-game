@@ -32,7 +32,7 @@ class Parser {
 		String inputLine = ""; // will hold the full input line...
 		ArrayList<String> input = new ArrayList<String>(); // will duplicate input elements after separating them, and
 															// then removes irrelevant information
-		
+
 		System.out.print("\n> "); // print prompt
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
@@ -48,8 +48,8 @@ class Parser {
 				input.add(inputLine);
 				inputLine = "";
 			}
-			inputLine = inputLine.substring(inputLine.indexOf(" ")+1);
-			// find way to end with the last word 
+			inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
+			// find way to end with the last word
 		}
 		for (int i = 0; i < input.size(); i++) {
 			if (isBadWord(input.get(i))) {
@@ -98,7 +98,8 @@ class Parser {
 	 * item
 	 */
 	private static boolean isBadWord(String string) {
-		if (!stringIsCommand(string) && !stringIsCharacter(string) && !stringIsItem(string) && !stringIsAdverb(string) && !stringIsDirection(string)) {
+		if (!stringIsCommand(string) && !stringIsCharacter(string) && !stringIsItem(string) && !stringIsAdverb(string)
+				&& !stringIsDirection(string)) {
 			return true;
 		} else {
 			return false;
@@ -144,7 +145,8 @@ class Parser {
 
 	public static boolean stringIsCommand(String string) {
 		// add commands here
-		String[] commands = { "go", "walk", "proceed", "run", "quit", "help", "eat" };
+		String[] commands = { "go", "walk", "proceed", "run", "write", "read", "take", "examine", "watch", "unlock",
+				"give", "drop", "turn on", "quit", "help", "eat" };
 		string = string.toLowerCase();
 		for (int i = 0; i < commands.length; i++) {
 			if (string.equals(commands[i])) {
@@ -153,7 +155,7 @@ class Parser {
 		}
 		return false;
 	}
-	
+
 	public static boolean stringIsDirection(String string) {
 		// add directions here
 		String[] directions = { "north", "east", "south", "west" };
