@@ -4,12 +4,20 @@ Item Weight: 5
 Functions: write, read, take, examine
 Item Name: Television
 Item Description:  This is a flat screen TV, the news channel is playing.
-Item Weight: 20
+Item Weight: 30
 Functions: watch, examine 
 Item Name: Computer 
 Item Description: This is a computer. A password is required to unlock it.
-Item Weight: 20
+Item Weight: 30
 Functions: unlock, read, examine
+Item Name: Drawer
+Item Description:  This is a drawer. 
+Item Weight: 30
+Functions: open, examine
+Item Name: Front Door
+Item Description:  This is the front door of the house.
+Item Weight: 30
+Functions: open, examine 
 Item Name: Pen
 Item Description:  This is a black pen that is used as a writing utensil.
 Item Weight: 5
@@ -46,3 +54,33 @@ Item Name: "Taxes" File
 Item Description: This is a large folder filed with papers. Are you sure this is what you're looking for?
 Item Weight: 1
 Functions: take, read, drop, examine
+Item Name: Mail Package
+Item Description:  This is a mail package. The front of the package reads "Task Force Soichiro Yagami".
+Item Weight: 1
+Functions: take, open, drop, examine
+
+Item Name: Task Force Key Card
+Item Description:  This is the key card found in the mail package for your father. "Task Force Mr. Yagami" is in black letters on the back of the key card.
+Item Weight: 2
+Functions: take, drop, examine, use
+
+Item Name: Task Force File 
+Item Description:  This file was found in the mail package for your father. 
+Item Weight: 1
+Functions: take, drop, open, examine
+Item Name: Newspaper
+Item Description:  This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his commendable performance last week at…
+Item Weight: 1
+Functions: take, open, drop, examine
+Item Name: Mr. M's Key Card
+Item Description:  This is a key card. "Task Force Mr. M" is in black letters on the back of the key card. 
+Item Weight: 2
+Functions: take, use, drop, examine
+Item Name: Slip Of Paper
+Item Description:  This is a small slip of paper. Written on it in pencil are the numbers "6708".
+Item Weight: 1
+Functions: take, examine, drop
+Item Name: Old Key
+Item Description: This is an old key. It will give you access to the forest pathway.
+Item Weight: 2
+Functions: take, examine, drop, use
