@@ -1,6 +1,6 @@
 Item Name: Death Note
 Item Description:  This is a leather black notebook with "Death Note" written in white ink across the cover. 
-Item Weight: 3
+Item Weight: 5
 Functions: write, read, take, examine
 Item Name: Television
 Item Description:  This is a flat screen TV, the news channel is playing.
@@ -20,7 +20,7 @@ Item Weight: 30
 Functions: open, examine 
 Item Name: Pen
 Item Description:  This is a black pen that is used as a writing utensil.
-Item Weight: 3
+Item Weight: 5
 Functions: take, drop, examine 
 Item Name: Apple
 Item Description: This is an apple. Ryuk likes apples…
@@ -65,7 +65,7 @@ Functions: take, drop, examine, use
 Item Name: Task Force File 
 Item Description:  This file was found in the mail package for your father. 
 Item Weight: 1
-Functions: take, drop, open, examine, read
+Functions: take, drop, open, examine
 Item Name: Newspaper
 Item Description:  This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his commendable performance last week at…
 Item Weight: 1
@@ -90,3 +90,7 @@ Item Name: Task Force L's Key
 Item Description: This is a modern looking key. Engraved on both sides is the letter "L".
 Item Weight: 1
 Functions: use, take, drop, examine
+Item Name: Wanted Poster 
+Item Description:  This is a wanted poster on a telephone pole on Pac Street (West).
+Item Weight: 30
+Functions: read, examine
