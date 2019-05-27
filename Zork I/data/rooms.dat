@@ -19,7 +19,7 @@ Exit Rooms: N-End Of Hallway
 Room Name: Foyer 
 Room Description:  This is the foyer of the house. To the south is the front door of the house.
 Exit Rooms: N-Kitchen, S-Front Yard, W-Living Room, U-Hallway
-Room Name: Kitchen 
+Rome Name: Kitchen 
 Room Description:  You are standing in the kitchen. 
 Exit Rooms: S-Foyer, W-Dining Room 
 Room Name: Dining Room
@@ -35,13 +35,13 @@ Room Name: Front Yard
 Room Description: You are standing in the front yard. The front door of the house is to the north. From here, you can see Pac St. to the south.
 Exit Rooms: N-Foyer, S-Pac Street (East)
 Room Name: Pac Street (East)
-Room Description:  You are standing on Pac Street. In the distance, you can see a small cafe at the end of the street to the west. The street splits north and south at this end.
+Room Description:  You are standing on Pac Street. In the distance, you can see a small café at the end of the street to the west. The street splits north and south at this end.
 Exit Rooms: N-Front Yard, W-Pac Street (West)
 Room Name: Pac Street (West)
 Room Description:  You are standing on Pac Street. To the west, directly in front of you, is Anteiku Cafe. There are two visible streets signs - one pointing north, the other pointing south.
 Exit Rooms: N-Green Odori Street, E-Pac Street (East), S-Meiji-Dori Avenue, W-Anteiku Cafe 
 Room Name: Anteiku Cafe
-Room Description:  You are standing in a small caf�. There are several coffee tables and chairs positioned around the room.
+Room Description:  You are standing in a small café. There are several coffee tables and chairs positioned around the room.
 Exit Rooms: E-Pac Street (West)
 Room Name: Green Odori Street
 Room Description:  You are standing on Green Odori Street. To the north is the front of your school. 
@@ -63,7 +63,7 @@ Room Description:  This is the Main Square. Tall buildings surround the square, 
 Exit Rooms: W-Mizuki-Dori Avenue 
 Room Name: Forest Pathway 
 Room Description:  You are standing on a small dirt pathway. The pathway is surround on both sides by large trees, flowers and dark green grass. You can see a small building in the distance to the south.
-Exit Rooms: N-Mizuki-Dori Avenue, S-Warehouse
+Exit Rooms: N-Mizuki-Dori Avenue, S-Front Of Warehouse
 Room Name: Front Of Warehouse 
 Room Description:  You are standing in front of a large, grey warehouse. Although it appears to be abandoned, the doors are locked. There are no windows, preventing you from peering inside.
 Exit Rooms: N-Forest Pathway, S-Warehouse 
