@@ -8,12 +8,12 @@ import java.util.Iterator;
 class Item {
 	private String itemName;
 	private String description;
-	private String weight;
+	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
 	
 	public Item (String description, String weight) {
 		this.description = description;
-		this.setWeight(weight);
+		this.weight = Double.parseDouble(weight);
 		functions = new ArrayList<String>();
 	}
 	
@@ -72,11 +72,15 @@ class Item {
 		this.description = description;
 	}
 
-	public String getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
 	public void setWeight(String weight) {
+		this.weight = Double.parseDouble(weight);;
+	}
+	
+	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
 }

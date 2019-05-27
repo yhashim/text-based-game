@@ -30,6 +30,7 @@ class Command {
 	private String object;
 	private String adverb;
 	private String direction;
+	private String firstWord;
 
 	/**
 	 * Create a command object. The command word should be null to indicate that

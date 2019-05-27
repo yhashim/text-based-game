@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
- 
+
 /**
  * Class Game - the main class of the "Zork" game.
  *
@@ -79,7 +79,7 @@ class Game {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void initItems(String fileName) throws Exception {
 		masterItemMap = new HashMap<String, Item>();
 		Scanner itemScanner;
@@ -98,7 +98,7 @@ class Game {
 				item.setWeight(itemWeight.split(":")[1].trim());
 				// Read the Functions
 				String itemFunctions = itemScanner.nextLine();
-				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(":")+1);
+				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(":") + 1);
 				String[] items = itemFunctions.split(",| ");
 				for (String s : items) {
 					item.addFunction(s);
@@ -140,7 +140,7 @@ class Game {
 	 */
 	public void play() {
 		printWelcome();
-		// Enter the main command loop.  Here we repeatedly read commands and
+		// Enter the main command loop. Here we repeatedly read commands and
 		// execute them until the game is over.
 
 		boolean finished = false;
@@ -173,12 +173,16 @@ class Game {
 			return false;
 		}
 		String commandWord = command.getCommandWord();
-		if (commandWord.equals("help"))
-			printHelp();
-		else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
-				|| commandWord.equals("run"))
+		if (command.getDirection() != null) {
 			goRoom(command);
-		else if (commandWord.equals("quit")) {
+			return false;
+		}
+		if (commandWord.equals("help")) {
+			printHelp();
+		} else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
+				|| commandWord.equals("run")) {
+			goRoom(command);
+		} else if (commandWord.equals("quit")) {
 			if (command.hasSecondWord())
 				System.out.println("Quit what?");
 			else
@@ -206,12 +210,24 @@ class Game {
 	 * otherwise print an error message.
 	 */
 	private void goRoom(Command command) {
-		if (!command.hasSecondWord()) {
-			// if there is no second word, we don't know where to go...
-			System.out.println(command.toString() + " where?");
-			return;
-		}
 		String direction = command.getDirection();
+		if (!command.hasSecondWord()) {
+			if (direction == null) {
+				// we don't know where to go...
+				System.out.println("Sorry, I did not understand that. Please try again.");
+				return;
+			} else {
+				Room nextRoom = currentRoom.nextRoom(direction);
+				if (nextRoom == null)
+					System.out.println("There is no door!");
+				else {
+					currentRoom = nextRoom;
+					System.out.println(currentRoom.longDescription());
+				}
+				return;
+			}
+		}
+		direction = command.getDirection();
 		// Try to leave current room.
 		Room nextRoom = currentRoom.nextRoom(direction);
 		if (nextRoom == null)
@@ -221,10 +237,10 @@ class Game {
 			System.out.println(currentRoom.longDescription());
 		}
 	}
-	
+
 	private void eat(Command command) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
