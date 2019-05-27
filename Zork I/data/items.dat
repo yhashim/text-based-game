@@ -69,7 +69,7 @@ Functions: take, drop, open, examine
 Item Name: Newspaper
 Item Description:  This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his commendable performance last week at…
 Item Weight: 1
-Functions: take, open, drop, examine
+Functions: take, open, drop, examine, read
 Item Name: Mr. M's Key Card
 Item Description:  This is a key card. "Task Force Mr. M" is in black letters on the back of the key card. 
 Item Weight: 2
@@ -82,3 +82,15 @@ Item Name: Old Key
 Item Description: This is an old key. It will give you access to the forest pathway.
 Item Weight: 2
 Functions: take, examine, drop, use
+Item Name: Letter
+Item Description: This is the letter that you must give to L.
+Item Weight: 1
+Functions: take, examine, drop, read
+Item Name: Task Force L's Key
+Item Description: This is a modern looking key. Engraved on both sides is the letter "L".
+Item Weight: 1
+Functions: use, take, drop, examine
+Item Name: Wanted Poster 
+Item Description:  This is a wanted poster on a telephone pole on Pac Street (West).
+Item Weight: 30
+Functions: read, examine
