@@ -173,11 +173,32 @@ class Game {
 		} else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
 				|| commandWord.equals("run")) {
 			goRoom(command);
+		} else if (commandWord.equals("take") || commandWord.equals("pick up")) {
+			take(command);
+		} else if (commandWord.equals("open")) {
+			open(command);
+		} else if (commandWord.equals("give") || commandWord.equals("hand")) {
+			give(command);
+		} else if (commandWord.equals("unlock")) {
+			unlock(command);
+		} else if (commandWord.equals("read")) {
+			read(command);
+		} else if (commandWord.equals("use")) {
+			use(command);
+		} else if (commandWord.equals("write") || commandWord.equals("kill")) {
+			write(command);
+		} else if (commandWord.equals("watch")) {
+			watch(command);	
+		} else if (commandWord.equals("drop") || commandWord.equals("put down") || commandWord.equals("leave")) {
+			drop(command);	
+		} else if (commandWord.equals("eat") || commandWord.equals("consume")) {
+			eat(command);
 		} else if (commandWord.equals("quit")) {
-			if (command.hasSecondWord())
+			if (command.hasSecondWord()) {
 				System.out.println("Quit what?");
-			else
+			} else {
 				return true; // signal that we want to quit
+			}
 		} else if (commandWord.equals("eat")) {
 			if (command.hasSecondWord()) {
 				eat(command);
@@ -231,42 +252,89 @@ class Game {
 	
 	private void take(Command command) {
 		String takeable = command.getObject();
+		// check if object is in currentRoom
+		// if yes:
+			// remove object from room's inventory
+			// add object to player inventory
+		// else 
+			// tell player that it is not there
 	}
 	
 	private void open(Command command) {
 		String openable = command.getObject();
+		// check if specified object is in room
+			// if yes, check if it is openable
+				// check if locked 
+					// if openable and unlocked, open and print out contents
+				// else 
+					// ask for key
+			// else, tell them it is not there
 	}
 	
 	private void give(Command command) {
 		String giveable = command.getObject();
+		// check if item is giveable
+			// if yes, give to character they stated
+				// remove from player's inventory
+				// add to character's inventory
+			// else, tell character they probably don't want to give it away
 	}
 	
 	private void unlock(Command command) {
 		String unlockable = command.getObject();
+		// check if object is lockable
+			// if true, check if key is in inventory
+				// unlock
+			// if no keky
+				// ask player to fine key
 	}
 	
 	private void read(Command command) {
 		String readable = command.getObject();
+		// check if object is readable
+			// if true, display text of specified object
+			// else, tell player there is nothing to read on ___ object
 	}
 	
 	private void use(Command command) {
 		String useable = command.getObject();
+		// check if object is useable
+			// check which useable object it is
+			// if it is a flashlight, do flashlight thing (make sure that all other parameters such as location are correct, etc.)
+			// if... until all the useables are done
+		// else, explain it cannot be used
 	}
 	
 	private void write(Command command) {
 		String killable = command.getCharacter();
+		// check if character is killable
+			// if true, remove character from its room
+			// remove character from character array
+			// +1 to killings
+		// else, print - you cannot kill ___!
 	}
 	
 	private void watch(Command command) {
 		String watchable = command.getObject();
+		// check if object is watchable (basically tv)
+			// if yes, display text of what you see on tv
+		// else, say - you can't watch ___, that would be boring!
 	}
 	
 	private void drop(Command command) {
 		String droppable = command.getObject();
+		// check if object is in player's inventory
+			// if yes, remove from inventory
+			// add to currentRoom inventory
+		// else, state they do not even have this object to put down
 	}
 	
 	private void eat(Command command) {
 		String edible = command.getObject();
+		// check if object is edible
+			// if an apple, state - Ryuk wants that apple!
+			// else, remove object from room inventory or personal inventory and say - yummy!
+		// else, print - dishonour on you! filthy human - you can't eat a ___!
 	}
 
 }
