@@ -228,10 +228,45 @@ class Game {
 			System.out.println(currentRoom.longDescription());
 		}
 	}
-
+	
+	private void take(Command command) {
+		String takeable = command.getObject();
+	}
+	
+	private void open(Command command) {
+		String openable = command.getObject();
+	}
+	
+	private void give(Command command) {
+		String giveable = command.getObject();
+	}
+	
+	private void unlock(Command command) {
+		String unlockable = command.getObject();
+	}
+	
+	private void read(Command command) {
+		String readable = command.getObject();
+	}
+	
+	private void use(Command command) {
+		String useable = command.getObject();
+	}
+	
+	private void write(Command command) {
+		String killable = command.getCharacter();
+	}
+	
+	private void watch(Command command) {
+		String watchable = command.getObject();
+	}
+	
+	private void drop(Command command) {
+		String droppable = command.getObject();
+	}
+	
 	private void eat(Command command) {
-		// TODO Auto-generated method stub
-
+		String edible = command.getObject();
 	}
 
 }
