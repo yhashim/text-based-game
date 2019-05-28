@@ -19,8 +19,10 @@ public class Player {
 	// return true if it is, false if not
 	public Item getItem(String name) {
 		if (items.containsKey(name)) {
-			return items.getItemName(name);
+			return items.get(name);
 		}
+		
+		return null;
 	}
 	
 	public String toString() {

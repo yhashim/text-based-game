@@ -102,6 +102,10 @@ class Item {
 	}
 	
 	public void take(Item item, int amount) {
-		addToInventory(item, amount);
+		
+	}
+	
+	public void give(Item item, int amount) {
+		
 	}
 }
