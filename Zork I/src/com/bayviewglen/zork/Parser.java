@@ -119,7 +119,12 @@ class Parser {
 
 	public static boolean stringIsItem(String string) {
 		// add names of items here
-		String[] gameItems = { "deathnote", "death note" };
+		String[] gameItems = { "deathnote", "death note", "television", "tv", "computer", "drawer", "front door", "pen",
+				"apple", "bag of potato chips", "bag of chips", "potato chips", "chips", "task force employee list",
+				"employee list", "flashlight", "stuffed bear", "bear", "kira case file", "kira file",
+				"most wanted file", "taxes file", "task force key card", "newspaper", "mr. m's keycard",
+				"slip of paper", "paper", "old key", "letter", "task force l's key", "l's key", "wanted poster",
+				"poster" };
 		string = string.toLowerCase();
 		for (int i = 0; i < gameItems.length; i++) {
 			if (string.equals(gameItems[i])) {
@@ -145,8 +150,21 @@ class Parser {
 
 	public static boolean stringIsCommand(String string) {
 		// add commands here
-		String[] commands = { "go", "walk", "proceed", "run", "write", "read", "take", "examine", "watch", "unlock",
-				"give", "drop", "quit", "help", "eat" };
+		// separate them on lines based on their function
+		String[] commands = { "go", "walk", "proceed", "run", 
+				"write", 
+				"use", 
+				"read", 
+				"take", "pick up",
+				"examine", "look", 
+				"watch", 
+				"unlock", 
+				"open",
+				"give", "hand", 
+				"drop", "put down", "leave", 
+				"quit", "finish", "retire",
+				"help", 
+				"eat", "consume" };
 		string = string.toLowerCase();
 		for (int i = 0; i < commands.length; i++) {
 			if (string.equals(commands[i])) {
