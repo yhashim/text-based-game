@@ -43,12 +43,5 @@ public class Player {
 		}
 	}
 	
-	
-	
-	
-	
-
-	
-	
 }
 

@@ -96,4 +96,12 @@ class Item {
 	public void addAmount(int amount) {
 		this.amount += amount;
 	}
+	
+	public void examine() {
+		System.out.println(description);
+	}
+	
+	public void take(Item item, int amount) {
+		addToInventory(item, amount);
+	}
 }
