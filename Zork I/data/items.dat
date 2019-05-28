@@ -14,10 +14,6 @@ Item Name: Drawer
 Item Description:  This is a drawer. 
 Item Weight: 30
 Functions: open, examine
-Item Name: Front Door
-Item Description:  This is the front door of the house.
-Item Weight: 30
-Functions: open, examine 
 Item Name: Pen
 Item Description:  This is a black pen that is used as a writing utensil.
 Item Weight: 5
