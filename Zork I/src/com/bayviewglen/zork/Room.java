@@ -22,6 +22,7 @@ class Room {
 	private String roomName;
 	private String description;
 	private HashMap<String, Room> exits; // stores exits of this room.
+	private HashMap <String, Item> items = new HashMap <String, Item>(); // stores item inventory of room.
 
 	/**
 	 * Create a room described "description". Initially, it has no exits.
@@ -139,5 +140,32 @@ class Room {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public void addToInventory(Item item, int amount) {
+		if (items.containsKey(item.getItemName())) {
+			items.get(item.getItemName()).addAmount(amount);
+		}
+		else {
+			items.put(item.getItemName(), item);
+		}
+	}
+	
+	// checks for an item in the inventory 
+	// return true if it is, false if not
+	public Item getItem(String name) {
+		if (items.containsKey(name)) {
+			return items.get(name);
+		}
+		return null;
+	}
+	
+	public void removeItem(String name, int amount) {
+		if (items.get(name).getAmount() == 1) {
+			items.remove(name);
+		}
+		else {
+			items.get(name).setAmount(items.get(name).getAmount()-1); 
+		}
 	}
 }
