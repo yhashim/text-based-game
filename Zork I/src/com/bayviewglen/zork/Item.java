@@ -8,6 +8,7 @@ import java.util.Iterator;
 class Item {
 	private String itemName;
 	private String description;
+	private int amount;
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
 	
@@ -82,5 +83,17 @@ class Item {
 	
 	public void setWeight(Double weight) {
 		this.weight = weight;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public void setAmount(int newAmount) {
+		this.amount = newAmount; 
+	}
+	
+	public void addAmount(int amount) {
+		this.amount += amount;
 	}
 }
