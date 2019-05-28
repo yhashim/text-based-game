@@ -12,6 +12,16 @@ class Item {
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
 	
+	private boolean isDeathnote;
+	private boolean isGivable;
+	private boolean isTakeable;
+	private boolean isConsumable;
+	private boolean isKey;
+	private boolean isReadable;
+	private boolean isUnlockable;
+	private boolean isWatchable;
+	private boolean isOpenable;
+	
 	public Item (String description, String weight) {
 		this.description = description;
 		this.weight = Double.parseDouble(weight);
@@ -101,11 +111,44 @@ class Item {
 		System.out.println(description);
 	}
 	
-	public void take(Item item, int amount) {
+	public void take() {
 		
 	}
 	
-	public void give(Item item, int amount) {
+	public void open() {
 		
 	}
+	
+	public void give() {
+		
+	}
+	
+	public void unlock() {
+		
+	}
+	
+	public void read() {
+		
+	}
+	
+	public void use() {
+		
+	}
+	
+	public void write() {
+		
+	}
+	
+	public void watch() {
+		
+	}
+	
+	public void drop() {
+		
+	}
+	
+	public void eat () {
+		
+	}
+	
 }
