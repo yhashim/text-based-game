@@ -152,7 +152,7 @@ class Parser {
 		// add commands here
 		// separate them on lines based on their function
 		String[] commands = { "go", "walk", "proceed", "run", 
-				"write", 
+				"write", "kill",
 				"use", 
 				"read", 
 				"take", "pick up",
