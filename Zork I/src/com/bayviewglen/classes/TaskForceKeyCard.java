@@ -1,6 +1,6 @@
-package com.bayviewglen.zork;
+package com.bayviewglen.classes;
 
-public class Computer {
+public class TaskForceKeyCard {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
