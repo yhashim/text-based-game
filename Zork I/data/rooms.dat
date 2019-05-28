@@ -66,7 +66,7 @@ Locked: false
 Room Name: Pac Street (West)
 Room Description:  You are standing on Pac Street. To the west, directly in front of you, is Anteiku Cafe. There are two visible streets signs - one pointing north, the other pointing south.
 Exit Rooms: N-Green Odori Street, E-Pac Street (East), S-Meiji-Dori Avenue, W-Anteiku Cafe 
-Starting Items: Poster
+Starting Items: Wanted Poster
 Locked: false
 Room Name: Anteiku Cafe
 Room Description:  You are standing in a small café. There are several coffee tables and chairs positioned around the room.
@@ -164,7 +164,7 @@ Exit Rooms: W-3rd Floor Hallway
 Starting Items:
 Locked: false
 Room Name: Mr. Matsuda's Office
-Room Description:  This is Mr Matsuda's office. There is a large desk in the center of the room. 
+Room Description:  This is Mr. Matsuda's office. There is a large desk in the center of the room. 
 Exit Rooms: S-3rd Floor Hallway
 Starting Items: Computer, Drawer, Slip Of Paper
 Locked: true
