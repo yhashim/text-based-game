@@ -15,13 +15,13 @@ public class Player {
 		}
 	}
 	
-	/*
 	// checks for an item in the inventory 
 	// return true if it is, false if not
-	public boolean checkItem(Item item) {
-		return items.containsValue(item);
+	public Item getItem(String name) {
+		if (items.containsKey(name)) {
+			return items.getItemName(name);
+		}
 	}
-	*/
 	
 	public String toString() {
 		String inv = "";
