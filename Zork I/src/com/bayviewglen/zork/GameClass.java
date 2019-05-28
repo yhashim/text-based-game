@@ -60,6 +60,7 @@ class Game {
 				// This puts the room we created (Without the exits in the masterMap)
 				masterRoomMap.put(roomName.toUpperCase().substring(10).trim().replaceAll(" ", "_"), room);
 				// Now we better set the exits.
+				// starting items
 			}
 
 			for (String key : masterRoomMap.keySet()) {
@@ -103,16 +104,6 @@ class Game {
 				for (String s : items) {
 					item.addFunction(s);
 				}
-//				// An array of strings in the format F-ItemName
-//				String[] items = itemFunctions.split(":")[1].split(",");
-//				HashMap<String, String> temp = new HashMap<String, String>();
-//				for (String s : items) {
-//					temp.put(s.split("-")[0].trim(), s.split("-")[1]);
-//				}
-//				functions.put(itemName.substring(10).trim().toUpperCase().replaceAll(" ", "_"), temp);
-//				// This puts the item we created (Without the functions in the masterMap)
-//				masterItemMap.put(itemName.toUpperCase().substring(10).trim().replaceAll(" ", "_"), item);
-//				// Now we better set the functions.
 			}
 			itemScanner.close();
 		} catch (FileNotFoundException e) {
