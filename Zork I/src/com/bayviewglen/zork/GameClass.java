@@ -144,6 +144,16 @@ class Game {
 				for (String s : items) {
 					item.addFunction(s);
 				}
+				// Starting room
+				String startingRoom = itemScanner.nextLine().split(":")[1].trim();
+				// items current room is this
+				// current room has item in inventory
+				
+				// Starting character
+				String startingCharacter = itemScanner.nextLine().split(":")[1].trim();
+				// items current room is this character's current room
+				// current room does not have item in inventory
+				// item is in character's inventory
 			}
 			itemScanner.close();
 		} catch (FileNotFoundException e) {
