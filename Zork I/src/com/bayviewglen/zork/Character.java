@@ -8,13 +8,13 @@ import java.util.Iterator;
 class Character {
 	private String characterName;
 	private String startingLocation;
-	private ArrayList<String> startingItems;
-	private ArrayList<String> wantedItems;
+	private static HashMap <String, Item> startingItems = new HashMap <String, Item>();
+	private static HashMap <String, Item> wantedItems = new HashMap <String, Item>();
 	private ArrayList<String> speech;
 	private ArrayList<String> functions; // stores functions you can do to this character.
 	private static HashMap <String, Item> items = new HashMap <String, Item>();
 	
-	public Character(String characterName, String startingLocation, ArrayList<String> startingItems, ArrayList<String> wantedItems, ArrayList<String> speech, ArrayList<String> functions) {
+	public Character(String characterName, String startingLocation, HashMap <String, Item> startingItems, HashMap <String, Item> wantedItems, ArrayList<String> speech, ArrayList<String> functions) {
 		this.characterName = characterName;
 		this.startingLocation = startingLocation;
 		this.startingItems = startingItems;
@@ -65,19 +65,19 @@ class Character {
 		this.startingLocation = startingLocation;
 	}
 	
-	public ArrayList<String> getStartingItems() {
+	public HashMap <String, Item> getStartingItems() {
 		return startingItems;
 	}
 
-	public void setStartingItems(ArrayList<String> startingItems) {
+	public void setStartingItems(HashMap <String, Item> startingItems) {
 		this.startingItems = startingItems;
 	}
 	
-	public ArrayList<String> getWantedItems() {
+	public HashMap <String, Item> getWantedItems() {
 		return wantedItems;
 	}
 
-	public void setWantedItems(String wantedItems) {
+	public void setWantedItems(HashMap <String, Item> wantedItems) {
 		this.wantedItems = wantedItems;
 	}
 	
@@ -85,7 +85,7 @@ class Character {
 		return speech;
 	}
 
-	public void setSpeech(String speech) {
+	public void setSpeech(ArrayList<String> speech) {
 		this.speech = speech;
 	}
 }
