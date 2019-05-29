@@ -151,11 +151,11 @@ class Room {
 		this.description = description;
 	}
 	
-	public boolean isLocked () {
+	public boolean getLock () {
 		return isLocked;
 	}
 	
-	public void changeLocked (Boolean isLocked) {
+	public void setLock (Boolean isLocked) {
 		this.isLocked = isLocked;
 	}
 	

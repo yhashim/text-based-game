@@ -56,16 +56,17 @@ class Game {
 				// Read the Exits
 				String roomExits = roomScanner.nextLine();
 				// An array of strings in the format E-RoomName
-				String[] rooms = roomExits.split(":")[1].split(",");
+				String[] rooms = roomExits.split(": ")[1].split(",");
 				HashMap<String, String> temp = new HashMap<String, String>();
 				for (String s : rooms) {
 					temp.put(s.split("-")[0].trim(), s.split("-")[1]);
 				}
 				exits.put(roomName.substring(10).trim().toUpperCase().replaceAll(" ", "_"), temp);
+				// Read the Locked
+				String isLocked = roomScanner.nextLine();
+				room.setLock(isLocked.split(": ")[1].trim().equals("true"));
 				// This puts the room we created (Without the exits in the masterMap)
 				masterRoomMap.put(roomName.toUpperCase().substring(10).trim().replaceAll(" ", "_"), room);
-				// Now we better set the exits.
-				// starting items
 			}
 
 			for (String key : masterRoomMap.keySet()) {
