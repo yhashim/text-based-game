@@ -8,6 +8,7 @@ import java.util.Iterator;
 class Item {
 	private String itemName;
 	private String description;
+	private String currentRoom;
 	private int amount;
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
@@ -160,6 +161,14 @@ class Item {
 	
 	public boolean eat() {
 		return isConsumable;
+	}
+
+	public String getCurrentRoom() {
+		return currentRoom;
+	}
+
+	public void setCurrentRoom(String currentRoom) {
+		this.currentRoom = currentRoom;
 	}
 	
 }
