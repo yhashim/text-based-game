@@ -3,9 +3,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Player {
-	public static HashMap <String, Item> items = new HashMap <String, Item>();
-	public static ArrayList <String> peopleKilled = new ArrayList <String>();
-
+	private static HashMap <String, Item> items = new HashMap <String, Item>();
+	private static ArrayList <String> peopleKilled = new ArrayList <String>();
 	private static int numKilled = peopleKilled.size();
 
 	//adds name to list of people killed 
@@ -16,17 +15,17 @@ public class Player {
 	}
 	
 	//prints out list of peopleKilled
-	public void peopleKilled(ArrayList <String> peopleKilled) {
+	public static void peopleKilled(ArrayList <String> peopleKilled) {
 		for (String s : peopleKilled) {
 			System.out.println(s);
 		}
 	}
 	
-	public int numKilled() {
+	public static int numKilled() {
 		return numKilled;
 	}
 
-	public void printKilled() {
+	public static void printKilled() {
 		for (String s: peopleKilled) {
 			System.out.println(s);
 		}
@@ -34,7 +33,7 @@ public class Player {
 	
 	// adds an item to the inventory
 	// if an item is already in the inventory, increments amount
-	public void addToInventory(Item item, int amount) {
+	public static void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
 			items.get(item.getItemName()).addAmount(amount);
 		}
@@ -46,7 +45,7 @@ public class Player {
 	/*
 	// checks for an item in the inventory 
 	// return item if it is, null if not
-	public Item getItem(String name) {
+	public static Item getItem(String name) {
 		if (items.containsKey(name)) {
 			return items.get(name);
 		}
@@ -57,7 +56,7 @@ public class Player {
 	
 	// checks for an item in the inventory 
 	// return true if it is, false if not
-	public boolean contains(String name) {
+	public static boolean contains(String name) {
 		if (items.containsKey(name)) {
 			return true;
 		}	
@@ -76,7 +75,7 @@ public class Player {
 		return inv;
 	}
 	
-	public void removeItem(String name, int amount) {
+	public static void removeItem(String name, int amount) {
 		if (items.get(name).getAmount() == 1) {
 			items.remove(name);
 		}
