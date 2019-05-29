@@ -11,8 +11,8 @@ class Character {
 	// private static HashMap <String, Item> startingItems = new HashMap <String, Item>();
 	private static HashMap <String, Item> wantedItems = new HashMap <String, Item>(); // fix
 	private static HashMap <String, Item> items = new HashMap<String, Item>(); // fix
-	private ArrayList<String> speech;
 	private static String[] functions; // stores functions you can do to this character. //fix
+	private ArrayList<String> speech;
 	
 	public Character() {
 		

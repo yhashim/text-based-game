@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Player {
-	private static HashMap <String, Item> items = new HashMap <String, Item>();
-	private static ArrayList <String> peopleKilled = new ArrayList <String>();
+	private static HashMap <String, Item> items = new HashMap <String, Item>(); // fix
+	private static ArrayList <String> peopleKilled = new ArrayList <String>(); // fix
 	private static int numKilled = peopleKilled.size();
 
 	//adds name to list of people killed 
