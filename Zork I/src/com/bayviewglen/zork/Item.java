@@ -12,7 +12,7 @@ class Item {
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
 	
-	private boolean isDeathNote;
+	private boolean hasPen;
 	private boolean isGiveable;
 	private boolean isTakeable;
 	private boolean isConsumable;
@@ -150,7 +150,7 @@ class Item {
 	}
 	
 	public void write() {
-		if (isDeathNote == true) {
+		if (items.contains("pen")) {
 			// returns what is written in DeathNote
 			// calls add method in DeathNote class (will increment num people killed) 
 		}
