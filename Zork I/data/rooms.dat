@@ -36,7 +36,7 @@ Locked: false
 Room Name: Kitchen 
 Room Description:  You are standing in the kitchen. 
 Exit Rooms: S-Foyer, W-Dining Room 
-Starting Items: Apple
+Starting Items: Apple1
 Locked: false
 Room Name: Dining Room
 Room Description:  This is the dining room. A long table is in the center of the room, surrounded by chairs. To the north is a sliding glass door, leading to the back yard.
@@ -71,7 +71,7 @@ Locked: false
 Room Name: Anteiku Cafe
 Room Description:  You are standing in a small café. There are several coffee tables and chairs positioned around the room.
 Exit Rooms: E-Pac Street (West)
-Starting Items: Apple
+Starting Items: Apple2
 Locked: false
 Room Name: Green Odori Street
 Room Description:  You are standing on Green Odori Street. To the north is the front of your school. 
@@ -86,7 +86,7 @@ Locked: false
 Room Name: Side Of School
 Room Description:  You are standing in a field of grass at the side of the school. There is an apple tree in the center of the field.
 Exit Rooms: E-Front Of School
-Starting Items: Apple
+Starting Items: Apple3
 Locked: false
 Room Name: Meiji-Dori Avenue 
 Room Description:  You are standing on Meiji-Dori Avenue. To the north you can see Pac Street. To the south you can see Mizuki-Dori Avenue. 
