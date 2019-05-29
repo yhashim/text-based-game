@@ -12,15 +12,15 @@ class Item {
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
 	
-	private boolean isDeathnote;
-	private boolean isGivable;
+	private boolean isDeathNote;
+	private boolean isGiveable;
 	private boolean isTakeable;
 	private boolean isConsumable;
 	private boolean isKey;
 	private boolean isReadable;
-	private boolean isUnlockable;
 	private boolean isWatchable;
 	private boolean isOpenable;
+	private boolean isUsable; 
 	
 	public Item (String description, String weight) {
 		this.description = description;
@@ -112,43 +112,69 @@ class Item {
 	}
 	
 	public void take() {
-		
+		if (isTakeable == true) {
+			// calls remove method from room inventory
+			// calls add method from player inventory
+		}
 	}
 	
 	public void open() {
-		
+		if (isOpenable == true) {
+			// returns text that contains more game info 
+		}
 	}
 	
 	public void give() {
-		
+		if (isGiveable == true) {
+			// calls remove method from player inventory 
+			// calls add method from character inventory
+		}
 	}
 	
 	public void unlock() {
-		
+		if (isKey == true) {
+			// calls change isLocked method from room class
+		}
 	}
 	
 	public void read() {
-		
+		if (isReadable == true) {
+			// returns text that contains more game info
+		}
 	}
 	
 	public void use() {
-		
+		if (isUsable == true) {
+			// returns text that contains more game info
+		}
 	}
 	
 	public void write() {
+		if (isDeathNote == true) {
+			// returns what is written in DeathNote
+			// calls add method in DeathNote class (will increment num people killed) 
+		}
 		
 	}
 	
 	public void watch() {
+		if (isWatchable == true) {
+			// returns text the contains more game info
+		}
 		
 	}
 	
 	public void drop() {
+		if (isTakeable == true) {
+			// calls removeItem from player class (removes item from inventory)
+		}
 		
 	}
 	
 	public void eat () {
-		
+		if (isConsumable == true) {
+			// returns text "you eat the ___, yum"
+		}
 	}
 	
 }
