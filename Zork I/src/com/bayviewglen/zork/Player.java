@@ -9,7 +9,7 @@ public class Player {
 	
 	// adds name to list of people killed
 	// increments number of people killed
-	public void addKill(String name) {
+	public static void addKill(String name) {
 		peopleKilled.add(name);
 		numKilled ++;
 	}

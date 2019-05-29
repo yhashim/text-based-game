@@ -189,9 +189,9 @@ class Game {
 		} else if (commandWord.equals("write") || commandWord.equals("kill")) {
 			write(command);
 		} else if (commandWord.equals("watch")) {
-			watch(command);	
+			watch(command);
 		} else if (commandWord.equals("drop") || commandWord.equals("put down") || commandWord.equals("leave")) {
-			drop(command);	
+			drop(command);
 		} else if (commandWord.equals("eat") || commandWord.equals("consume")) {
 			eat(command);
 		} else if (commandWord.equals("quit")) {
@@ -250,37 +250,36 @@ class Game {
 			System.out.println(currentRoom.longDescription());
 		}
 	}
-	
+
 	// prints the description of the item
 	private void examine(Command command) {
 		System.out.println(masterItemMap.get(command.getObject()).examine());
 	}
-	
+
 	// check if object is in currentRoom
-			// if yes:
-				// remove object from room's inventory
-				// add object to player inventory
-			// else 
-				// tell player that it is not there
+	// if yes:
+	// remove object from room's inventory
+	// add object to player inventory
+	// else
+	// tell player that it is not there
 	private void take(Command command) {
 		String takeable = command.getObject();
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
-			currentRoom.removeItem(takeable,1);
-			Player.items.addToInventory(masterItemMap.get(takeable),1);
+			currentRoom.removeItem(takeable, 1);
+			Player.items.addToInventory(masterItemMap.get(takeable), 1);
+		} else {
+			System.out.println("There is no " + takeable + " here.");
 		}
-		else {
-			System.out.println("There is no " + takeable + " here." );
-		}
-		
+
 	}
-	
+
 	// check if specified object is in room
-				// if yes, check if it is openable
-					// check if locked 
-						// if openable and unlocked, open and print out contents
-					// else 
-						// ask for key
-				// else, tell them it is not there
+	// if yes, check if it is openable
+	// check if locked
+	// if openable and unlocked, open and print out contents
+	// else
+	// ask for key
+	// else, tell them it is not there
 	private void open(Command command) {
 		String openable = command.getObject();
 		if (currentRoom.contains(masterItemMap.get(openable))) {
@@ -288,64 +287,69 @@ class Game {
 				if (openable.equals("drawer")) {
 					System.out.println("In the drawer you see a small slip of paper");
 				}
-			}
-			else {
+			} else {
 				System.out.println("Please enter the passcode: ");
-			} 
+				// take input
+				// if input == passcode for specific door
+				// door condition is unlocked
+				// else
+				// say that's the wrong passcode! come again later
+			}
+		} else {
+			System.out.println("There is no " + openable + " here.");
 		}
-		else {
-			System.out.println("There is no " + openable + " here." );
-		}
-		
+
 	}
-	
+
 	// check if item is giveable
-				// if yes, give to character they stated
-					// remove from player's inventory
-					// add to character's inventory
-				// else, tell character they probably don't want to give it away
+	// if yes, give to character they stated
+	// remove from player's inventory
+	// add to character's inventory
+	// else, tell character they probably don't want to give it away
 	private void give(Command command) {
 		String giveable = command.getObject();
 		if (masterItemMap.get(giveable).give()) {
-			Character.addToInventory(masterItemMap.get(giveable),1);
-			Player.items.removeItem(giveable,1);
-		}
-		else {
+			Character.addToInventory(masterItemMap.get(giveable), 1);
+			Player.items.removeItem(giveable, 1);
+		} else {
 			System.out.println("You wouldn't want to give " + giveable + " away!");
 		}
-		
+
 	}
-	
+
 	// check if object is lockable
-				// if true, check if key is in inventory
-					// unlock
-				// if no key
-					// ask player to find key
+	// if true, check if key is in inventory
+	// unlock
+	// if no key
+	// ask player to find key
 	private void unlock(Command command) {
 		String unlockable = command.getObject();
 		if (masterItemMap.get(unlockable).unlock()) {
-			
+
 		}
-		
+
 	}
-	
+
 	// check if object is readable
-				// if true, display text of specified object
-				// else, tell player there is nothing to read on ___ object
+	// if true, display text of specified object
+	// else, tell player there is nothing to read on ___ object
 	private void read(Command command) {
 		String readable = command.getObject();
 		if (masterItemMap.get(readable).read() && currentRoom.contains(masterItemMap.get(readable))) {
 			if (readable.equals("task force employee list")) {
-				System.out.println("List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas");
+				System.out.println(
+						"List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas");
 			}
 			if (readable.equals("the kira case file")) {
 				// list of people you have killed
 			}
 			if (readable.equals("most wanted file")) {
-				System.out.println("This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada");
+				System.out.println(
+						"This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada");
 			}
 			if (readable.equals("newspaper")) {
-				System.out.println("On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article");
+				System.out.println(
+						"On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article");
 			}
 			if (readable.equals("letter")) {
 				System.out.println("The front of the letter reads: \nTo: L \nFrom: Naomi Misora");
@@ -353,92 +357,97 @@ class Game {
 			if (readable.equals("wanted poster")) {
 				System.out.println("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping");
 			}
-		}
-		else {
+		} else {
 			System.out.println("There is nothing to read on the " + readable + ".");
 		}
-	
+
 	}
-	
+
 	// check if object is useable & if object is in inventory
-				// check which useable object it is
-				// if it is a flashlight, do flashlight thing (make sure that all other parameters such as location are correct, etc.)
-				// if... until all the useables are done
-			// else, explain it cannot be used
+	// check which useable object it is
+	// if it is a flashlight, do flashlight thing (make sure that all other
+	// parameters such as location are correct, etc.)
+	// if... until all the useables are done
+	// else, explain it cannot be used
 	private void use(Command command) {
 		String usable = command.getObject();
 		if (masterItemMap.get(usable).use() && Player.items.contains(usable)) {
 			if (masterItemMap.get(usable).equals("flashlight") && currentRoom.getRoomName().equals("warehouse")) {
-				System.out.println("The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.");
+				System.out.println(
+						"The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.");
 			}
 			if (masterItemMap.get(usable).equals("flashlight")) {
 				System.out.println("The space in front of you lights up.");
 			}
-		}
-		else {
+		} else {
 			System.out.println("Please specifiy how you would like to use" + usable + ".");
-		}	
+		}
 	}
-	
+
 	// check if character is killable
-				// if true, remove character from its room
-				// remove character from character array
-				// +1 to killings
-			// else, print - you cannot kill ___!
+	// if true, remove character from its room
+	// remove character from character array
+	// +1 to killings
+	// else, print - you cannot kill ___!
 	private void write(Command command) {
-		String killable = command.getCharacter();	
+		String killable = command.getCharacter();
+		if (!killable.toLowerCase().equals("ryuk")) {
+			Player.addKill(killable);
+			System.out.println("As you finish writing the name down you hear thunder and lightning outside. You hear a loud bang behind you.\r\n");
+		} else {
+			System.out.println("Ryuk: You abominable human! I thought you were smarter than this! I am immortal...");
+		}
 	}
-	
+
 	// check if object is watchable (basically tv) & in the currentRoom
-				// if yes, display text of what you see on tv
-			// else, say - you can't watch ___, that would be boring!
+	// if yes, display text of what you see on tv
+	// else, say - you can't watch ___, that would be boring!
 	private void watch(Command command) {
 		String watchable = command.getObject();
 		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
-			//if killings < 5 display "Breaking News! \nSerial killer Arayoshi Hatori has just gone on another murder spree, killing a total of 10 students from the University of Tokyo and professor Miss Amane."
-			//if killings >= 5 display "New Mystery Killer Kira - series of murders seem to be connected to one killer"
-		}
-		else {
+			// if killings < 5 display "Breaking News! \nSerial killer Arayoshi Hatori has
+			// just gone on another murder spree, killing a total of 10 students from the
+			// University of Tokyo and professor Miss Amane."
+			// if killings >= 5 display "New Mystery Killer Kira - series of murders seem to
+			// be connected to one killer"
+		} else {
 			System.out.println("You can't watch " + watchable + ", that would be boring!");
 		}
 	}
-	
-	
+
 	// check if object is in player's inventory
-				// if yes, remove from inventory
-				// add to currentRoom inventory
-			// else, state they do not even have this object to put down
+	// if yes, remove from inventory
+	// add to currentRoom inventory
+	// else, state they do not even have this object to put down
 	private void drop(Command command) {
 		String droppable = command.getObject();
 		if (masterItemMap.get(droppable).drop() && Player.items.contains(droppable)) {
 			currentRoom.addToInventory(masterItemMap.get(droppable), 1);
-			Player.items.removeItem(droppable,1);
-		}
-		else {
+			Player.items.removeItem(droppable, 1);
+		} else {
 			System.out.println("You have no " + droppable + " to drop.");
 		}
-		
+
 	}
-	
+
 	// check if object is edible
-				// if an apple, state - Ryuk wants that apple!
-				// else, remove object from room inventory or personal inventory and say - yummy!
-			// else, print - dishonour on you! filthy human - you can't eat a ___!
+	// if an apple, state - Ryuk wants that apple!
+	// else, remove object from room inventory or personal inventory and say -
+	// yummy!
+	// else, print - dishonour on you! filthy human - you can't eat a ___!
 	private void eat(Command command) {
 		String consumable = command.getObject();
 		if (masterItemMap.get(consumable).eat() && Player.items.contains(consumable)) {
 			if (consumable.equals("apple")) {
 				System.out.println("Dont eat that! Ryuk wants that apple!");
-			}
-			else {
+			} else {
 				Player.items.removeItem(consumable, 1);
 				System.out.println("Crunchity munchity you ate the " + consumable + ".");
 			}
-		}
-		else {
+		} else {
 			System.out.println("Dishonour on you! You filthy human - you can't eat the " + consumable + "!");
 		}
-		
+
 	}
 
 }
