@@ -4,14 +4,42 @@ import java.util.HashMap;
 
 public class Player {
 	public static HashMap <String, Item> items = new HashMap <String, Item>();
-	public static ArrayList <String> peopleKilled = new ArrayList <String>();
-	public static int numKilled = 0;
+	private static ArrayList <String> peopleKilled = new ArrayList <String>();
+	private static HashMap <String, Character> validNames = new HashMap <String, Character>(); 
+	private static int numKilled = 0;
 	
-	// adds name to list of people killed
-	// increments number of people killed
+	public boolean checkKill(String name, HashMap validNames) {
+		//returns true if name is in ArrayList
+		// false if name is not 
+	}
+
 	public void addKill(String name) {
-		peopleKilled.add(name);
-		numKilled ++;
+		// check to see if valid name (using checkKill method)
+			// if yes
+				//add name and increment numKilled
+				peopleKilled.add(name);
+				numKilled ++;
+			// if no, 
+				//print "As you finish writing the name down you hear thunder and lightning outside. You hear a loud bang behind you."
+				//move Ryuk to currentRoom 
+				//print "At the entrance of the *room* you see Ryuk floating there. His red eyes are gleaming in the dark."
+				//print "I though you were smarter than this, Light. I must have overestimated you. Oh well. You failed, that means I must kill you."
+	}
+	
+	public void peopleKilled(ArrayList <String> peopleKilled) {
+		for (String s : peopleKilled) {
+			System.out.println(s);
+		}
+	}
+	
+	public int numKilled() {
+		return numKilled;
+	}
+
+	public void printKilled() {
+		for (String s: peopleKilled) {
+			System.out.println(s);
+		}
 	}
 	
 	// adds an item to the inventory
