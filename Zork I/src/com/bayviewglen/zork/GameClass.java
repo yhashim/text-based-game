@@ -148,7 +148,16 @@ class Game {
 				String startingRoom = itemScanner.nextLine().split(":")[1].trim();
 				if (!(startingRoom == null)) {
 					item.setCurrentRoom(startingRoom);
-					// current room has item in inventory
+//					ArrayList<Room> rooms;
+//					rooms = room.getRooms();
+//					for (Room r : rooms) {
+//						// current room has item in inventory (we add it)
+//						if (r.getRoomName().equals(startingRoom)) {
+//							r.addToInventory(item, 1);
+//						}
+//					}
+					Room r = masterRoomMap.get(startingRoom);
+					r.addToInventory(item, 1);
 				} else {
 					// Starting character
 					String startingCharacter = itemScanner.nextLine().split(":")[1].trim();

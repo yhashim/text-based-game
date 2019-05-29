@@ -15,6 +15,7 @@ package com.bayviewglen.zork;
  * to the neighbouring room, or null if there is no exit in that direction.
  */
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -23,6 +24,12 @@ class Room {
 	private String description;
 	private HashMap<String, Room> exits; // stores exits of this room. // fix
 	private HashMap <String, Item> items = new HashMap <String, Item>(); // stores item inventory of room. // fix
+	private ArrayList<Room> rooms =  new ArrayList<Room>();
+	
+	public ArrayList<Room> getRooms() {
+		return rooms;
+	}
+
 	private boolean isLocked;
 
 	/**
@@ -32,6 +39,7 @@ class Room {
 	public Room(String description) {
 		this.description = description;
 		exits = new HashMap<String, Room>();
+		rooms.add(this);
 	}
 
 	public Room() {
