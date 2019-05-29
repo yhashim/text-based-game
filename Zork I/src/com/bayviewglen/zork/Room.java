@@ -23,6 +23,7 @@ class Room {
 	private String description;
 	private HashMap<String, Room> exits; // stores exits of this room.
 	private HashMap <String, Item> items = new HashMap <String, Item>(); // stores item inventory of room.
+	private boolean isLocked;
 
 	/**
 	 * Create a room described "description". Initially, it has no exits.
@@ -142,6 +143,14 @@ class Room {
 		this.description = description;
 	}
 	
+	public boolean isLocked () {
+		return isLocked;
+	}
+	
+	public void changeLocked (Boolean isLocked) {
+		this.isLocked = isLocked;
+	}
+	
 	public void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
 			items.get(item.getItemName()).addAmount(amount);
@@ -168,4 +177,6 @@ class Room {
 			items.get(name).setAmount(items.get(name).getAmount()-1); 
 		}
 	}
+	
+	
 }
