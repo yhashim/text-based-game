@@ -101,7 +101,6 @@ Locked: false
 Room Name: 2nd Floor Hallway
 Room Description:  You are on the 2nd floor of the building. There is an elevator in the hallway. A meeting room is directly in front of you to the east. There are several meeting rooms further down the hallway.
 Exit Rooms: N-2nd Floor Hallway (North), E-Meeting Room Two, S-2nd Floor Hallway (South), U-3rd Floor Hallway, D-Lobby
-Starting Items:
 Locked: true
 Room Name: Meeting Room Two
 Room Description:  Inside the meeting room is a small round table and several chairs. 
