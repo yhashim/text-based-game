@@ -5,13 +5,31 @@ import java.util.HashMap;
 public class Player {
 	public static HashMap <String, Item> items = new HashMap <String, Item>();
 	public static ArrayList <String> peopleKilled = new ArrayList <String>();
-	public static int numKilled = 0;
-	
-	// adds name to list of people killed
-	// increments number of people killed
+
+	private static int numKilled = peopleKilled.size();
+
+	//adds name to list of people killed 
+	//increments number of people killed
 	public static void addKill(String name) {
 		peopleKilled.add(name);
 		numKilled ++;
+	}
+	
+	//prints out list of peopleKilled
+	public void peopleKilled(ArrayList <String> peopleKilled) {
+		for (String s : peopleKilled) {
+			System.out.println(s);
+		}
+	}
+	
+	public int numKilled() {
+		return numKilled;
+	}
+
+	public void printKilled() {
+		for (String s: peopleKilled) {
+			System.out.println(s);
+		}
 	}
 	
 	// adds an item to the inventory
