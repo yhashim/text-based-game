@@ -18,7 +18,15 @@ Item Name: Pen
 Item Description:  This is a black pen that is used as a writing utensil.
 Item Weight: 5
 Functions: take, drop, examine 
-Item Name: Apple
+Item Name: Apple 1
+Item Description: This is an apple. Ryuk likes apples…
+Item Weight: 1
+Functions: eat, give, take, drop, examine
+Item Name: Apple 2
+Item Description: This is an apple. Ryuk likes apples…
+Item Weight: 1
+Functions: eat, give, take, drop, examine
+Item Name: Apple 3
 Item Description: This is an apple. Ryuk likes apples…
 Item Weight: 1
 Functions: eat, give, take, drop, examine
