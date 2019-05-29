@@ -66,7 +66,7 @@ public class Player {
 		return false;
 	}
 	
-	public static String toString() {
+	public String toString() {
 		String inv = "";
 		for (Item i: items.values()) {
 			inv += "\n " + i;
