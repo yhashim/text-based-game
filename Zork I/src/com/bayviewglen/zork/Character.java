@@ -12,7 +12,7 @@ class Character {
 	private ArrayList<String> wantedItems;
 	private ArrayList<String> speech;
 	private ArrayList<String> functions; // stores functions you can do to this character.
-	private HashMap <String, Item> items = new HashMap <String, Item>();
+	private static HashMap <String, Item> items = new HashMap <String, Item>();
 	
 	public Character(String characterName, String startingLocation, ArrayList<String> startingItems, ArrayList<String> wantedItems, ArrayList<String> speech, ArrayList<String> functions) {
 		this.characterName = characterName;
@@ -25,7 +25,7 @@ class Character {
 	
 	// adds an item to the inventory
 	// if an item is already 
-	public void addToInventory(Item item, int amount) {
+	public static void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
 			items.get(item.getItemName()).addAmount(amount);
 		}
@@ -44,7 +44,7 @@ class Character {
 		return false;
 	}
 	
-	public String speech() {
+	public ArrayList<String> speech() {
 		return speech;
 	}
 	
@@ -65,15 +65,15 @@ class Character {
 		this.startingLocation = startingLocation;
 	}
 	
-	public String getStartingItems() {
+	public ArrayList<String> getStartingItems() {
 		return startingItems;
 	}
 
-	public void setStartingItems(String startingItems) {
+	public void setStartingItems(ArrayList<String> startingItems) {
 		this.startingItems = startingItems;
 	}
 	
-	public String getWantedItems() {
+	public ArrayList<String> getWantedItems() {
 		return wantedItems;
 	}
 
@@ -81,7 +81,7 @@ class Character {
 		this.wantedItems = wantedItems;
 	}
 	
-	public String getSpeech() {
+	public ArrayList<String> getSpeech() {
 		return speech;
 	}
 
