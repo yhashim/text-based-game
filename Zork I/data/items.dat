@@ -38,15 +38,15 @@ Item Name: Stuffed Bear
 Item Description: It is a stuffed animal, it belongs to your sister.
 Item Weight: 2
 Functions: take, give, drop, examine
-Item Name: "The Kira Case" File
+Item Name: The Kira Case File
 Item Description: This is a large folder. On the cover, written in black letters is "The Kira Case File".
 Item Weight: 1
 Functions: take, read, drop, examine 
-Item Name: "Most Wanted" File
+Item Name: Most Wanted File
 Item Description: This is a thin folder containing a single sheet of paper. On the sheet is a list of names, all of which are crossed out except for one, Kiyomi Takada.
 Item Weight: 1
 Functions: take, read, drop, examine
-Item Name: "Taxes" File
+Item Name: Taxes File
 Item Description: This is a large folder filed with papers. Are you sure this is what you're looking for?
 Item Weight: 1
 Functions: take, read, drop, examine
