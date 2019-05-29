@@ -107,8 +107,8 @@ class Item {
 		this.amount += amount;
 	}
 	
-	public void examine() {
-		System.out.println(description);
+	public String examine() {
+		return description;
 	}
 	
 	public boolean take() {

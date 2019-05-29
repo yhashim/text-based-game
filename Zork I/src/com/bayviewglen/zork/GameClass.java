@@ -251,9 +251,9 @@ class Game {
 		}
 	}
 	
-	// returns the description of the item
+	// prints the description of the item
 	private void examine(Command command) {
-		masterItemMap.get(command.getObject()).examine();
+		System.out.println(masterItemMap.get(command.getObject()).examine());
 	}
 	
 	// check if object is in currentRoom
@@ -368,7 +368,7 @@ class Game {
 	private void use(Command command) {
 		String usable = command.getObject();
 		if (masterItemMap.get(usable).use() && items.contains(usable)) {
-			if (masterItemMap.get(usable).equals("flashlight") && currentRoom.getroomName().equals("warehouse")) {
+			if (masterItemMap.get(usable).equals("flashlight") && currentRoom.getRoomName().equals("warehouse")) {
 				System.out.println("The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.");
 			}
 			if (masterItemMap.get(usable).equals("flashlight")) {
@@ -377,9 +377,7 @@ class Game {
 		}
 		else {
 			System.out.println("Please specifiy how you would like to use" + usable + ".");
-		}
-		
-		
+		}	
 	}
 	
 	// check if character is killable
@@ -388,8 +386,7 @@ class Game {
 				// +1 to killings
 			// else, print - you cannot kill ___!
 	private void write(Command command) {
-		String killable = command.getCharacter();
-		
+		String killable = command.getCharacter();	
 	}
 	
 	// check if object is watchable (basically tv) & in the currentRoom
