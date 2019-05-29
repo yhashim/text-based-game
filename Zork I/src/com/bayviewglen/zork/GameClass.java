@@ -266,7 +266,7 @@ class Game {
 		String takeable = command.getObject();
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
 			currentRoom.removeItem(takeable,1);
-			Player.items.addToInventory(masterItemMap.get(takeable),1);
+			Player.addToInventory(masterItemMap.get(takeable),1);
 		}
 		else {
 			System.out.println("There is no " + takeable + " here." );
@@ -308,7 +308,7 @@ class Game {
 		String giveable = command.getObject();
 		if (masterItemMap.get(giveable).give()) {
 			Character.addToInventory(masterItemMap.get(giveable),1);
-			Player.items.removeItem(giveable,1);
+			Player.removeItem(giveable,1);
 		}
 		else {
 			System.out.println("You wouldn't want to give " + giveable + " away!");
@@ -367,7 +367,7 @@ class Game {
 			// else, explain it cannot be used
 	private void use(Command command) {
 		String usable = command.getObject();
-		if (masterItemMap.get(usable).use() && Player.items.contains(usable)) {
+		if (masterItemMap.get(usable).use() && Player.contains(usable)) {
 			if (masterItemMap.get(usable).equals("flashlight") && currentRoom.getRoomName().equals("warehouse")) {
 				System.out.println("The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.");
 			}
@@ -410,9 +410,9 @@ class Game {
 			// else, state they do not even have this object to put down
 	private void drop(Command command) {
 		String droppable = command.getObject();
-		if (masterItemMap.get(droppable).drop() && Player.items.contains(droppable)) {
+		if (masterItemMap.get(droppable).drop() && Player.contains(droppable)) {
 			currentRoom.addToInventory(masterItemMap.get(droppable), 1);
-			Player.items.removeItem(droppable,1);
+			Player.removeItem(droppable,1);
 		}
 		else {
 			System.out.println("You have no " + droppable + " to drop.");
@@ -426,12 +426,12 @@ class Game {
 			// else, print - dishonour on you! filthy human - you can't eat a ___!
 	private void eat(Command command) {
 		String consumable = command.getObject();
-		if (masterItemMap.get(consumable).eat() && Player.items.contains(consumable)) {
+		if (masterItemMap.get(consumable).eat() && Player.contains(consumable)) {
 			if (consumable.equals("apple")) {
 				System.out.println("Dont eat that! Ryuk wants that apple!");
 			}
 			else {
-				Player.items.removeItem(consumable, 1);
+				Player.removeItem(consumable, 1);
 				System.out.println("Crunchity munchity you ate the " + consumable + ".");
 			}
 		}
