@@ -18,7 +18,7 @@ class Character {
 		items = new HashMap<String, Item>();
 		startingItems = new HashMap <String, Item>();
 		wantedItems = new HashMap <String, Item>();
-		ArrayList<String> functions = new ArrayList<String>(); 
+		functions = new ArrayList<String>(); 
 	}
 	
 //	public Character(String characterName, String startingLocation, HashMap <String, Item> startingItems, HashMap <String, Item> wantedItems, ArrayList<String> speech,) {
