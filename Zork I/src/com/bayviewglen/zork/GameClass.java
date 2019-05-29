@@ -162,8 +162,10 @@ class Game {
 					// Starting character
 					String startingCharacter = itemScanner.nextLine().split(":")[1].trim();
 					// item's current room is this character's current room
+					Character c = masterCharacterMap.get(startingCharacter);
+					c.addToInventory(item); // item is in character's inventory
+					item.setCurrentRoom(c.getStartingLocation());
 					// current room does not have item in inventory
-					// item is in character's inventory
 				}
 			}
 			itemScanner.close();
