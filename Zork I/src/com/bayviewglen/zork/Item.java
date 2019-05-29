@@ -16,12 +16,11 @@ class Item {
 	private boolean isGiveable;
 	private boolean isTakeable;
 	private boolean isConsumable;
-	private boolean isKey;
+	private boolean isUsable; 
 	private boolean isUnlockable;
 	private boolean isReadable;
 	private boolean isWatchable;
 	private boolean isOpenable;
-	private boolean isUsable; 
 	
 	private static ArrayList<Item> allItems;
 	
@@ -44,6 +43,36 @@ class Item {
 	
 	public void addFunction(String function) throws Exception {
 		functions.add(function);
+	}
+	
+	public void setBoolean() {
+		for (int i = 0; i < functions.size(); i++) {
+			if (functions.get(i).equals("give")){
+				isGiveable = true;
+			}
+			else if (functions.get(i).equals("take")){
+				isTakeable = true;
+			}
+			else if (functions.get(i).equals("eat")) {
+				isConsumable = true;
+			}
+			else if (functions.get(i).equals("use")) {
+				isUsable = true;
+			}
+			else if (functions.get(i).equals("unlock")) {
+				isUnlockable = true;
+			}
+			else if (functions.get(i).equals("read")) {
+				isReadable = true;
+			}
+			else if (functions.get(i).equals("watch")) {
+				isWatchable = true;
+			}
+			else if (functions.get(i).equals("open")) {
+				isOpenable = true;
+			}
+			
+		}
 	}
 	
 	public static Item getItem(String string) {
