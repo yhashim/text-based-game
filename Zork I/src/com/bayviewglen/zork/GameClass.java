@@ -3,7 +3,10 @@ package com.bayviewglen.zork;
 import java.awt.ItemSelectable;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -33,6 +36,7 @@ class Game {
 	// masterRoomMap.get("GREAT_ROOM") will return the Room Object that is the Great
 	// Room (assuming you have one)
 	private HashMap<String, Room> masterRoomMap;
+	private HashMap<String, Character> masterCharacterMap;
 	private HashMap<String, Item> masterItemMap;
 
 	private void initRooms(String fileName) throws Exception {
@@ -77,6 +81,38 @@ class Game {
 				}
 			}
 			roomScanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void initCharacters(String fileName) throws Exception {
+		masterCharacterMap = new HashMap<String, Character>();
+		Scanner characterScanner;
+		try {
+			characterScanner = new Scanner(new File(fileName));
+			while (characterScanner.hasNext()) {
+				Character character = new Character();
+				// Read the Name
+				String characterName = characterScanner.nextLine();
+				character.setCharacterName(characterName.split(":")[1].trim());
+				// Put in starting location
+				String startingLocation = characterScanner.nextLine();
+				character.setStartingLocation(startingLocation.split(":")[1].trim());
+				// Assign its functions
+				String[] functions = characterScanner.nextLine().split(", ");
+				// Give them their starting items
+				List<String> items1 = Arrays.asList(characterScanner.nextLine().split(", "));
+				for (String x : items1) {
+					Character.items.put(x, Item.getItem(x));
+				}
+				// Tell them the items they want
+				List<String> wantedItems2 = Arrays.asList(characterScanner.nextLine().split(", "));
+				for (String x : wantedItems2) {
+					Character.wantedItems.put(x, Item.getItem(x));
+				}
+			}
+			characterScanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

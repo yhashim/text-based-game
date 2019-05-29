@@ -8,20 +8,24 @@ import java.util.Iterator;
 class Character {
 	private String characterName;
 	private String startingLocation;
-	private static HashMap <String, Item> startingItems = new HashMap <String, Item>();
-	private static HashMap <String, Item> wantedItems = new HashMap <String, Item>();
+	// private static HashMap <String, Item> startingItems = new HashMap <String, Item>();
+	private static HashMap <String, Item> wantedItems = new HashMap <String, Item>(); // fix
+	private static HashMap <String, Item> items = new HashMap<String, Item>(); // fix
 	private ArrayList<String> speech;
-	private ArrayList<String> functions; // stores functions you can do to this character.
-	private static HashMap <String, Item> items = new HashMap <String, Item>();
+	private static String[] functions; // stores functions you can do to this character. //fix
 	
-	public Character(String characterName, String startingLocation, HashMap <String, Item> startingItems, HashMap <String, Item> wantedItems, ArrayList<String> speech, ArrayList<String> functions) {
-		this.characterName = characterName;
-		this.startingLocation = startingLocation;
-		this.startingItems = startingItems;
-		this.wantedItems = wantedItems;
-		this.speech = speech;
-		this.functions = functions;
+	public Character() {
+		
 	}
+	
+//	public Character(String characterName, String startingLocation, HashMap <String, Item> startingItems, HashMap <String, Item> wantedItems, ArrayList<String> speech, String[] functions) {
+//		this.characterName = characterName;
+//		this.startingLocation = startingLocation;
+//		this.startingItems = startingItems;
+//		this.wantedItems = wantedItems;
+//		this.speech = speech;
+//		this.functions = functions;
+//	}
 	
 	// adds an item to the inventory
 	// if an item is already 

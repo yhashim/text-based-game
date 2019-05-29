@@ -22,10 +22,16 @@ class Item {
 	private boolean isOpenable;
 	private boolean isUsable; 
 	
+	private static ArrayList<Item> allItems;
+	
 	public Item (String description, String weight) {
 		this.description = description;
 		this.weight = Double.parseDouble(weight);
 		functions = new ArrayList<String>();
+		if (allItems == null) {
+			allItems = new ArrayList<Item>();
+		}
+		allItems.add(this);
 	}
 	
 	public Item() {
@@ -37,6 +43,15 @@ class Item {
 	
 	public void addFunction(String function) throws Exception {
 		functions.add(function);
+	}
+	
+	public static Item getItem(String string) {
+		for (Item i : allItems) {
+			if (i.getItemName().toLowerCase().equals(string)) {
+				return i;
+			}
+		}
+		return null;
 	}
 
 	/**
