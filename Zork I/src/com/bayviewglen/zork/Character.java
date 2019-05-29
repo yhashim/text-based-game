@@ -11,17 +11,17 @@ class Character {
 	private HashMap <String, Item> startingItems;
 	private HashMap <String, Item> wantedItems; // fix
 	private HashMap <String, Item> items; // fix
+	private ArrayList<String> functions; // fix
 	private ArrayList<String> speech;
 	
 	public Character() {
 		items = new HashMap<String, Item>();
 		startingItems = new HashMap <String, Item>();
 		wantedItems = new HashMap <String, Item>();
-		String[] functions; 
-		
+		ArrayList<String> functions = new ArrayList<String>(); 
 	}
 	
-//	public Character(String characterName, String startingLocation, HashMap <String, Item> startingItems, HashMap <String, Item> wantedItems, ArrayList<String> speech, String[] functions) {
+//	public Character(String characterName, String startingLocation, HashMap <String, Item> startingItems, HashMap <String, Item> wantedItems, ArrayList<String> speech,) {
 //		this.characterName = characterName;
 //		this.startingLocation = startingLocation;
 //		this.startingItems = startingItems;
@@ -29,6 +29,10 @@ class Character {
 //		this.speech = speech;
 //		this.functions = functions;
 //	}
+	
+	public void addToFunctions(String function) {
+		functions.add(function);
+	}
 	
 	// adds an item to the inventory
 	// if an item is already 

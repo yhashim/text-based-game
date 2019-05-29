@@ -101,6 +101,9 @@ class Game {
 				character.setStartingLocation(startingLocation.split(":")[1].trim());
 				// Assign its functions
 				String[] functions = characterScanner.nextLine().split(", ");
+				for (String x : functions) {
+					character.addToFunctions(x);
+				}
 				// Give them their starting items
 				List<String> items1 = Arrays.asList(characterScanner.nextLine().split(", "));
 				for (String x : items1) {
