@@ -1,8 +1,18 @@
 package com.bayviewglen.zork;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Player {
 	public static HashMap <String, Item> items = new HashMap <String, Item>();
+	public static ArrayList <String> peopleKilled = new ArrayList <String>();
+	public static int numKilled = 0;
+	
+	// adds name to list of people killed
+	// increments number of people killed
+	public void addKill(String name) {
+		peopleKilled.add(name);
+		numKilled ++;
+	}
 	
 	// adds an item to the inventory
 	// if an item is already in the inventory, increments amount
