@@ -8,10 +8,10 @@ import java.util.Iterator;
 class Character {
 	private String characterName;
 	private String startingLocation;
-	// private static HashMap <String, Item> startingItems = new HashMap <String, Item>();
-	private static HashMap <String, Item> wantedItems = new HashMap <String, Item>(); // fix
-	private static HashMap <String, Item> items = new HashMap<String, Item>(); // fix
-	private static String[] functions; // stores functions you can do to this character. //fix
+	 private  HashMap <String, Item> startingItems = new HashMap <String, Item>();
+	private  HashMap <String, Item> wantedItems = new HashMap <String, Item>(); // fix
+	private  HashMap <String, Item> items = new HashMap<String, Item>(); // fix
+	private  String[] functions; // stores functions you can do to this character. //fix
 	private ArrayList<String> speech;
 	
 	public Character() {
@@ -29,13 +29,14 @@ class Character {
 	
 	// adds an item to the inventory
 	// if an item is already 
-	public static void addToInventory(Item item, int amount) {
-		if (items.containsKey(item.getItemName())) {
-			items.get(item.getItemName()).addAmount(amount);
-		}
-		else {
-			items.put(item.getItemName(), item);
-		}
+	public  void addToInventory(Item item) {
+		items.put(item.getItemName(), item);
+	}
+	
+	// adds an item to the inventory
+	// if an item is already 
+	public  void addToWantedItems(Item item) {
+		wantedItems.put(item.getItemName(), item);	
 	}
 	
 	// checks for an item in the inventory 

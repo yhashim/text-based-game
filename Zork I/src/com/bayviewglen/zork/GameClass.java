@@ -104,12 +104,12 @@ class Game {
 				// Give them their starting items
 				List<String> items1 = Arrays.asList(characterScanner.nextLine().split(", "));
 				for (String x : items1) {
-					Character.items.put(x, Item.getItem(x));
+					character.addToInventory(Item.getItem(x));
 				}
 				// Tell them the items they want
 				List<String> wantedItems2 = Arrays.asList(characterScanner.nextLine().split(", "));
 				for (String x : wantedItems2) {
-					Character.wantedItems.put(x, Item.getItem(x));
+					character.addToWantedItems(Item.getItem(x));
 				}
 			}
 			characterScanner.close();
