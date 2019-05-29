@@ -4,8 +4,6 @@ import java.util.HashMap;
 
 public class Player {
 	private static HashMap <String, Item> items = new HashMap <String, Item>();
-	
-
 	private static ArrayList <String> peopleKilled = new ArrayList <String>();
 	private static int numKilled = peopleKilled.size();
 
