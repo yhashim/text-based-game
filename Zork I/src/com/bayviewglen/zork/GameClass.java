@@ -346,13 +346,12 @@ class Game {
 	private void give(Command command) {
 		String giveable = command.getObject();
 		if (masterItemMap.get(giveable).give()) {
-			Character.addToInventory(masterItemMap.get(giveable),1);
+			Character.addToInventory(masterItemMap.get(giveable));
 			Player.removeItem(giveable,1);
 		}
 		else {
 			System.out.println("You wouldn't want to give " + giveable + " away!");
 		}
-
 	}
 
 	// check if object is lockable

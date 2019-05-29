@@ -29,13 +29,13 @@ class Character {
 	
 	// adds an item to the inventory
 	// if an item is already 
-	public  void addToInventory(Item item) {
+	public void addToInventory(Item item) {
 		items.put(item.getItemName(), item);
 	}
 	
 	// adds an item to the inventory
 	// if an item is already 
-	public  void addToWantedItems(Item item) {
+	public void addToWantedItems(Item item) {
 		wantedItems.put(item.getItemName(), item);	
 	}
 	
