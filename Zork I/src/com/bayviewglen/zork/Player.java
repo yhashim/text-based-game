@@ -26,6 +26,7 @@ public class Player {
 				//print "I though you were smarter than this, Light. I must have overestimated you. Oh well. You failed, that means I must kill you."
 	}
 	
+	//prints out list of peopleKilled
 	public void peopleKilled(ArrayList <String> peopleKilled) {
 		for (String s : peopleKilled) {
 			System.out.println(s);
