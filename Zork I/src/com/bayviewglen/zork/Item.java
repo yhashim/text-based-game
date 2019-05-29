@@ -11,8 +11,7 @@ class Item {
 	private int amount;
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
-	
-	private boolean isDeathNote;
+
 	private boolean isGiveable;
 	private boolean isTakeable;
 	private boolean isConsumable;
@@ -134,10 +133,6 @@ class Item {
 	
 	public boolean use() {
 		return isUsable;
-	}
-	
-	public boolean write() {
-		return isDeathNote;
 	}
 	
 	public boolean watch() {

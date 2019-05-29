@@ -161,13 +161,23 @@ class Room {
 	}
 	
 	// checks for an item in the inventory 
-	// return true if it is, false if not
+	// return item if it is, null if not
 	public Item getItem(String name) {
 		if (items.containsKey(name)) {
 			return items.get(name);
 		}
 		return null;
 	}
+	
+	// checks for an item in the inventory 
+		// return true if it is, false if not
+		public boolean contains(Item item) {
+			if (items.containsValue(item)) {
+				return true;
+			}	
+			
+			return false;
+		}
 	
 	public void removeItem(String name, int amount) {
 		if (items.get(name).getAmount() == 1) {

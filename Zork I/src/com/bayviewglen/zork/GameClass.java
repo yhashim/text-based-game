@@ -1,5 +1,6 @@
 package com.bayviewglen.zork;
 
+import java.awt.ItemSelectable;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -250,25 +251,52 @@ class Game {
 		}
 	}
 	
-	private void take(Command command) {
-		String takeable = command.getObject();
-		// check if object is in currentRoom
-		// if yes:
-			// remove object from room's inventory
-			// add object to player inventory
-		// else 
-			// tell player that it is not there
+	// returns the description of the item
+	private void examine(Command command) {
+		masterItemMap.get(command.getObject()).examine();
 	}
 	
+	// check if object is in currentRoom
+			// if yes:
+				// remove object from room's inventory
+				// add object to player inventory
+			// else 
+				// tell player that it is not there
+	private void take(Command command) {
+		String takeable = command.getObject();
+		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
+			currentRoom.removeItem(takeable,1);
+			items.addToInventory(masterItemMap.get(takeable),1);
+		}
+		else {
+			System.out.println("There is no " + takeable + " here." );
+		}
+		
+	}
+	
+	// check if specified object is in room
+				// if yes, check if it is openable
+					// check if locked 
+						// if openable and unlocked, open and print out contents
+					// else 
+						// ask for key
+				// else, tell them it is not there
 	private void open(Command command) {
 		String openable = command.getObject();
-		// check if specified object is in room
-			// if yes, check if it is openable
-				// check if locked 
-					// if openable and unlocked, open and print out contents
-				// else 
-					// ask for key
-			// else, tell them it is not there
+		if (currentRoom.contains(masterItemMap.get(openable))) {
+			if (masterItemMap.get(openable).open()) {
+				if (openable.equals("drawer")) {
+					System.out.println("In the drawer you see a small slip of paper");
+				}
+			}
+			else {
+				System.out.println("Please enter the passcode: ");
+			} 
+		}
+		else {
+			System.out.println("There is no " + openable + " here." );
+		}
+		
 	}
 	
 	private void give(Command command) {
