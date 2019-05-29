@@ -299,38 +299,76 @@ class Game {
 		
 	}
 	
+	// check if item is giveable
+				// if yes, give to character they stated
+					// remove from player's inventory
+					// add to character's inventory
+				// else, tell character they probably don't want to give it away
 	private void give(Command command) {
 		String giveable = command.getObject();
-		// check if item is giveable
-			// if yes, give to character they stated
-				// remove from player's inventory
-				// add to character's inventory
-			// else, tell character they probably don't want to give it away
+		if (masterItemMap.get(giveable).give()) {
+			character.addToInventory(masterItemMap.get(giveable),1);
+			items.removeItem(giveable,1);
+		}
+		else {
+			System.out.println("You wouldn't want to give " + giveable + " away!");
+		}
+		
 	}
 	
+	// check if object is lockable
+				// if true, check if key is in inventory
+					// unlock
+				// if no key
+					// ask player to find key
 	private void unlock(Command command) {
 		String unlockable = command.getObject();
-		// check if object is lockable
-			// if true, check if key is in inventory
-				// unlock
-			// if no keky
-				// ask player to fine key
+		if (masterItemMap.get(unlockable).unlock()) {
+			
+		}
+		
 	}
 	
+	// check if object is readable
+				// if true, display text of specified object
+				// else, tell player there is nothing to read on ___ object
 	private void read(Command command) {
 		String readable = command.getObject();
-		// check if object is readable
-			// if true, display text of specified object
-			// else, tell player there is nothing to read on ___ object
+		if (masterItemMap.get(readable).read() && currentRoom.contains(masterItemMap.get(readable))) {
+			if (readable.equals("task force employee list")) {
+				System.out.println("List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas");
+			}
+			if (readable.equals("the kira case file")) {
+				// list of people you have killed
+			}
+			if (readable.equals("most wanted file")) {
+				System.out.println("This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada");
+			}
+			if (readable.equals("newspaper")) {
+				System.out.println("On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article");
+			}
+			if (readable.equals("letter")) {
+				System.out.println("The front of the letter reads: \nTo: L \nFrom: Naomi Misora");
+			}
+			if (readable.equals("wanted poster")) {
+				System.out.println("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping");
+			}
+		}
+		else {
+			System.out.println("There is nothing to read on the " + readable + ".");
+		}
+	
 	}
 	
+	// check if object is useable
+				// check which useable object it is
+				// if it is a flashlight, do flashlight thing (make sure that all other parameters such as location are correct, etc.)
+				// if... until all the useables are done
+			// else, explain it cannot be used
 	private void use(Command command) {
 		String useable = command.getObject();
-		// check if object is useable
-			// check which useable object it is
-			// if it is a flashlight, do flashlight thing (make sure that all other parameters such as location are correct, etc.)
-			// if... until all the useables are done
-		// else, explain it cannot be used
+		
+		
 	}
 	
 	private void write(Command command) {

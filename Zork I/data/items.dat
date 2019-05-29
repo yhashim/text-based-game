@@ -57,7 +57,7 @@ Functions: take, read, drop, examine
 Item Name: Taxes File
 Item Description: This is a large folder filed with papers. Are you sure this is what you're looking for?
 Item Weight: 1
-Functions: take, read, drop, examine
+Functions: take, drop, examine
 Item Name: Task Force Key Card
 Item Description:  This is your father's task force key card. "Task Force Mr. Yagami" is in black letters on the back of the key card.
 Item Weight: 2
