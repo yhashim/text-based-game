@@ -2,7 +2,7 @@ package com.bayviewglen.zork;
 import java.util.HashMap;
 
 public class Player {
-	public HashMap <String, Item> items = new HashMap <String, Item>();
+	public static HashMap <String, Item> items = new HashMap <String, Item>();
 	
 	// adds an item to the inventory
 	// if an item is already in the inventory, increments amount
