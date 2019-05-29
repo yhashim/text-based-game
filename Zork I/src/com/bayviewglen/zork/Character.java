@@ -8,13 +8,16 @@ import java.util.Iterator;
 class Character {
 	private String characterName;
 	private String startingLocation;
-	 private  HashMap <String, Item> startingItems = new HashMap <String, Item>();
-	private  HashMap <String, Item> wantedItems = new HashMap <String, Item>(); // fix
-	private  HashMap <String, Item> items = new HashMap<String, Item>(); // fix
-	private  String[] functions; // stores functions you can do to this character. //fix
+	private HashMap <String, Item> startingItems;
+	private HashMap <String, Item> wantedItems; // fix
+	private HashMap <String, Item> items; // fix
 	private ArrayList<String> speech;
 	
 	public Character() {
+		items = new HashMap<String, Item>();
+		startingItems = new HashMap <String, Item>();
+		wantedItems = new HashMap <String, Item>();
+		String[] functions; 
 		
 	}
 	
