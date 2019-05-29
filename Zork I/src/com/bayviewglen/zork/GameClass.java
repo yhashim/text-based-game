@@ -360,47 +360,88 @@ class Game {
 	
 	}
 	
-	// check if object is useable
+	// check if object is useable & if object is in inventory
 				// check which useable object it is
 				// if it is a flashlight, do flashlight thing (make sure that all other parameters such as location are correct, etc.)
 				// if... until all the useables are done
 			// else, explain it cannot be used
 	private void use(Command command) {
-		String useable = command.getObject();
+		String usable = command.getObject();
+		if (masterItemMap.get(usable).use() && items.contains(usable)) {
+			if (masterItemMap.get(usable).equals("flashlight") && currentRoom.getroomName().equals("warehouse")) {
+				System.out.println("The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.");
+			}
+			if (masterItemMap.get(usable).equals("flashlight")) {
+				System.out.println("The space in front of you lights up.");
+			}
+		}
+		else {
+			System.out.println("Please specifiy how you would like to use" + usable + ".");
+		}
 		
 		
 	}
 	
+	// check if character is killable
+				// if true, remove character from its room
+				// remove character from character array
+				// +1 to killings
+			// else, print - you cannot kill ___!
 	private void write(Command command) {
 		String killable = command.getCharacter();
-		// check if character is killable
-			// if true, remove character from its room
-			// remove character from character array
-			// +1 to killings
-		// else, print - you cannot kill ___!
+		
 	}
 	
+	// check if object is watchable (basically tv) & in the currentRoom
+				// if yes, display text of what you see on tv
+			// else, say - you can't watch ___, that would be boring!
 	private void watch(Command command) {
 		String watchable = command.getObject();
-		// check if object is watchable (basically tv)
-			// if yes, display text of what you see on tv
-		// else, say - you can't watch ___, that would be boring!
+		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
+			//if killings < 5 display "Breaking News! \nSerial killer Arayoshi Hatori has just gone on another murder spree, killing a total of 10 students from the University of Tokyo and professor Miss Amane."
+			//if killings >= 5 display "New Mystery Killer Kira - series of murders seem to be connected to one killer"
+		}
+		else {
+			System.out.println("You can't watch " + watchable + ", that would be boring!");
+		}
 	}
 	
+	
+	// check if object is in player's inventory
+				// if yes, remove from inventory
+				// add to currentRoom inventory
+			// else, state they do not even have this object to put down
 	private void drop(Command command) {
 		String droppable = command.getObject();
-		// check if object is in player's inventory
-			// if yes, remove from inventory
-			// add to currentRoom inventory
-		// else, state they do not even have this object to put down
+		if (masterItemMap.get(droppable).drop() && items.contains(droppable)) {
+			currentRoom.addToInventory(masterItemMap.get(droppable), 1);
+			items.removeItem(droppable,1);
+		}
+		else {
+			System.out.println("You have no " + droppable + " to drop.");
+		}
+		
 	}
 	
+	// check if object is edible
+				// if an apple, state - Ryuk wants that apple!
+				// else, remove object from room inventory or personal inventory and say - yummy!
+			// else, print - dishonour on you! filthy human - you can't eat a ___!
 	private void eat(Command command) {
-		String edible = command.getObject();
-		// check if object is edible
-			// if an apple, state - Ryuk wants that apple!
-			// else, remove object from room inventory or personal inventory and say - yummy!
-		// else, print - dishonour on you! filthy human - you can't eat a ___!
+		String consumable = command.getObject();
+		if (masterItemMap.get(consumable).eat() && items.contains(consumable)) {
+			if (consumable.equals("apple")) {
+				System.out.println("Dont eat that! Ryuk wants that apple!");
+			}
+			else {
+				items.removeItem(consumable, 1);
+				System.out.println("Crunchity munchity you ate the " + consumable + ".");
+			}
+		}
+		else {
+			System.out.println("Dishonour on you! You filthy human - you can't eat the " + consumable + "!");
+		}
+		
 	}
 
 }
