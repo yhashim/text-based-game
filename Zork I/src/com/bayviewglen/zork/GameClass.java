@@ -100,17 +100,17 @@ class Game {
 				String startingLocation = characterScanner.nextLine();
 				character.setStartingLocation(startingLocation.split(":")[1].trim());
 				// Assign its functions
-				String[] functions = characterScanner.nextLine().split(", ");
+				String[] functions = characterScanner.nextLine().split(":")[1].trim().split(", ");
 				for (String x : functions) {
 					character.addToFunctions(x);
 				}
 				// Give them their starting items
-				List<String> items1 = Arrays.asList(characterScanner.nextLine().split(", "));
+				List<String> items1 = Arrays.asList(characterScanner.nextLine().split(":")[1].trim().split(", "));
 				for (String x : items1) {
 					character.addToInventory(Item.getItem(x));
 				}
 				// Tell them the items they want
-				List<String> wantedItems2 = Arrays.asList(characterScanner.nextLine().split(", "));
+				List<String> wantedItems2 = Arrays.asList(characterScanner.nextLine().split(":")[1].trim().split(", "));
 				for (String x : wantedItems2) {
 					character.addToWantedItems(Item.getItem(x));
 				}
@@ -140,7 +140,7 @@ class Game {
 				// Read the Functions
 				String itemFunctions = itemScanner.nextLine();
 				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(":") + 1);
-				String[] items = itemFunctions.split(",| ");
+				String[] items = itemFunctions.split(", ");
 				for (String s : items) {
 					item.addFunction(s);
 				}
