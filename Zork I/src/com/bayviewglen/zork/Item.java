@@ -12,11 +12,12 @@ class Item {
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
 	
-	private boolean hasPen;
+	private boolean isDeathNote;
 	private boolean isGiveable;
 	private boolean isTakeable;
 	private boolean isConsumable;
 	private boolean isKey;
+	private boolean isUnlockable;
 	private boolean isReadable;
 	private boolean isWatchable;
 	private boolean isOpenable;
@@ -111,70 +112,44 @@ class Item {
 		System.out.println(description);
 	}
 	
-	public void take() {
-		if (isTakeable == true) {
-			// calls remove method from room inventory
-			// calls add method from player inventory
-		}
+	public boolean take() {
+		return isTakeable; 
 	}
 	
-	public void open() {
-		if (isOpenable == true) {
-			// returns text that contains more game info 
-		}
+	public boolean open() {
+		return isOpenable;
 	}
 	
-	public void give() {
-		if (isGiveable == true) {
-			// calls remove method from player inventory 
-			// calls add method from character inventory
-		}
+	public boolean give() {
+		return isGiveable;
 	}
 	
-	public void unlock() {
-		if (isKey == true) {
-			// calls change isLocked method from room class
-		}
+	public boolean unlock() {
+		return isUnlockable;
 	}
 	
-	public void read() {
-		if (isReadable == true) {
-			// returns text that contains more game info
-		}
+	public boolean read() {
+		return isReadable;
 	}
 	
-	public void use() {
-		if (isUsable == true) {
-			// returns text that contains more game info
-		}
+	public boolean use() {
+		return isUsable;
 	}
 	
-	public void write() {
-		if (items.contains("pen")) {
-			// returns what is written in DeathNote
-			// calls add method in DeathNote class (will increment num people killed) 
-		}
-		
+	public boolean write() {
+		return isDeathNote;
 	}
 	
-	public void watch() {
-		if (isWatchable == true) {
-			// returns text the contains more game info
-		}
-		
+	public boolean watch() {
+		return isWatchable;
 	}
 	
-	public void drop() {
-		if (isTakeable == true) {
-			// calls removeItem from player class (removes item from inventory)
-		}
-		
+	public boolean drop() {
+		return isTakeable;
 	}
 	
-	public void eat () {
-		if (isConsumable == true) {
-			// returns text "you eat the ___, yum"
-		}
+	public boolean eat() {
+		return isConsumable;
 	}
 	
 }
