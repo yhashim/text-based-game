@@ -29,6 +29,10 @@ class Room {
 	public ArrayList<Room> getRooms() {
 		return rooms;
 	}
+	
+	public HashMap <String, Item> getRoomItems(){
+		return items;
+	}
 
 	private boolean isLocked;
 

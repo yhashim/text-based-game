@@ -9,6 +9,7 @@ class Item {
 	private String itemName;
 	private String description;
 	private String currentRoom;
+	private String currentCharacter;
 	private int amount;
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
@@ -200,4 +201,11 @@ class Item {
 		this.currentRoom = currentRoom;
 	}
 	
+	public String getCurrentCharacter() {
+		return currentCharacter;
+	}
+	
+	public void setCurrentCharacter(String currentCharacter) {
+		this.currentCharacter = currentCharacter;
+	}
 }
