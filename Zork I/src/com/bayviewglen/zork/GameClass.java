@@ -105,11 +105,6 @@ class Game {
 				for (String x : functions) {
 					character.addToFunctions(x);
 				}
-				// Give them their starting items
-				List<String> items1 = Arrays.asList(characterScanner.nextLine().split(":")[1].trim().split(", "));
-				for (String x : items1) {
-					character.addToInventory(Item.getItem(x));
-				}
 				// Tell them the items they want
 				List<String> wantedItems2 = Arrays.asList(characterScanner.nextLine().split(":")[1].trim().split(", "));
 				for (String x : wantedItems2) {
@@ -140,41 +135,33 @@ class Game {
 				item.setWeight(itemWeight.split(":")[1].trim());
 				// Read the Functions
 				String itemFunctions = itemScanner.nextLine();
-				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(":") + 1);
+				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(": ") + 1);
 				String[] items = itemFunctions.split(", ");
 				for (String s : items) {
 					item.addFunction(s);
 				}
-				// Starting room
-				String startingRoom = itemScanner.nextLine().split(":")[1].trim();
-				if (!(startingRoom == null)) {
-					item.setCurrentRoom(startingRoom);
-//					ArrayList<Room> rooms;
-//					rooms = room.getRooms();
-//					for (Room r : rooms) {
-//						// current room has item in inventory (we add it)
-//						if (r.getRoomName().equals(startingRoom)) {
-//							r.addToInventory(item, 1);
-//						}
-//					}
-					Room r = masterRoomMap.get(startingRoom);
-					r.addToInventory(item, 1);
-				} else {
-					// Starting character
-					String startingCharacter = itemScanner.nextLine().split(":")[1].trim();
-					// item's current room is this character's current room
-					// current room does not have item in inventory
-					// item is in character's inventory
+				// Read the Starting Room
+				String currentRoom = itemScanner.nextLine();
+				if (!currentRoom.equals("Starting Room:")){
+					item.setCurrentRoom(currentRoom.split(":")[1].trim());
+					masterRoomMap.get(item.getCurrentRoom()).addToInventory(item, 1);
 				}
+				
+				// Read the Starting Character
+				String currentCharacter = itemScanner.nextLine();
+				if (!currentCharacter.equals("Starting Character:")) {
+					item.setCurrentCharacter(currentCharacter.split(":")[1].trim());
+					masterCharacterMap.get(currentCharacter).addToInventory(item);
 			}
-			itemScanner.close();
+		}	
+		itemScanner.close(); 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * Create the game and initialise its internal map.
+	 * Create the game and initialize its internal map.
 	 */
 	public Game() {
 		try {
