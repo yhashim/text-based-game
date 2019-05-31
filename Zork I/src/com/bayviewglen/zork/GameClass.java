@@ -86,7 +86,7 @@ class Game {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void initCharacters(String fileName) throws Exception {
 		masterCharacterMap = new HashMap<String, Character>();
 		Scanner characterScanner;
@@ -126,35 +126,40 @@ class Game {
 				Item item = new Item();
 				// Read the Name
 				String itemName = itemScanner.nextLine();
-				item.setItemName(itemName.split(":")[1].trim());
+				itemName = itemName.split(": ")[1].trim();
+				item.setItemName(itemName);
 				// Read the Description
 				String itemDescription = itemScanner.nextLine();
-				item.setDescription(itemDescription.split(":")[1].replaceAll("<br>", "\n").trim());
+				itemDescription = itemDescription.split(":")[1].replaceAll("<br>", "\n").trim();
+				item.setDescription(itemDescription);
 				// Read the Weight
 				String itemWeight = itemScanner.nextLine();
-				item.setWeight(itemWeight.split(":")[1].trim());
+				itemWeight = itemWeight.split(":")[1].trim();
+				item.setWeight(itemWeight);
 				// Read the Functions
 				String itemFunctions = itemScanner.nextLine();
-				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(": ") + 1);
+				itemFunctions = itemFunctions.substring(itemFunctions.indexOf(": ") + 2);
 				String[] items = itemFunctions.split(", ");
 				for (String s : items) {
 					item.addFunction(s);
 				}
 				// Read the Starting Room
 				String currentRoom = itemScanner.nextLine();
-				if (!currentRoom.equals("Starting Room:")){
-					item.setCurrentRoom(currentRoom.split(":")[1].trim());
+				if (!currentRoom.equals("Starting Room:")) {
+					currentRoom = currentRoom.split(":")[1].trim();
+					item.setCurrentRoom(currentRoom);
 					masterRoomMap.get(item.getCurrentRoom()).addToInventory(item, 1);
+				} else {
+					// Read the Starting Character
+					String currentCharacter = itemScanner.nextLine();
+					if (!currentCharacter.equals("Starting Character:")) {
+						currentCharacter = currentCharacter.split(":")[1].trim();
+						item.setCurrentCharacter(currentCharacter);
+						masterCharacterMap.get(currentCharacter).addToInventory(item);
+					}
 				}
-				
-				// Read the Starting Character
-				String currentCharacter = itemScanner.nextLine();
-				if (!currentCharacter.equals("Starting Character:")) {
-					item.setCurrentCharacter(currentCharacter.split(":")[1].trim());
-					masterCharacterMap.get(currentCharacter).addToInventory(item);
 			}
-		}	
-		itemScanner.close(); 
+			itemScanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -313,11 +318,10 @@ class Game {
 	private void take(Command command) {
 		String takeable = command.getObject();
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
-			currentRoom.removeItem(takeable,1);
-			Player.addToInventory(masterItemMap.get(takeable),1);
-		}
-		else {
-			System.out.println("There is no " + takeable + " here." );
+			currentRoom.removeItem(takeable, 1);
+			Player.addToInventory(masterItemMap.get(takeable), 1);
+		} else {
+			System.out.println("There is no " + takeable + " here.");
 		}
 
 	}
@@ -359,9 +363,8 @@ class Game {
 		String giveable = command.getObject();
 		if (masterItemMap.get(giveable).give()) {
 			Character.addToInventory(masterItemMap.get(giveable));
-			Player.removeItem(giveable,1);
-		}
-		else {
+			Player.removeItem(giveable, 1);
+		} else {
 			System.out.println("You wouldn't want to give " + giveable + " away!");
 		}
 	}
@@ -442,7 +445,8 @@ class Game {
 		String killable = command.getCharacter();
 		if (!killable.toLowerCase().equals("ryuk")) {
 			Player.addKill(killable);
-			System.out.println("As you finish writing the name down you hear thunder and lightning outside. You hear a loud bang behind you.\r\n");
+			System.out.println(
+					"As you finish writing the name down you hear thunder and lightning outside. You hear a loud bang behind you.\r\n");
 		} else {
 			System.out.println("Ryuk: You abominable human! I thought you were smarter than this! I am immortal...");
 		}
@@ -472,9 +476,8 @@ class Game {
 		String droppable = command.getObject();
 		if (masterItemMap.get(droppable).drop() && Player.contains(droppable)) {
 			currentRoom.addToInventory(masterItemMap.get(droppable), 1);
-			Player.removeItem(droppable,1);
-		}
-		else {
+			Player.removeItem(droppable, 1);
+		} else {
 			System.out.println("You have no " + droppable + " to drop.");
 		}
 
@@ -490,8 +493,7 @@ class Game {
 		if (masterItemMap.get(consumable).eat() && Player.contains(consumable)) {
 			if (consumable.equals("apple")) {
 				System.out.println("Dont eat that! Ryuk wants that apple!");
-			}
-			else {
+			} else {
 				Player.removeItem(consumable, 1);
 				System.out.println("Crunchity munchity you ate the " + consumable + ".");
 			}
