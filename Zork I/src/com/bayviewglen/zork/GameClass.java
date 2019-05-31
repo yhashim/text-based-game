@@ -159,7 +159,7 @@ class Game {
 					String currentCharacter = itemScanner.nextLine();
 					if (!currentCharacter.equals("Starting Character:")) {
 						currentCharacter = currentCharacter.split(":")[1].trim();
-						item.setCurrentCharacter(currentCharacter);
+						item.setCurrentCharacter(currentCharacter.toUpperCase());
 						Character accessCharacter = masterCharacterMap.get(currentCharacter);
 						accessCharacter.addToInventory(item);
 					}
