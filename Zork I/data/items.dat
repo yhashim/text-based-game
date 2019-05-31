@@ -1,19 +1,19 @@
 Item Name: Death Note
-Item Description:  This is a leather black notebook with "Death Note" written in white ink across the cover. 
+Item Description: This is a leather black notebook with "Death Note" written in white ink across the cover. 
 Item Weight: 5
 Functions: read, examine
 Starting Room:
 Starting Character:
 Item Name: Television1
-Item Description:  This is a flat screen TV, the news channel is playing.
+Item Description: This is a flat screen TV, the news channel is playing.
 Item Weight: 30
-Functions: watch, examine 
+Functions: watch, examine
 Starting Room: Living Room
 Starting Character:
 Item Name: Television2
-Item Description:  This is a flat screen TV, the news channel is playing.
+Item Description: This is a flat screen TV, the news channel is playing.
 Item Weight: 30
-Functions: watch, examine 
+Functions: watch, examine
 Starting Room: Main Square
 Starting Character:
 Item Name: Computer1
@@ -35,15 +35,15 @@ Functions: unlock, read, examine
 Starting Room: Meeting Room One
 Starting Character:
 Item Name: Drawer
-Item Description:  This is a drawer. 
+Item Description: This is a drawer.
 Item Weight: 30
 Functions: open, examine
 Starting Room: Mr. M's Office
 Starting Character:
 Item Name: Pen
-Item Description:  This is a black pen that is used as a writing utensil.
+Item Description: This is a black pen that is used as a writing utensil.
 Item Weight: 5
-Functions: take, drop, examine 
+Functions: take, drop, examine
 Starting Room: Light's Room
 Starting Character:
 Item Name: Apple1
@@ -62,7 +62,7 @@ Item Name: Apple3
 Item Description: This is an apple. Ryuk likes apples…
 Item Weight: 1
 Functions: eat, give, take, drop, examine
-Starting Room: Kitchen 
+Starting Room: Kitchen
 Starting Character:
 Item Name: Apple4
 Item Description: This is an apple. Ryuk likes apples…
@@ -77,7 +77,7 @@ Functions: eat, take, drop, give, examine
 Starting Room: Light's Room
 Starting Character:
 Item Name: Task Force Employee List
-Item Description: This is a list of all the employees in the task force. 
+Item Description: This is a list of all the employees in the task force.
 Item Weight: 1
 Functions: read, take, drop, examine
 Starting Room: Warehouse
@@ -87,7 +87,7 @@ Item Description: This is a flashlight, it is used to illuminate rooms and areas
 Item Weight: 2
 Functions: turn on, take, drop, examine
 Starting Room:
-Starting Character: Sayu Yagami 
+Starting Character: Sayu Yagami
 Item Name: Stuffed Bear 
 Item Description: It is a stuffed animal, it belongs to your sister.
 Item Weight: 2
@@ -97,7 +97,7 @@ Starting Character:
 Item Name: The Kira Case File
 Item Description: This is a large folder. On the cover, written in black letters is "The Kira Case File".
 Item Weight: 1
-Functions: take, read, drop, examine 
+Functions: take, read, drop, examine
 Starting Room: Father's Office
 Starting Character:
 Item Name: Most Wanted File
@@ -113,25 +113,25 @@ Functions: take, drop, examine
 Starting Room: Father's Office
 Starting Character:
 Item Name: Task Force Key Card
-Item Description:  This is your father's task force key card. "Task Force Mr. Yagami" is in black letters on the back of the key card.
+Item Description: This is your father's task force key card. "Task Force Mr. Yagami" is in black letters on the back of the key card.
 Item Weight: 2
 Functions: take, drop, examine, use
 Starting Room:
 Starting Character: Ryuk
 Item Name: Newspaper
-Item Description:  This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his commendable performance last week at…
+Item Description: This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his commendable performance last week at…
 Item Weight: 1
 Functions: take, open, drop, examine, read
 Starting Room: Dining Room
 Starting Character:
 Item Name: Mr. M's Key Card
-Item Description:  This is a key card. "Task Force Mr. M" is in black letters on the back of the key card. 
+Item Description: This is a key card. "Task Force Mr. M" is in black letters on the back of the key card.
 Item Weight: 2
 Functions: take, use, drop, examine
 Starting Room: Meeting Room Two
 Starting Character:
 Item Name: Slip Of Paper
-Item Description:  This is a small slip of paper. Written on it in pencil are the numbers "6708".
+Item Description: This is a small slip of paper. Written on it in pencil are the numbers "6708".
 Item Weight: 1
 Functions: take, examine, drop
 Starting Room: Mr. M's Office
@@ -155,7 +155,7 @@ Functions: use, take, drop, examine
 Starting Room:
 Starting Character: Naomi Misora 
 Item Name: Wanted Poster 
-Item Description:  This is a wanted poster on a telephone pole on Pac Street (West).
+Item Description: This is a wanted poster on a telephone pole on Pac Street (West).
 Item Weight: 30
 Functions: read, examine
 Starting Room: Pac Street (West)
