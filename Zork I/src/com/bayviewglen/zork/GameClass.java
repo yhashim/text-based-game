@@ -149,9 +149,9 @@ class Game {
 				// Read the Starting Room
 				String currentRoom = itemScanner.nextLine();
 				if (!currentRoom.equals("Starting Room:")) {
-					currentRoom = currentRoom.split(":")[1].trim();
+					currentRoom = currentRoom.split(": ")[1].trim();
 					item.setCurrentRoom(currentRoom);
-					Room accessRoom = masterRoomMap.get(currentRoom.toUpperCase().replaceAll(" ", "_"));
+					Room accessRoom = masterRoomMap.get(currentRoom.toUpperCase().trim().replaceAll(" ", "_"));
 					accessRoom.addToInventory(item, 1);
 				} 
 				// else {
