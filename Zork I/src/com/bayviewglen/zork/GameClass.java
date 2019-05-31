@@ -176,9 +176,9 @@ class Game {
 	public Game() {
 		try {
 			initRooms("data/Rooms.dat");
+			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 			initCharacters("data/Characters.dat");
 			initItems("data/Items.dat");
-			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
