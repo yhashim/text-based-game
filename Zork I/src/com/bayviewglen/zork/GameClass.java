@@ -110,6 +110,8 @@ class Game {
 				for (String x : wantedItems2) {
 					character.addToWantedItems(Item.getItem(x));
 				}
+				// This puts the character we created in the masterCharacterMap
+				masterCharacterMap.put(characterName.toUpperCase(), character);
 			}
 			characterScanner.close();
 		} catch (FileNotFoundException e) {
@@ -158,6 +160,8 @@ class Game {
 						masterCharacterMap.get(currentCharacter).addToInventory(item);
 					}
 				}
+				// This puts the item we created in the masterItemMap
+				masterItemMap.put(itemName.toUpperCase(), item);
 			}
 			itemScanner.close();
 		} catch (FileNotFoundException e) {
