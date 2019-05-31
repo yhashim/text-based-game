@@ -61,7 +61,7 @@ class Parser {
 		while (input.size() == 0) {
 			// if all the elements from input list are deleted, they were all irrelevant!
 			System.out.println("There was an error executing: \"" + temp
-					+ "\" due to how we could not find any useful information in it.");
+					+ "\" because we could not find any useful information in it.");
 			// repeat the ask for command process until you get something
 			try {
 				System.out.print("\n> "); // print prompt

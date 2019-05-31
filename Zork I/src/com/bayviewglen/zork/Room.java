@@ -185,6 +185,8 @@ class Room {
 	public String getItems() {
 		String returnString = "Items:";
 		Set keys = items.keySet();
+		if (keys.size() == 0)
+			returnString += " none";
 		int numItems = 0;
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
 			if (numItems ==0)
@@ -207,12 +209,12 @@ class Room {
 		}
 	
 	public void removeItem(String name, int amount) {
-		if (items.get(name).getAmount() == 1) {
+		//if (items.get(name).getAmount() == 1) {
 			items.remove(name);
-		}
-		else {
-			items.get(name).setAmount(items.get(name).getAmount()-1); 
-		}
+		//}
+		//else {
+		//	items.get(name).setAmount(items.get(name).getAmount()-1); 
+		//}
 	}
 	
 	
