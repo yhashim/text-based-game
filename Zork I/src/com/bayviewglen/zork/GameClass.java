@@ -162,7 +162,8 @@ class Game {
 					if (!currentCharacter.equals("Starting Character:")) {
 						currentCharacter = currentCharacter.split(": ")[1].trim();
 						item.setCurrentCharacter(currentCharacter);
-						Character accessCharacter = masterCharacterMap.get(currentCharacter.toUpperCase());
+						currentCharacter = currentCharacter.toUpperCase();
+						Character accessCharacter = masterCharacterMap.get(currentCharacter);
 						accessCharacter.addToInventory(item);
 					} else {
 						currentCharacter = null;
