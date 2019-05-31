@@ -152,6 +152,7 @@ class Game {
 				String[] items = itemFunctions.split(", ");
 				for (String s : items) {
 					item.addFunction(s);
+					item.setBoolean(s);
 				}
 				// Read the Starting Room
 				String currentRoom = itemScanner.nextLine();

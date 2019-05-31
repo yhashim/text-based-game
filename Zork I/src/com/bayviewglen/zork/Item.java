@@ -44,26 +44,26 @@ class Item {
 
 	public void addFunction(String function) throws Exception {
 		functions.add(function);
-		this.setBoolean(function);
+		// this.setBoolean(function);
 	}
 
 	public void setBoolean(String function) {
 		// for (int i = 0; i < functions.size(); i++) {
-		if (functions.equals("give")) {
+		if (function.equals("give")) {
 			isGiveable = true;
-		} else if (functions.equals("take")) {
+		} else if (function.equals("take")) {
 			isTakeable = true;
-		} else if (functions.equals("eat")) {
+		} else if (function.equals("eat")) {
 			isConsumable = true;
-		} else if (functions.equals("use")) {
+		} else if (function.equals("use")) {
 			isUsable = true;
-		} else if (functions.equals("unlock")) {
+		} else if (function.equals("unlock")) {
 			isUnlockable = true;
-		} else if (functions.equals("read")) {
+		} else if (function.equals("read")) {
 			isReadable = true;
-		} else if (functions.equals("watch")) {
+		} else if (function.equals("watch")) {
 			isWatchable = true;
-		} else if (functions.equals("open")) {
+		} else if (function.equals("open")) {
 			isOpenable = true;
 		}
 		// }
