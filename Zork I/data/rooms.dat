@@ -47,7 +47,7 @@ Room Description: You are standing in the front yard. The front door of the hous
 Exit Rooms: N-Foyer, S-Pac Street (East)
 Locked: false
 Room Name: Pac Street (East)
-Room Description:  You are standing on Pac Street. In the distance, you can see a small café at the end of the street to the west. The street splits north and south at this end.
+Room Description:  You are standing on Pac Street. In the distance, you can see a small cafe at the end of the street to the west. The street splits north and south at this end.
 Exit Rooms: N-Front Yard, W-Pac Street (West)
 Locked: false
 Room Name: Pac Street (West)

@@ -116,7 +116,7 @@ class Room {
 	 */
 	public String longDescription() {
 
-		return "Room: " + roomName + "\n\n" + description + "\n" + exitString();
+		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString();
 	}
 
 	/**
@@ -174,11 +174,26 @@ class Room {
 	
 	// checks for an item in the inventory 
 	// return item if it is, null if not
+	/*
 	public Item getItem(String name) {
 		if (items.containsKey(name)) {
 			return items.get(name);
 		}
 		return null;
+	}
+	*/
+	public String getItems() {
+		String returnString = "Items:";
+		Set keys = items.keySet();
+		int numItems = 0;
+		for (Iterator iter = keys.iterator(); iter.hasNext();) {
+			if (numItems ==0)
+				returnString += " " + iter.next();
+			else
+				returnString += ", " + iter.next();
+			numItems ++;
+		}
+		return returnString;
 	}
 	
 	// checks for an item in the inventory 
