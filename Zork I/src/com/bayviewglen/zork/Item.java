@@ -33,6 +33,7 @@ class Item {
 			allItems = new ArrayList<Item>();
 		}
 		allItems.add(this);
+		this.setBoolean();
 	}
 	
 	public Item() {
