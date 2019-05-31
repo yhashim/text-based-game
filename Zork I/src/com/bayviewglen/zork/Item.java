@@ -17,15 +17,15 @@ class Item {
 	private boolean isGiveable;
 	private boolean isTakeable;
 	private boolean isConsumable;
-	private boolean isUsable; 
+	private boolean isUsable;
 	private boolean isUnlockable;
 	private boolean isReadable;
 	private boolean isWatchable;
 	private boolean isOpenable;
-	
+
 	private static ArrayList<Item> allItems;
-	
-	public Item (String description, String weight) {
+
+	public Item(String description, String weight) {
 		this.description = description;
 		this.weight = Double.parseDouble(weight);
 		functions = new ArrayList<String>();
@@ -34,49 +34,41 @@ class Item {
 		}
 		allItems.add(this);
 	}
-	
+
 	public Item() {
 		// default constructor.
 		itemName = "DEFAULT ITEM";
 		description = "DEFAULT DESCRIPTION";
 		functions = new ArrayList<String>();
 	}
-	
+
 	public void addFunction(String function) throws Exception {
 		functions.add(function);
 		this.setBoolean(function);
 	}
-	
+
 	public void setBoolean(String function) {
 		// for (int i = 0; i < functions.size(); i++) {
-			if (functions.equals("give")){
-				isGiveable = true;
-			}
-			else if (functions.equals("take")){
-				isTakeable = true;
-			}
-			else if (functions.equals("eat")) {
-				isConsumable = true;
-			}
-			else if (functions.equals("use")) {
-				isUsable = true;
-			}
-			else if (functions.equals("unlock")) {
-				isUnlockable = true;
-			}
-			else if (functions.equals("read")) {
-				isReadable = true;
-			}
-			else if (functions.equals("watch")) {
-				isWatchable = true;
-			}
-			else if (functions.equals("open")) {
-				isOpenable = true;
-			}
-			
-		//}
+		if (functions.equals("give")) {
+			isGiveable = true;
+		} else if (functions.equals("take")) {
+			isTakeable = true;
+		} else if (functions.equals("eat")) {
+			isConsumable = true;
+		} else if (functions.equals("use")) {
+			isUsable = true;
+		} else if (functions.equals("unlock")) {
+			isUnlockable = true;
+		} else if (functions.equals("read")) {
+			isReadable = true;
+		} else if (functions.equals("watch")) {
+			isWatchable = true;
+		} else if (functions.equals("open")) {
+			isOpenable = true;
+		}
+		// }
 	}
-	
+
 	public static Item getItem(String string) {
 		for (Item i : allItems) {
 			if (i.getItemName().toLowerCase().equals(string)) {
@@ -103,8 +95,7 @@ class Item {
 	}
 
 	/**
-	 * Return a string describing the item's functions
-	 * ".
+	 * Return a string describing the item's functions ".
 	 */
 	private String functionString() {
 		String returnString = "Functions:";
@@ -135,61 +126,62 @@ class Item {
 	}
 
 	public void setWeight(String weight) {
-		this.weight = Double.parseDouble(weight);;
+		this.weight = Double.parseDouble(weight);
+		;
 	}
-	
+
 	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
-	
+
 	public int getAmount() {
 		return amount;
 	}
-	
+
 	public void setAmount(int newAmount) {
-		this.amount = newAmount; 
+		this.amount = newAmount;
 	}
-	
+
 	public void addAmount(int amount) {
 		this.amount += amount;
 	}
-	
+
 	public String examine() {
 		return description;
 	}
-	
+
 	public boolean take() {
-		return isTakeable; 
+		return isTakeable;
 	}
-	
+
 	public boolean open() {
 		return isOpenable;
 	}
-	
+
 	public boolean give() {
 		return isGiveable;
 	}
-	
+
 	public boolean unlock() {
 		return isUnlockable;
 	}
-	
+
 	public boolean read() {
 		return isReadable;
 	}
-	
+
 	public boolean use() {
 		return isUsable;
 	}
-	
+
 	public boolean watch() {
 		return isWatchable;
 	}
-	
+
 	public boolean drop() {
 		return isTakeable;
 	}
-	
+
 	public boolean eat() {
 		return isConsumable;
 	}
@@ -201,11 +193,11 @@ class Item {
 	public void setCurrentRoom(String currentRoom) {
 		this.currentRoom = currentRoom;
 	}
-	
+
 	public String getCurrentCharacter() {
 		return currentCharacter;
 	}
-	
+
 	public void setCurrentCharacter(String currentCharacter) {
 		this.currentCharacter = currentCharacter;
 	}
