@@ -20,6 +20,7 @@ class Character {
 		startingItems = new HashMap <String, Item>();
 		wantedItems = new ArrayList<String>();
 		// wantedItems = new HashMap <String, Item>();
+		speech = new ArrayList<String>();
 		functions = new ArrayList<String>(); 
 	}
 	
@@ -44,6 +45,10 @@ class Character {
 	
 	public void addToWantedItems(String x) {
 		wantedItems.add(x);	
+	}
+	
+	public void addToSpeech(String x) {
+		speech.add(x);	
 	}
 	
 //	public void addToWantedItems(Item item) {

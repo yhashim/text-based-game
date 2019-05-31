@@ -96,10 +96,12 @@ class Game {
 				Character character = new Character();
 				// Read the Name
 				String characterName = characterScanner.nextLine();
-				character.setCharacterName(characterName.split(":")[1].trim());
+				characterName = characterName.split(":")[1].trim();
+				character.setCharacterName(characterName);
 				// Put in starting location
 				String startingLocation = characterScanner.nextLine();
-				character.setStartingLocation(startingLocation.split(":")[1].trim());
+				startingLocation = startingLocation.split(":")[1].trim();
+				character.setStartingLocation(startingLocation);
 				// Assign its functions
 				String[] functions = characterScanner.nextLine().split(":")[1].trim().split(", ");
 				for (String x : functions) {
@@ -110,6 +112,11 @@ class Game {
 				for (String x : wantedItems2) {
 					character.addToWantedItems(x);
 					// character.addToWantedItems(Item.getItem(x));
+				}
+				// Character's speech
+				String[] speech = characterScanner.nextLine().split(":")[1].trim().split(", ");
+				for (String x : speech) {
+					character.addToSpeech(x);
 				}
 				// This puts the character we created in the masterCharacterMap
 				masterCharacterMap.put(characterName.toUpperCase(), character);
