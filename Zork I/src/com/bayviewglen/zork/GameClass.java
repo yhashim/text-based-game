@@ -151,7 +151,7 @@ class Game {
 				if (!currentRoom.equals("Starting Room:")) {
 					currentRoom = currentRoom.split(":")[1].trim();
 					item.setCurrentRoom(currentRoom);
-					Room accessRoom = masterRoomMap.get(item.getCurrentRoom());
+					Room accessRoom = masterRoomMap.get(currentRoom.toUpperCase().replaceAll(" ", "_"));
 					accessRoom.addToInventory(item, 1);
 				} else {
 					// Read the Starting Character
