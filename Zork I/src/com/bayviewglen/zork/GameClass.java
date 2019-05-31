@@ -153,7 +153,9 @@ class Game {
 					item.setCurrentRoom(currentRoom);
 					Room accessRoom = masterRoomMap.get(currentRoom.toUpperCase().trim().replaceAll(" ", "_"));
 					accessRoom.addToInventory(item, 1);
-				} 
+				} else {
+					currentRoom = null;
+				}
 				// else {
 					// Read the Starting Character
 					String currentCharacter = itemScanner.nextLine();
@@ -162,6 +164,8 @@ class Game {
 						item.setCurrentCharacter(currentCharacter.toUpperCase());
 						Character accessCharacter = masterCharacterMap.get(currentCharacter);
 						accessCharacter.addToInventory(item);
+					} else {
+						currentCharacter = null;
 					}
 				// }
 				// This puts the item we created in the masterItemMap
