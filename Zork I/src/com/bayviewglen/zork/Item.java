@@ -33,7 +33,6 @@ class Item {
 			allItems = new ArrayList<Item>();
 		}
 		allItems.add(this);
-		this.setBoolean();
 	}
 	
 	public Item() {
@@ -45,36 +44,37 @@ class Item {
 	
 	public void addFunction(String function) throws Exception {
 		functions.add(function);
+		this.setBoolean(function);
 	}
 	
-	public void setBoolean() {
-		for (int i = 0; i < functions.size(); i++) {
-			if (functions.get(i).equals("give")){
+	public void setBoolean(String function) {
+		// for (int i = 0; i < functions.size(); i++) {
+			if (functions.equals("give")){
 				isGiveable = true;
 			}
-			else if (functions.get(i).equals("take")){
+			else if (functions.equals("take")){
 				isTakeable = true;
 			}
-			else if (functions.get(i).equals("eat")) {
+			else if (functions.equals("eat")) {
 				isConsumable = true;
 			}
-			else if (functions.get(i).equals("use")) {
+			else if (functions.equals("use")) {
 				isUsable = true;
 			}
-			else if (functions.get(i).equals("unlock")) {
+			else if (functions.equals("unlock")) {
 				isUnlockable = true;
 			}
-			else if (functions.get(i).equals("read")) {
+			else if (functions.equals("read")) {
 				isReadable = true;
 			}
-			else if (functions.get(i).equals("watch")) {
+			else if (functions.equals("watch")) {
 				isWatchable = true;
 			}
-			else if (functions.get(i).equals("open")) {
+			else if (functions.equals("open")) {
 				isOpenable = true;
 			}
 			
-		}
+		//}
 	}
 	
 	public static Item getItem(String string) {
