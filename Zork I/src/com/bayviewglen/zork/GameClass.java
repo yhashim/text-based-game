@@ -343,7 +343,7 @@ class Game {
 			Player.addToInventory(masterItemMap.get(takeable), 1);
 			System.out.println("The " + takeable + " is now yours. Finders keepers!");
 		} else {
-			System.out.println("Sorry, we couldn't find that here.");
+			System.out.println("Sorry, we can't do that.");
 		}
 
 	}
