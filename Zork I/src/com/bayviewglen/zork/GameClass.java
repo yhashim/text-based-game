@@ -108,7 +108,8 @@ class Game {
 				// Tell them the items they want
 				List<String> wantedItems2 = Arrays.asList(characterScanner.nextLine().split(":")[1].trim().split(", "));
 				for (String x : wantedItems2) {
-					character.addToWantedItems(Item.getItem(x));
+					character.addToWantedItems(x);
+					// character.addToWantedItems(Item.getItem(x));
 				}
 				// This puts the character we created in the masterCharacterMap
 				masterCharacterMap.put(characterName.toUpperCase(), character);

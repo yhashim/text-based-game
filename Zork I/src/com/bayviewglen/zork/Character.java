@@ -9,7 +9,8 @@ class Character {
 	private String characterName;
 	private String startingLocation;
 	private HashMap <String, Item> startingItems;
-	private HashMap <String, Item> wantedItems; // fix
+	// private HashMap <String, Item> wantedItems;
+	private ArrayList<String> wantedItems;
 	private HashMap <String, Item> items; // fix
 	private ArrayList<String> functions; // fix
 	private ArrayList<String> speech;
@@ -17,7 +18,8 @@ class Character {
 	public Character() {
 		items = new HashMap<String, Item>();
 		startingItems = new HashMap <String, Item>();
-		wantedItems = new HashMap <String, Item>();
+		wantedItems = new ArrayList<String>();
+		// wantedItems = new HashMap <String, Item>();
 		functions = new ArrayList<String>(); 
 	}
 	
@@ -40,11 +42,13 @@ class Character {
 		items.put(item.getItemName(), item);
 	}
 	
-	// adds an item to the inventory
-	// if an item is already 
-	public void addToWantedItems(Item item) {
-		wantedItems.put(item.getItemName(), item);	
+	public void addToWantedItems(String x) {
+		wantedItems.add(x);	
 	}
+	
+//	public void addToWantedItems(Item item) {
+//		wantedItems.put(item.getItemName(), item);	
+//	}
 	
 	// checks for an item in the inventory 
 	// return item if it is, null if not
@@ -85,13 +89,21 @@ class Character {
 		this.startingItems = startingItems;
 	}
 	
-	public HashMap <String, Item> getWantedItems() {
+	public ArrayList<String> getWantedItems() {
 		return wantedItems;
 	}
 
-	public void setWantedItems(HashMap <String, Item> wantedItems) {
+	public void setWantedItems(ArrayList<String> wantedItems) {
 		this.wantedItems = wantedItems;
 	}
+	
+//	public HashMap <String, Item> getWantedItems() {
+//		return wantedItems;
+//	}
+//
+//	public void setWantedItems(HashMap <String, Item> wantedItems) {
+//		this.wantedItems = wantedItems;
+//	}
 	
 	public ArrayList<String> getSpeech() {
 		return speech;
