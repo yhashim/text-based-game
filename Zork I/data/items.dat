@@ -26,7 +26,7 @@ Item Name: Computer2
 Item Description: This is a computer. A password is required to unlock it.
 Item Weight: 30
 Functions: unlock, read, examine
-Starting Room: Mr. M's Office
+Starting Room: Mr. Matsuda's Office
 Starting Character:
 Item Name: Computer3
 Item Description: This is a computer. A password is required to unlock it.
@@ -38,7 +38,7 @@ Item Name: Drawer
 Item Description: This is a drawer.
 Item Weight: 30
 Functions: open, examine
-Starting Room: Mr. M's Office
+Starting Room: Mr. Matsuda's Office
 Starting Character:
 Item Name: Pen
 Item Description: This is a black pen that is used as a writing utensil.
@@ -134,7 +134,7 @@ Item Name: Slip Of Paper
 Item Description: This is a small slip of paper. Written on it in pencil are the numbers "6708".
 Item Weight: 1
 Functions: take, examine, drop
-Starting Room: Mr. M's Office
+Starting Room: Mr. Matsuda's Office
 Starting Character:
 Item Name: Old Key
 Item Description: This is an old key. It will give you access to the forest pathway.
