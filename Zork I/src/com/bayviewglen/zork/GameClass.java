@@ -151,14 +151,16 @@ class Game {
 				if (!currentRoom.equals("Starting Room:")) {
 					currentRoom = currentRoom.split(":")[1].trim();
 					item.setCurrentRoom(currentRoom);
-					masterRoomMap.get(item.getCurrentRoom()).addToInventory(item, 1);
+					Room accessRoom = masterRoomMap.get(item.getCurrentRoom());
+					accessRoom.addToInventory(item, 1);
 				} else {
 					// Read the Starting Character
 					String currentCharacter = itemScanner.nextLine();
 					if (!currentCharacter.equals("Starting Character:")) {
 						currentCharacter = currentCharacter.split(":")[1].trim();
 						item.setCurrentCharacter(currentCharacter);
-						masterCharacterMap.get(currentCharacter).addToInventory(item);
+						Character accessCharacter = masterCharacterMap.get(currentCharacter);
+						accessCharacter.addToInventory(item);
 					}
 				}
 				// This puts the item we created in the masterItemMap
