@@ -42,9 +42,10 @@ class CommandWords {
 	 */
 	public void showAll() {
 		for (int i = 0; i < validCommands.length; i++) {
-			System.out.print(validCommands[i] + "  ");
+			System.out.print(validCommands[i] + ", ");
+			if (i % 5 == 0 && i != 0) {
+				System.out.println("");
+			}
 		}
-
-		System.out.println();
 	}
 }
