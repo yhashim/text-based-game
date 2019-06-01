@@ -263,7 +263,7 @@ class Game {
 			read(command);
 		} else if (commandWord.equals("use")) {
 			use(command);
-		} else if (commandWord.equals("write") || commandWord.equals("kill")) {
+		} else if ((commandWord.equals("write") || commandWord.equals("kill")) && (command.getCharacter() != null) {
 			write(command);
 		} else if (commandWord.equals("watch")) {
 			watch(command);
@@ -281,6 +281,8 @@ class Game {
 			if (command.hasSecondWord()) {
 				eat(command);
 			}
+		}else {
+			System.out.println("I don't know what you mean...");
 		}
 		return false;
 	}
