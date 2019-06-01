@@ -246,10 +246,9 @@ class Game {
 		}
 		if (commandWord.equals("help")) {
 			printHelp();
-		} 
-		else if (commandWord.equals("inventory") || commandWord.equals("i")) {
+		} else if (commandWord.equals("inventory") || commandWord.equals("i")) {
 			Player.displayInventory();
-		}else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
+		} else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
 				|| commandWord.equals("run")) {
 			goRoom(command);
 		} else if (commandWord.equals("take") || commandWord.equals("pick up")) {
