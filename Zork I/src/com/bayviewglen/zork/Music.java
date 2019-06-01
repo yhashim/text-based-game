@@ -25,7 +25,7 @@ public class Music{
 				//clip.start();
 				//clip.loop(Clip.LOOP_CONTINUOUSLY);
 				
-				JOptionPane.showMessageDialog(null, "Press OK to stop playing");
+				//JOptionPane.showMessageDialog(null, "Press OK to stop playing");
 			}else {
 				System.out.println("Can't find file");
 				
@@ -49,5 +49,6 @@ public class Music{
    
 	
 }
+
 
 

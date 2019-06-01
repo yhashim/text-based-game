@@ -121,7 +121,7 @@ class Parser {
 		// add names of items here
 		String[] gameItems = { "deathnote", "death note", "television", "tv", "computer", "drawer", "front door", "pen",
 				"apple", "chips", "task force employee list",
-				"employee list", "flashlight", "stuffed bear", "bear", "kira case file", "kira file",
+				"employee list", "flashlight", "teddy", "bear", "kira case file", "kira file",
 				"most wanted file", "taxes file", "task force key card", "newspaper", "mr. m's keycard",
 				"slip of paper", "paper", "old key", "letter", "task force l's key", "l's key", "wanted poster",
 				"poster" };
