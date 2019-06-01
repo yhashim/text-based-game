@@ -116,7 +116,7 @@ class Room {
 	 */
 	public String longDescription() {
 
-		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString();
+		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + getCharacters() + "\n" + exitString();
 	}
 
 	/**
@@ -200,15 +200,11 @@ class Room {
 	
 	public String getCharacters() {
 		String returnString = "Characters:";
-		Set keys = getmasterCharacterMap().keySet();
-		int numCharacters = 0;
+		Set values = Game.getmasterCharacterMap().valueSet();
 		
-		for (Iterator iter = keys.iterator(); iter.hasNext();) {
-			if (numCharacters == 0)
+		for (Iterator iter = values.iterator(); iter.hasNext();) {
+			if (iter.getStartingLocation().equals(roomName))
 				returnString += " " + iter.next();
-			else
-				returnString += ", " + iter.next();
-			numCharacters ++;
 		}
 		return returnString;
 	}
