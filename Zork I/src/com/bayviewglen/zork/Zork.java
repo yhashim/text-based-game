@@ -12,6 +12,7 @@ public class Zork {
 		// Type 'help' if you need help.
 		Game game = new Game();
 		game.play();
+		Music.playMusic(LightTheme.wav);
 	}
 
 	private static void preGame() {
