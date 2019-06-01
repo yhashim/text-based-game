@@ -1,12 +1,29 @@
 package com.bayviewglen.zork;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Player {
 	private static HashMap <String, Item> items = new HashMap <String, Item>();
 	private static ArrayList <String> peopleKilled = new ArrayList <String>();
 	private static int numKilled = peopleKilled.size();
 
+	public static String displayInventory() {
+		String returnString = "Inventory:";
+		Set keys = items.keySet();
+		if (keys.size() == 0)
+			returnString += " none";
+		int numItems = 0;
+		for (Iterator iter = keys.iterator(); iter.hasNext();) {
+			if (numItems ==0)
+				returnString += " " + iter.next();
+			else
+				returnString += ", " + iter.next();
+			numItems ++;
+		}
+		return returnString;
+	}
 	//adds name to list of people killed 
 	//increments number of people killed
 	public static void addKill(String name) {
@@ -34,12 +51,12 @@ public class Player {
 	// adds an item to the inventory
 	// if an item is already in the inventory, increments amount
 	public static void addToInventory(Item item, int amount) {
-		//if (items.containsKey(item.getItemName())) {
-		//	items.get(item.getItemName()).addAmount(amount);
-		//}
-		//else {
+		if (items.containsKey(item.getItemName())) {
+			items.get(item.getItemName()).addAmount(amount);
+		}
+		else {
 			items.put(item.getItemName(), item);
-		//}
+		}
 	}
 	
 	/*

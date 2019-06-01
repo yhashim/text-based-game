@@ -153,7 +153,7 @@ class Parser {
 		// separate them on lines based on their function
 		String[] commands = { "go", "walk", "proceed", "run", "write", "kill", "use", "read", "take", "pick up",
 				"examine", "look", "watch", "unlock", "open", "give", "hand", "drop", "put down", "leave", "quit",
-				"finish", "retire", "help", "eat", "consume" };
+				"finish", "retire", "help", "eat", "consume", "inventory" , "i" };
 		string = string.toLowerCase();
 		for (int i = 0; i < commands.length; i++) {
 			if (string.equals(commands[i])) {
