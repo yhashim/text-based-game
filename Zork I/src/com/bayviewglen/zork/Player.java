@@ -34,12 +34,12 @@ public class Player {
 	// adds an item to the inventory
 	// if an item is already in the inventory, increments amount
 	public static void addToInventory(Item item, int amount) {
-		if (items.containsKey(item.getItemName())) {
-			items.get(item.getItemName()).addAmount(amount);
-		}
-		else {
+		//if (items.containsKey(item.getItemName())) {
+		//	items.get(item.getItemName()).addAmount(amount);
+		//}
+		//else {
 			items.put(item.getItemName(), item);
-		}
+		//}
 	}
 	
 	/*
