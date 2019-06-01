@@ -508,6 +508,7 @@ class Game {
 		} else if (Player.contains(droppable)) {
 			currentRoom.addToInventory(masterItemMap.get(droppable.toUpperCase()), 1);
 			Player.removeItem(droppable, 1);
+			System.out.println(droppable.toUpperCase().substring(0, 1) + droppable.toLowerCase().substring(1) + " dropped.");
 		} else {
 			System.out.println("You have no " + droppable + " to drop.");
 		}
