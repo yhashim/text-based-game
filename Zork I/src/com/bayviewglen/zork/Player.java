@@ -13,7 +13,7 @@ public class Player {
 		String returnString = "Inventory:";
 		Set keys = items.keySet();
 		if (keys.size() == 0)
-			returnString += " nothing";
+			returnString += " Death Note";
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
 				returnString += " " + iter.next();
 		}
