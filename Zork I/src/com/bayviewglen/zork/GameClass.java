@@ -385,7 +385,7 @@ class Game {
 	private void give(Command command) {
 		String giveable = command.getObject();
 		if (masterItemMap.get(giveable).give()) {
-			Character.addToInventory(masterItemMap.get(giveable));
+			Character.addToInventory(masterItemMap.get(giveable.toUpperCase()));
 			Player.removeItem(giveable, 1);
 		} else {
 			System.out.println("You wouldn't want to give " + giveable + " away!");
@@ -399,7 +399,7 @@ class Game {
 	// ask player to find key
 	private void unlock(Command command) {
 		String unlockable = command.getObject();
-		if (masterItemMap.get(unlockable).unlock()) {
+		if (masterItemMap.get(unlockable.toUpperCase()).unlock()) {
 
 		}
 
@@ -410,7 +410,7 @@ class Game {
 	// else, tell player there is nothing to read on ___ object
 	private void read(Command command) {
 		String readable = command.getObject();
-		if (masterItemMap.get(readable).read() && currentRoom.contains(masterItemMap.get(readable))) {
+		if (masterItemMap.get(readable.toUpperCase()).read() && currentRoom.contains(masterItemMap.get(readable.toUpperCase()))) {
 			if (readable.equals("task force employee list")) {
 				System.out.println(
 						"List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas");
@@ -446,12 +446,12 @@ class Game {
 	// else, explain it cannot be used
 	private void use(Command command) {
 		String usable = command.getObject();
-		if (masterItemMap.get(usable).use() && Player.contains(usable)) {
-			if (masterItemMap.get(usable).equals("flashlight") && currentRoom.getRoomName().equals("warehouse")) {
+		if (masterItemMap.get(usable.toUpperCase()).use() && Player.contains(usable)) {
+			if (masterItemMap.get(usable.toUpperCase()).equals("flashlight") && currentRoom.getRoomName().equals("warehouse")) {
 				System.out.println(
 						"The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.");
 			}
-			if (masterItemMap.get(usable).equals("flashlight")) {
+			if (masterItemMap.get(usable.toUpperCase()).equals("flashlight")) {
 				System.out.println("The space in front of you lights up.");
 			}
 		} else {
@@ -480,7 +480,7 @@ class Game {
 	// else, say - you can't watch ___, that would be boring!
 	private void watch(Command command) {
 		String watchable = command.getObject();
-		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
+		if (masterItemMap.get(watchable.toUpperCase()).watch() && currentRoom.contains(masterItemMap.get(watchable.toUpperCase()))) {
 			// if killings < 5 display "Breaking News! \nSerial killer Arayoshi Hatori has
 			// just gone on another murder spree, killing a total of 10 students from the
 			// University of Tokyo and professor Miss Amane."
@@ -497,8 +497,8 @@ class Game {
 	// else, state they do not even have this object to put down
 	private void drop(Command command) {
 		String droppable = command.getObject();
-		if (masterItemMap.get(droppable).drop() && Player.contains(droppable)) {
-			currentRoom.addToInventory(masterItemMap.get(droppable), 1);
+		if (masterItemMap.get(droppable.toUpperCase()).drop() && Player.contains(droppable)) {
+			currentRoom.addToInventory(masterItemMap.get(droppable.toUpperCase()), 1);
 			Player.removeItem(droppable, 1);
 		} else {
 			System.out.println("You have no " + droppable + " to drop.");
@@ -513,7 +513,7 @@ class Game {
 	// else, print - dishonour on you! filthy human - you can't eat a ___!
 	private void eat(Command command) {
 		String consumable = command.getObject();
-		if (masterItemMap.get(consumable).eat() && Player.contains(consumable)) {
+		if (masterItemMap.get(consumable.toUpperCase()).eat() && Player.contains(consumable)) {
 			if (consumable.equals("apple")) {
 				System.out.println("Dont eat that! Ryuk wants that apple!");
 			} else {
