@@ -9,20 +9,15 @@ public class Player {
 	private static ArrayList <String> peopleKilled = new ArrayList <String>();
 	private static int numKilled = peopleKilled.size();
 
-	public static String displayInventory() {
+	public static void displayInventory() {
 		String returnString = "Inventory:";
 		Set keys = items.keySet();
 		if (keys.size() == 0)
-			returnString += " none";
-		int numItems = 0;
+			returnString += " nothing";
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
-			if (numItems ==0)
 				returnString += " " + iter.next();
-			else
-				returnString += ", " + iter.next();
-			numItems ++;
 		}
-		return returnString;
+		System.out.println(returnString);
 	}
 	//adds name to list of people killed 
 	//increments number of people killed
