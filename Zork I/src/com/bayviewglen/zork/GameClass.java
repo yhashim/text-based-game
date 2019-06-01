@@ -529,7 +529,7 @@ class Game {
 	private void eat(Command command) {
 		String consumable = command.getObject();
 		if (masterItemMap.get(consumable.toUpperCase()).eat() && Player.contains(consumable)) {
-			if (consumable.equals("apple")) {
+			if (consumable.equals("mcintosh") || consumable.equals("fuji") || consumable.equals("honeycrisp") || consumable.equals("braeburn")) {
 				System.out.println("Dont eat that! Ryuk wants that apple!");
 			} else {
 				Player.removeItem(consumable, 1);
