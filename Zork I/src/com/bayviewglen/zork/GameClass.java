@@ -263,7 +263,7 @@ class Game {
 			read(command);
 		} else if (commandWord.equals("use")) {
 			use(command);
-		} else if ((commandWord.equals("write") || commandWord.equals("kill")) && (command.getCharacter() != null) {
+		} else if ((commandWord.equals("write") || commandWord.equals("kill")) && (command.getCharacter() != null)) {
 			write(command);
 		} else if (commandWord.equals("watch")) {
 			watch(command);
