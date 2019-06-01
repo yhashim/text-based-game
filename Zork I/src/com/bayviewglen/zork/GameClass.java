@@ -474,6 +474,10 @@ class Game {
 	// else, print - you cannot kill ___!
 	private void write(Command command) {
 		String killable = command.getCharacter();
+		if (!Player.contains("pen")) {
+			System.out.println("You cannot kill without a pen!");
+			return;
+		}
 		if (!killable.toLowerCase().equals("ryuk")) {
 			Player.addKill(killable);
 			System.out.println(
