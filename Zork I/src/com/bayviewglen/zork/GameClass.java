@@ -341,6 +341,10 @@ class Game {
 	// tell player that it is not there
 	private void take(Command command) {
 		String takeable = command.getObject();
+		if (Player.contains(takeable.toUpperCase())) {
+			System.out.println("You already have that...");
+			return;
+		}
 		if (currentRoom.contains(masterItemMap.get(takeable.toUpperCase())) && masterItemMap.get(takeable.toUpperCase()).take()) {
 			currentRoom.removeItem(takeable, 1);
 			Player.addToInventory(masterItemMap.get(takeable.toUpperCase()), 1);
