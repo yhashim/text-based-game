@@ -51,7 +51,8 @@ public class Player {
 			items.get(item.getItemName()).addAmount(amount);
 		}
 		else {
-			items.put(item.getItemName(), item);
+			String putIn = item.getItemName().toUpperCase();
+			items.put(putIn, item);
 		}
 	}
 	
@@ -70,6 +71,7 @@ public class Player {
 	// checks for an item in the inventory 
 	// return true if it is, false if not
 	public static boolean contains(String name) {
+		name = name.toUpperCase();
 		if (items.containsKey(name)) {
 			return true;
 		}	
@@ -89,11 +91,12 @@ public class Player {
 	}
 	
 	public static void removeItem(String name, int amount) {
-		if (items.get(name).getAmount() == 1) {
-			items.remove(name);
+		String putIn = name.toUpperCase();
+		if (items.get(putIn).getAmount() == 1) {
+			items.remove(putIn);
 		}
 		else {
-			items.get(name).setAmount(items.get(name).getAmount()-1); 
+			items.get(putIn).setAmount(items.get(putIn).getAmount()-1); 
 		}
 	}
 	
