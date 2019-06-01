@@ -10,10 +10,10 @@ public class Player {
 	private static int numKilled = peopleKilled.size();
 
 	public static void displayInventory() {
-		String returnString = "Inventory:";
+		String returnString = "Inventory: Death Note";
 		Set keys = items.keySet();
-		if (keys.size() == 0)
-			returnString += " Death Note";
+		if (keys.size() >= 1)
+			returnString += ", ";
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
 				returnString += " " + iter.next();
 		}
