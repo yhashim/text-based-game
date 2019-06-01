@@ -287,7 +287,7 @@ class Game {
 		return false;
 	}
 
-	// implementations of user commands:
+	// implementations of user commands:      
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic message
 	 * and a list of the command words.
