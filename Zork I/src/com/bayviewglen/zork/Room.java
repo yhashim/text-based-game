@@ -200,8 +200,7 @@ class Room {
 	
 	public String getCharacters() {
 		String returnString = "Characters:";
-		Set values = Game.getmasterCharacterMap().valueSet();
-		
+		Set values = Game.getMasterCharacterMap().valueSet();
 		for (Iterator iter = values.iterator(); iter.hasNext();) {
 			if (iter.getStartingLocation().equals(roomName))
 				returnString += " " + iter.next();
