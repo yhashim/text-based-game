@@ -535,6 +535,8 @@ class Game {
 				Player.removeItem(consumable, 1);
 				System.out.println("Crunchity munchity you ate the " + consumable + ".");
 			}
+		} else if (masterItemMap.get(consumable.toUpperCase()).eat()) {
+			System.out.println("You dont have " + consumable + " to eat...");
 		} else {
 			System.out.println("Dishonour on you! You filthy human - you can't eat the " + consumable + "!");
 		}
