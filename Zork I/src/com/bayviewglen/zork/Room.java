@@ -115,8 +115,8 @@ class Room {
 	 * Exits: north west
 	 */
 	public String longDescription() {
-
-		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + getCharacters() + "\n" + exitString();
+		// return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + getCharacters() + "\n" + exitString();
+		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString();
 	}
 
 	/**
@@ -198,16 +198,16 @@ class Room {
 		return returnString;
 	}
 	
-	public String getCharacters() {
-		String returnString = "Characters:";
-		Set values = Game.getMasterCharacterMap().valueSet();
-		for (Iterator iter = values.iterator(); iter.hasNext();) {
-			Character n = (Character)iter;
-			if (n.getStartingLocation().equals(roomName))
-				returnString += " " + iter.next();
-		}
-		return returnString;
-	}
+//	public String getCharacters() {
+//		String returnString = "Characters:";
+//		Set values = Game.getMasterCharacterMap().valueSet();
+//		for (Iterator iter = values.iterator(); iter.hasNext();) {
+//			Character n = (Character)iter;
+//			if (n.getStartingLocation().equals(roomName))
+//				returnString += " " + iter.next();
+//		}
+//		return returnString;
+//	}
 	// checks for an item in the inventory 
 		// return true if it is, false if not
 		public boolean contains(Item item) {
