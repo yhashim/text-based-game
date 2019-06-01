@@ -551,5 +551,8 @@ class Game {
 		}
 
 	}
+	private HashMap <String, Character> getMasterCharacterMap() {
+		return masterCharacterMap;
+	}
 
 }

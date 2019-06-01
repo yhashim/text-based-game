@@ -198,6 +198,20 @@ class Room {
 		return returnString;
 	}
 	
+	public String getCharacters() {
+		String returnString = "Characters:";
+		Set keys = getmasterCharacterMap().keySet();
+		int numCharacters = 0;
+		
+		for (Iterator iter = keys.iterator(); iter.hasNext();) {
+			if (numCharacters == 0)
+				returnString += " " + iter.next();
+			else
+				returnString += ", " + iter.next();
+			numCharacters ++;
+		}
+		return returnString;
+	}
 	// checks for an item in the inventory 
 		// return true if it is, false if not
 		public boolean contains(Item item) {
