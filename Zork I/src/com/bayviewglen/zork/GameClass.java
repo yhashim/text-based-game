@@ -499,7 +499,9 @@ class Game {
 	// else, state they do not even have this object to put down
 	private void drop(Command command) {
 		String droppable = command.getObject();
-		if (masterItemMap.get(droppable.toUpperCase()).drop() && Player.contains(droppable)) {
+		if (droppable.toLowerCase().equals("deathnote") || droppable.toLowerCase().equals("death note")) {
+			System.out.println("You can't drop that.");
+		} else if (Player.contains(droppable)) {
 			currentRoom.addToInventory(masterItemMap.get(droppable.toUpperCase()), 1);
 			Player.removeItem(droppable, 1);
 		} else {
