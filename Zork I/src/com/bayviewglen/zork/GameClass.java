@@ -341,7 +341,7 @@ class Game {
 		String takeable = command.getObject();
 		if (currentRoom.contains(masterItemMap.get(takeable.toUpperCase())) && masterItemMap.get(takeable.toUpperCase()).take()) {
 			currentRoom.removeItem(takeable, 1);
-			Player.addToInventory(masterItemMap.get(takeable), 1);
+			Player.addToInventory(masterItemMap.get(takeable.toUpperCase()), 1);
 			System.out.println("The " + takeable + " is now yours. Finders keepers!");
 		} else {
 			System.out.println("Sorry, we can't do that.");
