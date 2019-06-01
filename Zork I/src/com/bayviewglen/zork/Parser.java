@@ -136,9 +136,9 @@ class Parser {
 
 	public static boolean stringIsCharacter(String string) {
 		// add names of characters here
-		String[] characterNames = { "Ryuk", "Arayoshi Hatori", "Shingo Mido", "Kiyomi Takada", "Reiji Namikawa",
-				"Mashiko Kido", "Takeshi Ooi", "Touta Matsuda", "Raye Penber", "Naomi Misora", "Soichiro Yagami",
-				"L Lawliet" };
+		String[] characterNames = { "Ryuk", "Arayoshi", "Hatori", "Shingo",  "Mido", "Kiyomi", "Takada", "Reiji", "Namikawa",
+				"Mashiko", "Kido", "Takeshi", "Ooi", "Touta", "Matsuda", "Raye",  "Penber", "Naomi", "Misora", "Soichiro", "Yagami",
+				"L", "Lawliet" };
 		string = string.toLowerCase();
 		for (int i = 0; i < characterNames.length; i++) {
 			if (string.equals(characterNames[i].toLowerCase())) {

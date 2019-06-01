@@ -471,9 +471,9 @@ class Game {
 		if (!killable.toLowerCase().equals("ryuk")) {
 			Player.addKill(killable);
 			System.out.println(
-					"As you finish writing the name down you hear thunder and lightning outside. You hear a loud bang behind you.\r\n");
+					"You let out a maniacal laugh. HAhAHaHA! \r\n");
 		} else {
-			System.out.println("Ryuk: You abominable human! I thought you were smarter than this! I am immortal...");
+			System.out.println("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!");
 		}
 	}
 
