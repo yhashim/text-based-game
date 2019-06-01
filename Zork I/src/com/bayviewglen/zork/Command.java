@@ -78,7 +78,7 @@ class Command {
 	}
 
 	/**
-	 * Return the command word of this command. If the command was not understood,
+	 * Return the object of this command. If the object was not understood,
 	 * the result is null.
 	 */
 	public String getObject() {
