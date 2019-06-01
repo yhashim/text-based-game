@@ -28,6 +28,7 @@ import java.util.Scanner;
 class Game {
 	private Parser parser;
 	private Room currentRoom;
+	private Room previousRoom;
 	// This is a MASTER object that contains all of the rooms and is easily
 	// accessible.
 	// The key will be the name of the room -> no spaces (Use all caps and
@@ -244,7 +245,10 @@ class Game {
 			goRoom(command);
 			return false;
 		}
-		if (commandWord.equals("help")) {
+		else if (commandWord.equals("p")) {
+			goPreviousRoom();
+		}
+		else if (commandWord.equals("help")) {
 			printHelp();
 		} else if (commandWord.equals("inventory") || commandWord.equals("i")) {
 			Player.displayInventory();
@@ -309,6 +313,7 @@ class Game {
 				System.out.println("Sorry, I did not understand that. Please try again.");
 				return;
 			} else {
+				Room previousRoom = currentRoom;
 				Room nextRoom = currentRoom.nextRoom(direction);
 				if (nextRoom == null)
 					System.out.println("There is no door in that direction!");
@@ -330,6 +335,10 @@ class Game {
 		}
 	}
 
+	private void goPreviousRoom() {
+		currentRoom = previousRoom; 
+	}
+	
 	// prints the description of the item
 	private void examine(Command command) {
 		System.out.println(masterItemMap.get(command.getObject()).examine());

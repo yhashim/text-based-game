@@ -165,7 +165,7 @@ class Parser {
 
 	public static boolean stringIsDirection(String string) {
 		// add directions here
-		String[] directions = { "north", "east", "south", "west", "down", "up" };
+		String[] directions = { "north", "east", "south", "west", "down", "up"};
 		string = string.toLowerCase();
 		for (int i = 0; i < directions.length; i++) {
 			if (string.equals(directions[i])) {
