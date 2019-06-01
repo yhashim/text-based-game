@@ -13,9 +13,9 @@ public class Player {
 		String returnString = "Inventory: Death Note";
 		Set keys = items.keySet();
 		if (keys.size() >= 1)
-			returnString += ", ";
+			returnString += " ";
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
-				returnString += " " + iter.next();
+				returnString += ", " + iter.next().toString().toLowerCase();
 		}
 		System.out.println(returnString);
 	}
