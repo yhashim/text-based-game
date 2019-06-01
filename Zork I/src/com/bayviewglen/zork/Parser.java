@@ -121,8 +121,8 @@ class Parser {
 		// add names of items here
 		String[] gameItems = { "deathnote", "death note", "television", "tv", "computer", "drawer", "front door", "pen",
 				"apple", "chips", "task force employee list",
-				"employee list", "flashlight", "teddy", "bear", "kira case file", "K file",
-				"most wanted file", "T file", "task force key card", "newspaper", "mr. m's keycard",
+				"employee list", "flashlight", "teddy", "bear", "kira case file", "K-file",
+				"most wanted file", "T-file", "task force key card", "newspaper", "mr. m's keycard",
 				"slip of paper", "paper", "old key", "letter", "task force l's key", "l's key", "wanted poster",
 				"poster" };
 		string = string.toLowerCase();
