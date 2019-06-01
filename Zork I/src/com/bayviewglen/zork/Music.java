@@ -9,7 +9,7 @@ import javax.sound.sampled.DataLine;
 import javax.swing.JOptionPane;
 
 public class Music{
-	 
+	  
 	void playMusic (String musicLocation) {
 		
 		try {
