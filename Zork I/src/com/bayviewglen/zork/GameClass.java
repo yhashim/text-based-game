@@ -256,7 +256,7 @@ class Game {
 		} else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
 				|| commandWord.equals("run")) {
 			goRoom(command);
-		} else if ((commandWord.equals("take") || commandWord.equals("pick up")) && command.getObject() != null) {
+		} else if ((commandWord.equals("take") || commandWord.equals("seize")) && command.getObject() != null) {
 			take(command);
 		} else if (commandWord.equals("open") && command.getObject() != null) {
 			open(command);

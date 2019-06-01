@@ -151,7 +151,7 @@ class Parser {
 	public static boolean stringIsCommand(String string) {
 		// add commands here
 		// separate them on lines based on their function
-		String[] commands = { "go", "walk", "proceed", "run", "write", "kill", "use", "read", "take", "pick up",
+		String[] commands = { "go", "walk", "proceed", "run", "write", "kill", "use", "read", "take", "seize",
 				"examine", "look", "watch", "unlock", "open", "give", "hand", "drop", "put down", "leave", "quit",
 				"finish", "retire", "help", "eat", "consume", "inventory" , "i" };
 		string = string.toLowerCase();
