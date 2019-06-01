@@ -251,25 +251,25 @@ class Game {
 		} else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
 				|| commandWord.equals("run")) {
 			goRoom(command);
-		} else if (commandWord.equals("take") || commandWord.equals("pick up")) {
+		} else if ((commandWord.equals("take") || commandWord.equals("pick up")) && command.getObject() != null) {
 			take(command);
-		} else if (commandWord.equals("open")) {
+		} else if (commandWord.equals("open") && command.getObject() != null) {
 			open(command);
-		} else if (commandWord.equals("give") || commandWord.equals("hand")) {
+		} else if ((commandWord.equals("give") || commandWord.equals("hand")) && command.getObject() != null && command.getCharacter() != null) {
 			give(command);
 		} else if (commandWord.equals("unlock")) {
 			unlock(command);
-		} else if (commandWord.equals("read")) {
+		} else if (commandWord.equals("read") && command.getObject() != null) {
 			read(command);
-		} else if (commandWord.equals("use")) {
+		} else if (commandWord.equals("use") && command.getObject() !=null) {
 			use(command);
 		} else if ((commandWord.equals("write") || commandWord.equals("kill")) && (command.getCharacter() != null)) {
 			write(command);
-		} else if (commandWord.equals("watch")) {
+		} else if (commandWord.equals("watch") && command.getObject() != null) {
 			watch(command);
-		} else if (commandWord.equals("drop") || commandWord.equals("put down") || commandWord.equals("leave")) {
+		} else if ((commandWord.equals("drop") || commandWord.equals("put down") || commandWord.equals("leave")) && command.getObject() != null) {
 			drop(command);
-		} else if (commandWord.equals("eat") || commandWord.equals("consume")) {
+		} else if ((commandWord.equals("eat") || commandWord.equals("consume")) && (command.getObject() != null)) {
 			eat(command);
 		} else if (commandWord.equals("quit")) {
 			if (command.hasSecondWord()) {
@@ -287,7 +287,7 @@ class Game {
 		return false;
 	}
 
-	// implementations of user commands:
+	// implementations of user commands:      
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic message
 	 * and a list of the command words.
@@ -311,7 +311,7 @@ class Game {
 			} else {
 				Room nextRoom = currentRoom.nextRoom(direction);
 				if (nextRoom == null)
-					System.out.println("There is no door!");
+					System.out.println("There is no door in that direction!");
 				else {
 					currentRoom = nextRoom;
 					System.out.println(currentRoom.longDescription());
@@ -529,7 +529,7 @@ class Game {
 	private void eat(Command command) {
 		String consumable = command.getObject();
 		if (masterItemMap.get(consumable.toUpperCase()).eat() && Player.contains(consumable)) {
-			if (consumable.equals("apple")) {
+			if (consumable.equals("mcintosh") || consumable.equals("fuji") || consumable.equals("honeycrisp") || consumable.equals("braeburn")) {
 				System.out.println("Dont eat that! Ryuk wants that apple!");
 			} else {
 				Player.removeItem(consumable, 1);
