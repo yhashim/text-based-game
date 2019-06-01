@@ -19,6 +19,7 @@ public class Player {
 		}
 		System.out.println(returnString);
 	}
+	
 	//adds name to list of people killed 
 	//increments number of people killed
 	public static void addKill(String name) {
