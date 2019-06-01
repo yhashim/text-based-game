@@ -17,7 +17,7 @@ public class Player {
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
 				returnString += ", " + iter.next().toString().toLowerCase();
 		}
-		System.out.println(returnString);
+		Zork.print(returnString, 75);
 	}
 	
 	//adds name to list of people killed 
@@ -30,7 +30,7 @@ public class Player {
 	//prints out list of peopleKilled
 	public static void peopleKilled(ArrayList <String> peopleKilled) {
 		for (String s : peopleKilled) {
-			System.out.println(s);
+			Zork.print(s+"\n", 75);
 		}
 	}
 	
@@ -40,7 +40,7 @@ public class Player {
 
 	public static void printKilled() {
 		for (String s: peopleKilled) {
-			System.out.println(s);
+			Zork.print(s+"\n", 75);
 		}
 	}
 	
