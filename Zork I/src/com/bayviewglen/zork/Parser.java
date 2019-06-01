@@ -33,12 +33,12 @@ class Parser {
 		ArrayList<String> input = new ArrayList<String>(); // will duplicate input elements after separating them, and
 															// then removes irrelevant information
 
-		System.out.print("\n> "); // print prompt
+		Zork.print("\n> ", 75); // print prompt
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			inputLine = reader.readLine();
 		} catch (java.io.IOException exc) {
-			System.out.println("There was an error during reading: " + exc.getMessage());
+			Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 		}
 		String temp = inputLine;
 		while (inputLine.length() > 0) {
@@ -60,14 +60,14 @@ class Parser {
 		String word1, word2, word3, word4, word5;
 		while (input.size() == 0) {
 			// if all the elements from input list are deleted, they were all irrelevant!
-			System.out.println("There was an error executing: \"" + temp
-					+ "\" because we could not find any useful information in it.");
+			Zork.print("There was an error executing: \"" + temp
+					+ "\" because we could not find any useful information in it.\n", 75);
 			// repeat the ask for command process until you get something
 			try {
-				System.out.print("\n> "); // print prompt
+				Zork.print("\n> ", 75); // print prompt
 				inputLine = reader.readLine();
 			} catch (java.io.IOException exc) {
-				System.out.println("There was an error during reading: " + exc.getMessage());
+				Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 			}
 		}
 		word1 = input.get(0);
