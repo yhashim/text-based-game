@@ -226,6 +226,4 @@ class Room {
 		//	items.get(name).setAmount(items.get(name).getAmount()-1); 
 		//}
 	}
-	
-	
 }
