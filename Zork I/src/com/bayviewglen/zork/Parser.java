@@ -72,6 +72,9 @@ class Parser {
 			try {
 				Zork.print("\n> ", 75); // print prompt
 				inputLine = reader.readLine();
+				
+				
+				//to do: create a method for this!!!
 				temp = inputLine;
 				while (inputLine.length() > 0) {
 					if (inputLine.indexOf(" ") > 0) {
@@ -83,6 +86,8 @@ class Parser {
 					inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
 					// find way to end with the last word
 				}
+				// end of to do: method
+				
 				
 				// if first input word is 'quit', no need to remove BadWords
 				firstInput = input.get(0);
@@ -94,17 +99,6 @@ class Parser {
 						}
 					}
 				}
-								
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 			} catch (java.io.IOException exc) {
 				Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 			}

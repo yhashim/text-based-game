@@ -61,6 +61,7 @@ class Command {
 		}
 	}
 	
+	
 	/**
 	 * Return the command word of this command. If the command was not understood,
 	 * the result is null.
@@ -114,7 +115,7 @@ class Command {
 			return true;
 		else 
 			return false;
-		//return (commandWords.size()>=2);
+		//return (commandWords.size()>=2); error: size is always 5...
 	}
 	
 	public String toString() {
