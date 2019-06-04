@@ -51,12 +51,18 @@ class Parser {
 			inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
 			// find way to end with the last word
 		}
-		for (int i = 0; i < input.size(); i++) {
-			if (isBadWord(input.get(i))) {
-				input.remove(i);
-				i--;
+		
+		// if first input word is 'quit', no need to remove BadWords
+		String firstInput = input.get(0);
+		if (!firstInput.equals("quit")) {
+			for (int i = 0; i < input.size(); i++) {
+				if (isBadWord(input.get(i))) {
+					input.remove(i);
+					i--;
+				}
 			}
 		}
+		
 		String word1, word2, word3, word4, word5;
 		while (input.size() == 0) {
 			// if all the elements from input list are deleted, they were all irrelevant!
@@ -66,6 +72,39 @@ class Parser {
 			try {
 				Zork.print("\n> ", 75); // print prompt
 				inputLine = reader.readLine();
+				temp = inputLine;
+				while (inputLine.length() > 0) {
+					if (inputLine.indexOf(" ") > 0) {
+						input.add(inputLine.substring(0, inputLine.indexOf(" ")));
+					} else {
+						input.add(inputLine);
+						inputLine = "";
+					}
+					inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
+					// find way to end with the last word
+				}
+				
+				// if first input word is 'quit', no need to remove BadWords
+				firstInput = input.get(0);
+				if (!firstInput.equals("quit")) {
+					for (int i = 0; i < input.size(); i++) {
+						if (isBadWord(input.get(i))) {
+							input.remove(i);
+							i--;
+						}
+					}
+				}
+								
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			} catch (java.io.IOException exc) {
 				Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 			}

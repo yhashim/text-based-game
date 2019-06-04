@@ -40,8 +40,14 @@ class Character {
 	// adds an item to the inventory
 	// if an item is already 
 	public void addToInventory(Item item) {
-		items.put(item.getItemName(), item);
+		if (items.containsKey(item.getItemName())) {
+			Zork.print("The character already has the item\n", 75);
+		}
+		else {
+			items.put(item.getItemName(), item);
+		}
 	}
+
 	
 	public void addToWantedItems(String x) {
 		wantedItems.add(x);	

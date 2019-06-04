@@ -40,7 +40,7 @@ Item Weight: 30
 Functions: open, examine
 Starting Room: Mr. Matsuda's Office
 Starting Character:
-Item Name: Pen
+Item Name: PEN
 Item Description: This is a black pen that is used as a writing utensil.
 Item Weight: 5
 Functions: take, drop, examine
@@ -70,7 +70,7 @@ Item Weight: 1
 Functions: eat, give, take, drop, examine
 Starting Room: Meeting Room Three
 Starting Character:
-Item Name: Chips
+Item Name: CHIPS
 Item Description: This is a bag of potato chips. Yum.
 Item Weight: 1
 Functions: eat, take, drop, give, examine

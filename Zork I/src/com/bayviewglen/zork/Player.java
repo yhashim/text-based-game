@@ -48,11 +48,13 @@ public class Player {
 	// if an item is already in the inventory, increments amount
 	public static void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
-			items.get(item.getItemName()).addAmount(amount);
+			//items.get(item.getItemName()).addAmount(amount);
+			Zork.print("The item already exists in inventory\n", 75);
 		}
 		else {
 			String putIn = item.getItemName().toUpperCase();
 			items.put(putIn, item);
+
 		}
 	}
 	
@@ -92,13 +94,12 @@ public class Player {
 	
 	public static void removeItem(String name, int amount) {
 		String putIn = name.toUpperCase();
-		if (items.get(putIn).getAmount() == 1) {
+		//if (items.get(putIn).getAmount() == 1) {
 			items.remove(putIn);
-		}
-		else {
-			items.get(putIn).setAmount(items.get(putIn).getAmount()-1); 
-		}
+		//}
+		//else {
+		//	items.get(putIn).setAmount(items.get(putIn).getAmount()-1); 
+		//}
 	}
 	
 }
-

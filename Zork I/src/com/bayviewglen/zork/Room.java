@@ -165,7 +165,8 @@ class Room {
 	
 	public void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
-			items.get(item.getItemName()).addAmount(amount);
+			//items.get(item.getItemName()).addAmount(amount);
+			Zork.print("The item already exists in the room\n", 75);
 		}
 		else {
 			items.put(item.getItemName(), item);
@@ -220,7 +221,7 @@ class Room {
 	
 	public void removeItem(String name, int amount) {
 		//if (items.get(name).getAmount() == 1) {
-			items.remove(name);
+			items.remove(name.toUpperCase());
 		//}
 		//else {
 		//	items.get(name).setAmount(items.get(name).getAmount()-1); 

@@ -29,6 +29,7 @@ class Game {
 	private Parser parser;
 	private Room currentRoom;
 	private Room previousRoom;
+	private Character currentCharacter;
 	// This is a MASTER object that contains all of the rooms and is easily
 	// accessible.
 	// The key will be the name of the room -> no spaces (Use all caps and
@@ -195,6 +196,7 @@ class Game {
 			initRooms("data/Rooms.dat");
 			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 			initCharacters("data/Characters.dat");
+			currentCharacter = masterCharacterMap.get("RYUK");
 			initItems("data/Items.dat");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -276,17 +278,26 @@ class Game {
 			drop(command);
 		} else if ((commandWord.equals("eat") || commandWord.equals("consume")) && (command.getObject() != null)) {
 			eat(command);
+		} else if (commandWord.equals("examine") && command.getObject() != null) {
+			examine(command);
 		} else if (commandWord.equals("quit")) {
-			if (command.hasSecondWord()) {
-				Zork.print("Quit what?\n", 75);
+			if  (command.hasSecondWord()) {
+				Zork.print("If you want to quit the game, just type \"quit\" \n", 75);
 			} else {
 				return true; // signal that we want to quit
 			}
-		} else if (commandWord.equals("eat")) {
-			if (command.hasSecondWord()) {
-				eat(command);
-			}
-		}else {
+				
+				
+//			if (command.hasSecondWord()) {
+//				Zork.print("Quit what?\n", 75);
+//			} else {
+//				return true; // signal that we want to quit
+//			}
+//		} else if (commandWord.equals("eat")) {
+//			if (command.hasSecondWord()) {
+//				eat(command);
+//			}
+		} else {
 			Zork.print("I don't know what you mean...\n", 75);
 		}
 		return false;
@@ -342,7 +353,18 @@ class Game {
 	
 	// prints the description of the item
 	private void examine(Command command) {
-		Zork.print(masterItemMap.get(command.getObject()).examine()+"\n", 75);
+		
+		String examinable = command.getObject();
+		if ((Player.contains(examinable.toUpperCase())) || (currentRoom.contains(masterItemMap.get(examinable.toUpperCase())))) {
+			String examinabledesc = masterItemMap.get(examinable.toUpperCase()).examine();
+			Zork.print(examinabledesc + "\n", 75);
+		} 
+		else {
+			Zork.print("You can not examine something not in the room or you don't have...\n", 75);
+			return;
+		}
+			
+		return;
 	}
 
 	// check if object is in currentRoom
@@ -360,7 +382,7 @@ class Game {
 		if (currentRoom.contains(masterItemMap.get(takeable.toUpperCase())) && masterItemMap.get(takeable.toUpperCase()).take()) {
 			currentRoom.removeItem(takeable, 1);
 			Player.addToInventory(masterItemMap.get(takeable.toUpperCase()), 1);
-			Zork.print("The " + takeable + " is now yours. Finders keepers!\n", 75);
+			Zork.print("The " + takeable.toUpperCase().substring(0, 1) + takeable.toLowerCase().substring(1) + " is now yours. Finders keepers!\n", 75);
 		} else {
 			Zork.print("Sorry, we can't do that.\n", 75);
 		}
@@ -402,12 +424,31 @@ class Game {
 	// else, tell character they probably don't want to give it away
 	private void give(Command command) {
 		String giveable = command.getObject();
-		if (masterItemMap.get(giveable).give()) {
-			Character.addToInventory(masterItemMap.get(giveable.toUpperCase()));
-			Player.removeItem(giveable, 1);
-		} else {
-			Zork.print("You wouldn't want to give " + giveable + " away!\n", 75);
+		 
+		if (!Player.contains(giveable.toUpperCase())) {
+			Zork.print("You can not give away what you don't have...\n", 75);
+			return;
 		}
+		
+		if (masterItemMap.get(giveable.toUpperCase()).give()) {
+			String recipient = command.getCharacter();
+//			getCharacterName
+			Player.removeItem(giveable, 1);
+			currentCharacter.addToInventory(masterItemMap.get(giveable.toUpperCase()));
+			Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.toLowerCase().substring(1) + " is now given away!\n", 75);
+		} else {
+			Zork.print("Sorry, we can't do that.\n", 75);
+		}
+		
+		
+		
+		
+//		if (masterItemMap.get(giveable).give()) {
+//			Character.addToInventory(masterItemMap.get(giveable.toUpperCase()));
+//			Player.removeItem(giveable, 1);
+//		} else {
+//			Zork.print("You wouldn't want to give " + giveable + " away!\n", 75);
+//		}
 	}
 
 	// check if object is lockable
@@ -543,12 +584,12 @@ class Game {
 				Zork.print("Dont eat that! Ryuk wants that apple!\n", 75);
 			} else {
 				Player.removeItem(consumable, 1);
-				Zork.print("Crunchity munchity you ate the " + consumable + ".\n", 75);
+				Zork.print("Crunchity munchity you ate the " + consumable.toUpperCase().substring(0, 1) + consumable.toLowerCase().substring(1) + ".\n", 75);
 			}
 		} else if (masterItemMap.get(consumable.toUpperCase()).eat()) {
-			Zork.print("You dont have " + consumable + " to eat...\n", 75);
+			Zork.print("You dont have " + consumable.toUpperCase().substring(0, 1) + consumable.toLowerCase().substring(1) + " to eat...\n", 75);
 		} else {
-			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable + "!\n", 75);
+			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable.toUpperCase().substring(0, 1) + consumable.toLowerCase().substring(1) + "!\n", 75);
 		}
 
 	}
