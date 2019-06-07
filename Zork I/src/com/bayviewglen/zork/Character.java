@@ -8,6 +8,7 @@ import java.util.Iterator;
 class Character {
 	private String characterName;
 	private String startingLocation;
+	private String currentRoom;
 	private HashMap <String, Item> startingItems;
 	// private HashMap <String, Item> wantedItems;
 	private ArrayList<String> wantedItems;
@@ -40,8 +41,14 @@ class Character {
 	// adds an item to the inventory
 	// if an item is already 
 	public void addToInventory(Item item) {
-		items.put(item.getItemName(), item);
+		if (items.containsKey(item.getItemName())) {
+			Zork.print("The character already has the item\n", 75);
+		}
+		else {
+			items.put(item.getItemName(), item);
+		}
 	}
+
 	
 	public void addToWantedItems(String x) {
 		wantedItems.add(x);	
@@ -69,6 +76,9 @@ class Character {
 		return speech;
 	}
 	
+	public void setCurrentRoom(String currentRoom) {
+		this.currentRoom = currentRoom;
+	}
 
 	public String getCharacterName() {
 		return characterName;

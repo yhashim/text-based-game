@@ -1,160 +1,160 @@
-Item Name: Death Note
+Item Name: deathnote
 Item Description: This is a leather black notebook with "Death Note" written in white ink across the cover. 
 Item Weight: 5
 Functions: read, examine
 Starting Room:
 Starting Character:
-Item Name: Television1
+Item Name: television1
 Item Description: This is a flat screen TV, the news channel is playing.
 Item Weight: 30
 Functions: watch, examine
 Starting Room: Living Room
 Starting Character:
-Item Name: Television2
+Item Name: television2
 Item Description: This is a flat screen TV, the news channel is playing.
 Item Weight: 30
 Functions: watch, examine
 Starting Room: Main Square
 Starting Character:
-Item Name: Computer1
+Item Name: computer1
 Item Description: This is a computer. A password is required to unlock it.
 Item Weight: 30
 Functions: unlock, read, examine
 Starting Room: Father's Office
 Starting Character:
-Item Name: Computer2
+Item Name: computer2
 Item Description: This is a computer. A password is required to unlock it.
 Item Weight: 30
 Functions: unlock, read, examine
 Starting Room: Mr. Matsuda's Office
 Starting Character:
-Item Name: Computer3
+Item Name: computer3
 Item Description: This is a computer. A password is required to unlock it.
 Item Weight: 30
 Functions: unlock, read, examine
 Starting Room: Meeting Room One
 Starting Character:
-Item Name: Drawer
+Item Name: drawer
 Item Description: This is a drawer.
 Item Weight: 30
 Functions: open, examine
 Starting Room: Mr. Matsuda's Office
 Starting Character:
-Item Name: Pen
+Item Name: pen
 Item Description: This is a black pen that is used as a writing utensil.
 Item Weight: 5
 Functions: take, drop, examine
 Starting Room: Light's Room
 Starting Character:
-Item Name: McIntosh
+Item Name: mcintosh
 Item Description: This is a McIntosh apple. Ryuk likes apples…
 Item Weight: 1
 Functions: eat, give, take, drop, examine
 Starting Room: Side Of School
 Starting Character:
-Item Name: Braeburn
+Item Name: braeburn
 Item Description: This is a Braeburn apple. Ryuk likes apples…
 Item Weight: 1
 Functions: eat, give, take, drop, examine
 Starting Room: Anteiku Cafe
 Starting Character:
-Item Name: Honeycrisp
+Item Name: honeycrisp
 Item Description: This is a Honeycrisp apple. Ryuk likes apples…
 Item Weight: 1
 Functions: eat, give, take, drop, examine
 Starting Room: Kitchen
 Starting Character:
-Item Name: Fuji
+Item Name: fuji
 Item Description: This is a Fuji apple. Ryuk likes apples…
 Item Weight: 1
 Functions: eat, give, take, drop, examine
 Starting Room: Meeting Room Three
 Starting Character:
-Item Name: Chips
+Item Name: chips
 Item Description: This is a bag of potato chips. Yum.
 Item Weight: 1
 Functions: eat, take, drop, give, examine
 Starting Room: Light's Room
 Starting Character:
-Item Name: Task Force Employee List
+Item Name: employeelist
 Item Description: This is a list of all the employees in the task force.
 Item Weight: 1
 Functions: read, take, drop, examine
 Starting Room: Warehouse
 Starting Character:
-Item Name: Flashlight
+Item Name: flashlight
 Item Description: This is a flashlight, it is used to illuminate rooms and areas that are dark.
 Item Weight: 2
-Functions: turn on, take, drop, examine
-Starting Room:
+Functions: use, take, drop, examine
+Starting Room: Sister's Room
 Starting Character: Sayu Yagami
-Item Name: Teddy
+Item Name: teddy
 Item Description: It is a stuffed animal, it belongs to your sister.
 Item Weight: 2
 Functions: take, give, drop, examine
 Starting Room: Back Yard
 Starting Character:
-Item Name: K-file
+Item Name: k-file
 Item Description: This is a large folder. On the cover, written in black letters is "The Kira Case File".
 Item Weight: 1
 Functions: take, read, drop, examine
 Starting Room: Father's Office
 Starting Character:
-Item Name: Most Wanted File
+Item Name: mw-file
 Item Description: This is a thin folder containing a single sheet of paper. On the sheet is a list of names, all of which are crossed out except for one, Kiyomi Takada.
 Item Weight: 1
 Functions: take, read, drop, examine
 Starting Room: Father's Office
 Starting Character:
-Item Name: T-file
+Item Name: t-file
 Item Description: This is a large folder filed with papers. Are you sure this is what you're looking for?
 Item Weight: 1
 Functions: take, drop, examine
 Starting Room: Father's Office
 Starting Character:
-Item Name: Task Force Key Card
+Item Name: keycard
 Item Description: This is your father's task force key card. "Task Force Mr. Yagami" is in black letters on the back of the key card.
 Item Weight: 2
 Functions: take, drop, examine, use
 Starting Room:
 Starting Character: Ryuk
-Item Name: Newspaper
+Item Name: newspaper
 Item Description: This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his commendable performance last week at…
 Item Weight: 1
 Functions: take, open, drop, examine, read
 Starting Room: Dining Room
 Starting Character:
-Item Name: Mr. M's Key Card
+Item Name: mkeycard
 Item Description: This is a key card. "Task Force Mr. M" is in black letters on the back of the key card.
 Item Weight: 2
 Functions: take, use, drop, examine
 Starting Room: Meeting Room Two
 Starting Character:
-Item Name: Slip Of Paper
+Item Name: paper
 Item Description: This is a small slip of paper. Written on it in pencil are the numbers "6708".
 Item Weight: 1
 Functions: take, examine, drop
 Starting Room: Mr. Matsuda's Office
 Starting Character:
-Item Name: Old Key
+Item Name: oldkey
 Item Description: This is an old key. It will give you access to the forest pathway.
 Item Weight: 2
 Functions: take, examine, drop, use
 Starting Room:
 Starting Character: Ryuk
-Item Name: Letter
+Item Name: letter
 Item Description: This is the letter that you must give to L.
 Item Weight: 1
 Functions: take, examine, drop, read
 Starting Room:
 Starting Character: Naomi Misora
-Item Name: Task Force L's Key
+Item Name: lkey
 Item Description: This is a modern looking key. Engraved on both sides is the letter "L".
 Item Weight: 1
 Functions: use, take, drop, examine
 Starting Room:
 Starting Character: Naomi Misora
-Item Name: Wanted Poster 
+Item Name: wantedposter 
 Item Description: This is a wanted poster on a telephone pole on Pac Street (West).
 Item Weight: 30
 Functions: read, examine

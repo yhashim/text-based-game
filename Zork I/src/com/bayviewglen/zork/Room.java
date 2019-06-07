@@ -24,6 +24,7 @@ class Room {
 	private String description;
 	private HashMap<String, Room> exits; // stores exits of this room. // fix
 	private HashMap <String, Item> items = new HashMap <String, Item>(); // stores item inventory of room. // fix
+	private HashMap <String, Character> characters = new HashMap <String, Character>(); // stores item inventory of room. // fix
 	private ArrayList<Room> rooms =  new ArrayList<Room>();
 	
 	public ArrayList<Room> getRooms() {
@@ -116,7 +117,7 @@ class Room {
 	 */
 	public String longDescription() {
 		// return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + getCharacters() + "\n" + exitString();
-		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString();
+		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString() + "\n" + getCharacters();
 	}
 
 	/**
@@ -163,9 +164,14 @@ class Room {
 		this.isLocked = isLocked;
 	}
 	
+	public void addToCharacterList(Character characterItem) {
+			characters.put(characterItem.getCharacterName(), characterItem);
+	}
+	
 	public void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
-			items.get(item.getItemName()).addAmount(amount);
+			//items.get(item.getItemName()).addAmount(amount);
+			Zork.print("The item already exists in the room\n", 75);
 		}
 		else {
 			items.put(item.getItemName(), item);
@@ -189,18 +195,62 @@ class Room {
 			returnString += " none";
 		int numItems = 0;
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
+
 			if (numItems ==0)
-				returnString += " " + iter.next();
+				returnString += " ";
 			else
-				returnString += ", " + iter.next();
+				returnString += ", ";
+			
+			// possible function
+			String invItem = iter.next().toString();
+			returnString += invItem.toUpperCase().substring(0, 1);
+			invItem = invItem.substring(1);
+			while (invItem.indexOf(" ")>0) {
+				returnString += invItem.substring(0,invItem.indexOf(" ")+1);
+				invItem = invItem.substring(invItem.indexOf(" ")+1);
+				returnString += invItem.toUpperCase().substring(0, 1);
+				invItem = invItem.substring(1);
+			}
+			returnString += invItem;	
+			
 			numItems ++;
 		}
 		return returnString;
 	}
 	
-//	public String getCharacters() {
-//		String returnString = "Characters:";
-//		Set values = Game.getMasterCharacterMap().valueSet();
+	public String getCharacters() {
+		String returnString = "Characters:";
+		Set keys = characters.keySet();
+//		getMasterCharacterMap().valueSet();
+
+		if (keys.size() == 0)
+			returnString += " none";
+		int numCharacters = 0;
+		for (Iterator iter = keys.iterator(); iter.hasNext();) {
+
+			if (numCharacters ==0)
+				returnString += " ";
+			else
+				returnString += ", ";
+			
+			// possible function
+			String roomChar = iter.next().toString();
+			returnString += roomChar.toUpperCase().substring(0, 1);
+			roomChar = roomChar.substring(1);
+			while (roomChar.indexOf(" ")>0) {
+				returnString += roomChar.substring(0,roomChar.indexOf(" ")+1);
+				roomChar = roomChar.substring(roomChar.indexOf(" ")+1);
+				returnString += roomChar.toUpperCase().substring(0, 1);
+				roomChar = roomChar.substring(1);
+			}
+			returnString += roomChar;	
+			
+			numCharacters ++;
+		}
+		return returnString;		
+	}
+		
+		
 //		for (Iterator iter = values.iterator(); iter.hasNext();) {
 //			Character n = (Character)iter;
 //			if (n.getStartingLocation().equals(roomName))
@@ -208,6 +258,8 @@ class Room {
 //		}
 //		return returnString;
 //	}
+		
+		
 	// checks for an item in the inventory 
 		// return true if it is, false if not
 		public boolean contains(Item item) {
@@ -219,11 +271,6 @@ class Room {
 		}
 	
 	public void removeItem(String name, int amount) {
-		//if (items.get(name).getAmount() == 1) {
-			items.remove(name);
-		//}
-		//else {
-		//	items.get(name).setAmount(items.get(name).getAmount()-1); 
-		//}
+			items.remove(name.toLowerCase());
 	}
 }

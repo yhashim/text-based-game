@@ -121,7 +121,12 @@ class Command {
 	}
 	
 	public boolean hasSecondWord() {
-		return (commandWords.size()>=2);
+		String secondWord = commandWords.get(1);
+		if (secondWord != null)
+			return true;
+		else 
+			return false;
+		//return (commandWords.size()>=2);
 	}
 	
 	public String toString() {

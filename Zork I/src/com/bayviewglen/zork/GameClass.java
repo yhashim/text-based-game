@@ -29,6 +29,7 @@ class Game {
 	private Parser parser;
 	private Room currentRoom;
 	private Room previousRoom;
+	private Character currentCharacter;
 	// This is a MASTER object that contains all of the rooms and is easily
 	// accessible.
 	// The key will be the name of the room -> no spaces (Use all caps and
@@ -99,10 +100,23 @@ class Game {
 				String characterName = characterScanner.nextLine();
 				characterName = characterName.split(":")[1].trim();
 				character.setCharacterName(characterName);
+				
 				// Put in starting location
-				String startingLocation = characterScanner.nextLine();
-				startingLocation = startingLocation.split(":")[1].trim();
-				character.setStartingLocation(startingLocation);
+				//String startingLocation = characterScanner.nextLine();
+				//startingLocation = startingLocation.split(":")[1].trim();
+				//character.setStartingLocation(startingLocation);
+				String currentRoom = characterScanner.nextLine();
+				if (!currentRoom.equals("Starting location:")) {
+					currentRoom = currentRoom.split(": ")[1].trim();
+					character.setCurrentRoom(currentRoom);
+					Room accessRoom = masterRoomMap.get(currentRoom.toUpperCase().trim().replaceAll(" ", "_"));
+					accessRoom.addToCharacterList(character);
+				} else {
+					currentRoom = null;
+				}
+				
+				
+				
 				// Assign its functions
 				String[] functions = characterScanner.nextLine().split(":")[1].trim().split(", ");
 				for (String x : functions) {
@@ -179,7 +193,7 @@ class Game {
 					}
 				// }
 				// This puts the item we created in the masterItemMap
-				masterItemMap.put(itemName.toUpperCase(), item);
+				masterItemMap.put(itemName.toLowerCase(), item);
 			}
 			itemScanner.close();
 		} catch (FileNotFoundException e) {
@@ -195,6 +209,7 @@ class Game {
 			initRooms("data/Rooms.dat");
 			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 			initCharacters("data/Characters.dat");
+			currentCharacter = masterCharacterMap.get("RYUK");
 			initItems("data/Items.dat");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -210,7 +225,7 @@ class Game {
 		printWelcome();
 		// Enter the main command loop. Here we repeatedly read commands and
 		// execute them until the game is over.
-
+		Player.addToInventory(masterItemMap.get("deathnote"), 1);
 		boolean finished = false;
 		while (!finished) {
 			Command command = parser.getCommand();
@@ -246,6 +261,11 @@ class Game {
 			goRoom(command);
 			return false;
 		}
+		// testing
+		else if (commandWord.equals("teleport")) {
+			goToRoom(command);
+		}
+		//
 		else if (commandWord.equals("p")) {
 			goPreviousRoom();
 		}
@@ -276,17 +296,26 @@ class Game {
 			drop(command);
 		} else if ((commandWord.equals("eat") || commandWord.equals("consume")) && (command.getObject() != null)) {
 			eat(command);
+		} else if (commandWord.equals("examine") && command.getObject() != null) {
+			examine(command);
 		} else if (commandWord.equals("quit")) {
-			if (command.hasSecondWord()) {
-				Zork.print("Quit what?\n", 75);
+			if  (command.hasSecondWord()) {
+				Zork.print("If you would like to quit the game, simply type the word \"quit\"\n", 75);
 			} else {
 				return true; // signal that we want to quit
 			}
-		} else if (commandWord.equals("eat")) {
-			if (command.hasSecondWord()) {
-				eat(command);
-			}
-		}else {
+				
+				
+//			if (command.hasSecondWord()) {
+//				Zork.print("Quit what?\n", 75);
+//			} else {
+//				return true; // signal that we want to quit
+//			}
+//		} else if (commandWord.equals("eat")) {
+//			if (command.hasSecondWord()) {
+//				eat(command);
+//			}
+		} else {
 			Zork.print("I don't know what you mean...\n", 75);
 		}
 		return false;
@@ -342,7 +371,18 @@ class Game {
 	
 	// prints the description of the item
 	private void examine(Command command) {
-		Zork.print(masterItemMap.get(command.getObject()).examine()+"\n", 75);
+		
+		String examinable = command.getObject();
+		if ((Player.contains(examinable)) || (currentRoom.contains(masterItemMap.get(examinable)))) {
+			String examinabledesc = masterItemMap.get(examinable).examine();
+			Zork.print(examinabledesc + "\n", 75);
+		} 
+		else {
+			Zork.print("You can not examine something not in the room or you don't have...\n", 75);
+			return;
+		}
+			
+		return;
 	}
 
 	// check if object is in currentRoom
@@ -353,14 +393,14 @@ class Game {
 	// tell player that it is not there
 	private void take(Command command) {
 		String takeable = command.getObject();
-		if (Player.contains(takeable.toUpperCase())) {
+		if (Player.contains(takeable)) {
 			Zork.print("You already have that...\n", 75);
 			return;
 		}
-		if (currentRoom.contains(masterItemMap.get(takeable.toUpperCase())) && masterItemMap.get(takeable.toUpperCase()).take()) {
+		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
 			currentRoom.removeItem(takeable, 1);
-			Player.addToInventory(masterItemMap.get(takeable.toUpperCase()), 1);
-			Zork.print("The " + takeable + " is now yours. Finders keepers!\n", 75);
+			Player.addToInventory(masterItemMap.get(takeable), 1);
+			Zork.print("The " + takeable.toUpperCase().substring(0, 1) + takeable.substring(1) + " is now yours. Finders keepers!\n", 75);
 		} else {
 			Zork.print("Sorry, we can't do that.\n", 75);
 		}
@@ -402,12 +442,43 @@ class Game {
 	// else, tell character they probably don't want to give it away
 	private void give(Command command) {
 		String giveable = command.getObject();
-		if (masterItemMap.get(giveable).give()) {
-			Character.addToInventory(masterItemMap.get(giveable.toUpperCase()));
-			Player.removeItem(giveable, 1);
-		} else {
-			Zork.print("You wouldn't want to give " + giveable + " away!\n", 75);
+		 
+		if (!Player.contains(giveable)) {
+			Zork.print("You can not give away what you don't have...\n", 75);
+			return;
 		}
+		
+		if (masterItemMap.get(giveable).give()) {
+			boolean wantsItem = false;
+			ArrayList<String> listOfWantedItems = currentCharacter.getWantedItems();
+			for (int i = 0; i < listOfWantedItems.size(); i++) {
+				if (listOfWantedItems.get(i).equals(giveable)) {
+					wantsItem = true;
+				}
+			}
+			String recipient = command.getCharacter();
+			if (wantsItem) {
+
+				Player.removeItem(giveable, 1);
+				currentCharacter.addToInventory(masterItemMap.get(giveable));
+				Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.substring(1) + " was given to " + recipient + "!\n", 75);
+			}
+			else {
+				Zork.print("Sorry, " + recipient + " does not want that item.\n", 75);
+			}
+		} else {
+			Zork.print("Sorry, we can't do that.\n", 75);
+		}
+		
+		
+		
+		
+//		if (masterItemMap.get(giveable).give()) {
+//			Character.addToInventory(masterItemMap.get(giveable.toUpperCase()));
+//			Player.removeItem(giveable, 1);
+//		} else {
+//			Zork.print("You wouldn't want to give " + giveable + " away!\n", 75);
+//		}
 	}
 
 	// check if object is lockable
@@ -428,32 +499,55 @@ class Game {
 	// else, tell player there is nothing to read on ___ object
 	private void read(Command command) {
 		String readable = command.getObject();
-		if (masterItemMap.get(readable.toUpperCase()).read() && currentRoom.contains(masterItemMap.get(readable.toUpperCase()))) {
-			if (readable.equals("task force employee list")) {
-				Zork.print(
-						"List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas\n", 75);
+		if (masterItemMap.get(readable).read()) {
+			if (Player.contains(readable) || currentRoom.contains(masterItemMap.get(readable))) {
+				// player has item or it is in the room
+				switch(readable) {
+					case "deathnote":
+						Zork.print("List Of people killed: \n", 75);
+						break;
+					case "computer1":
+						Zork.print("Dad's computer - keep out\n", 75);
+						break;
+					case "computer2":
+						Zork.print("Matsuda's computer - keep out\n", 75);
+						break;
+					case "computer3":
+						Zork.print("Meeting Room computer - keep out\n", 75);
+						break;
+					case "employeelist":
+						Zork.print("List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas\n", 75);
+						break;
+					case "k-file":
+						Zork.print("List of characters killed\n", 75);						
+						break;
+					case "mw-file":
+						Zork.print("This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n", 75);
+						break;
+					case "t-file":
+						Zork.print("List of ...\n", 75);						
+						break;
+					case "newspaper":
+						Zork.print("On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article\n", 75);						
+						break;
+					case "letter":
+						Zork.print("The front of the letter reads: \nTo: L \nFrom: Naomi Misora\n", 75);						
+						break;
+					case "wantedposter":
+						Zork.print("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping\n", 75);						
+						break;
+					default:
+						Zork.print("There is nothing to read on the " + readable + ".\n", 75);
+				}
 			}
-			if (readable.equals("the kira case file")) {
-				// list of people you have killed
+			else {
+				Zork.print("You can not read something not in the room or you don't have...\n", 75);
 			}
-			if (readable.equals("most wanted file")) {
-				Zork.print(
-						"This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n", 75);
-			}
-			if (readable.equals("newspaper")) {
-				Zork.print(
-						"On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article\n", 75);
-			}
-			if (readable.equals("letter")) {
-				Zork.print("The front of the letter reads: \nTo: L \nFrom: Naomi Misora\n", 75);
-			}
-			if (readable.equals("wanted poster")) {
-				Zork.print("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping\n", 75);
-			}
-		} else {
+		}
+		else {
 			Zork.print("There is nothing to read on the " + readable + ".\n", 75);
 		}
-
+				
 	}
 
 	// check if object is useable & if object is in inventory
@@ -464,16 +558,42 @@ class Game {
 	// else, explain it cannot be used
 	private void use(Command command) {
 		String usable = command.getObject();
-		if (masterItemMap.get(usable.toUpperCase()).use() && Player.contains(usable)) {
-			if (masterItemMap.get(usable.toUpperCase()).equals("flashlight") && currentRoom.getRoomName().equals("warehouse")) {
-				Zork.print(
-						"The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.\n", 75);
+		if (!Player.contains(usable)) {
+			Zork.print("You can not use a " + usable.toUpperCase().substring(0, 1) + usable.substring(1) + " if you don't have one\n", 75);	
+		} 
+		else
+		{
+			if (!masterItemMap.get(usable).use()) {
+				Zork.print("Please specifiy how you would like to use the " + usable + ".\n", 75);
 			}
-			if (masterItemMap.get(usable.toUpperCase()).equals("flashlight")) {
-				Zork.print("The space in front of you lights up.\n", 75);
+			else
+			{
+				switch (usable) {
+				case "flashlight":
+					if (currentRoom.getRoomName().equals("Warehouse")) {
+						Zork.print("The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.\n", 75);
+					}
+					else
+					{
+						Zork.print("The space in front of you lights up.\n", 75);
+					}
+					break;
+				case "keycard":
+					Zork.print("The .....\n", 75);
+					break;
+				case "mkeycard":
+					Zork.print("The .....\n", 75);
+					break;
+				case "oldkey":
+					Zork.print("The .....\n", 75);
+					break;
+				case "lkey":
+					Zork.print("The .....\n", 75);
+					break;
+				default:
+					Zork.print("Please specifiy how you would like to use the " + usable + ".\n", 75);
+				}
 			}
-		} else {
-			Zork.print("Please specifiy how you would like to use" + usable + ".\n", 75);
 		}
 	}
 
@@ -519,14 +639,14 @@ class Game {
 	// else, state they do not even have this object to put down
 	private void drop(Command command) {
 		String droppable = command.getObject();
-		if (droppable.toLowerCase().equals("deathnote") || droppable.toLowerCase().equals("death note")) {
+		if (droppable.equals("deathnote") || droppable.equals("death note")) {
 			Zork.print("You can't drop that.\n", 75);
 		} else if (Player.contains(droppable)) {
-			currentRoom.addToInventory(masterItemMap.get(droppable.toUpperCase()), 1);
+			currentRoom.addToInventory(masterItemMap.get(droppable), 1);
 			Player.removeItem(droppable, 1);
-			Zork.print(droppable.toUpperCase().substring(0, 1) + droppable.toLowerCase().substring(1) + " dropped.\n", 75);
+			Zork.print(droppable.toUpperCase().substring(0, 1) + droppable.substring(1) + " dropped.\n", 75);
 		} else {
-			Zork.print("You have no " + droppable + " to drop.\n", 75);
+			Zork.print("You have no " + droppable.toUpperCase().substring(0, 1) + droppable.substring(1) + " to drop.\n", 75);
 		}
 
 	}
@@ -538,17 +658,17 @@ class Game {
 	// else, print - dishonour on you! filthy human - you can't eat a ___!
 	private void eat(Command command) {
 		String consumable = command.getObject();
-		if (masterItemMap.get(consumable.toUpperCase()).eat() && Player.contains(consumable)) {
+		if (masterItemMap.get(consumable).eat() && Player.contains(consumable)) {
 			if (consumable.equals("mcintosh") || consumable.equals("fuji") || consumable.equals("honeycrisp") || consumable.equals("braeburn")) {
 				Zork.print("Dont eat that! Ryuk wants that apple!\n", 75);
 			} else {
 				Player.removeItem(consumable, 1);
-				Zork.print("Crunchity munchity you ate the " + consumable + ".\n", 75);
+				Zork.print("Crunchity munchity you ate the " + consumable.toUpperCase().substring(0, 1) + consumable.substring(1) + ".\n", 75);
 			}
-		} else if (masterItemMap.get(consumable.toUpperCase()).eat()) {
-			Zork.print("You dont have " + consumable + " to eat...\n", 75);
+		} else if (masterItemMap.get(consumable).eat()) {
+			Zork.print("You dont have " + consumable.toUpperCase().substring(0, 1) + consumable.substring(1) + " to eat...\n", 75);
 		} else {
-			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable + "!\n", 75);
+			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable.toUpperCase().substring(0, 1) + consumable.substring(1) + "!\n", 75);
 		}
 
 	}
@@ -556,4 +676,132 @@ class Game {
 		return masterCharacterMap;
 	}
 
+	// teleport testing
+	private void goToRoom(Command command) {
+		String roomNum = command.getObject();
+		if (roomNum != null)
+		{
+			switch(roomNum) {
+			case "1":
+				currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
+				break;
+			case "2":
+				currentRoom = masterRoomMap.get("HALLWAY");
+				break;
+			case "3":
+				currentRoom = masterRoomMap.get("PARENT'S_ROOM");
+				break;
+			case "4":
+				currentRoom = masterRoomMap.get("FATHER'S_OFFICE");
+				break;
+			case "5":
+				currentRoom = masterRoomMap.get("SISTER'S_ROOM");
+				break;
+			case "6":
+				currentRoom = masterRoomMap.get("FOYER");
+				break;
+			case "7":
+				currentRoom = masterRoomMap.get("KITCHEN");
+				break;
+			case "8":
+				currentRoom = masterRoomMap.get("DINING_ROOM");
+				break;
+			case "9":
+				currentRoom = masterRoomMap.get("LIVING_ROOM");
+				break;
+			case "10":
+				currentRoom = masterRoomMap.get("BACK_YARD");
+				break;
+			case "11":
+				currentRoom = masterRoomMap.get("FRONT_YARD");
+				break;
+			case "12":
+				currentRoom = masterRoomMap.get("PAC_STREET_(EAST)");
+				break;
+			case "13":
+				currentRoom = masterRoomMap.get("PAC_STREET_(WEST)");
+				break;
+			case "14":
+				currentRoom = masterRoomMap.get("ANTEIKU_CAFE");
+				break;
+			case "15":
+				currentRoom = masterRoomMap.get("GREEN_ODORI_STREET");
+				break;
+			case "16":
+				currentRoom = masterRoomMap.get("FRONT_OF_SCHOOL");
+				break;
+			case "17":
+				currentRoom = masterRoomMap.get("SIDE_OF_SCHOOL");
+				break;
+			case "18":
+				currentRoom = masterRoomMap.get("MEIJI_DORI_AVENUE");
+				break;
+			case "19":
+				currentRoom = masterRoomMap.get("MIZUKI_DORI_AVENUE");
+				break;
+			case "20":
+				currentRoom = masterRoomMap.get("MAIN_SQUARE");
+				break;
+			case "21":
+				currentRoom = masterRoomMap.get("FOREST_PATHWAY");
+				break;
+			case "22":
+				currentRoom = masterRoomMap.get("FRONT_OF_WAREHOUSE");
+				break;
+			case "23":
+				currentRoom = masterRoomMap.get("WAREHOUSE");
+				break;
+			case "24":
+				currentRoom = masterRoomMap.get("LOBBY");
+				break;
+			case "25":
+				currentRoom = masterRoomMap.get("2ND_FLOOR_HALLWAY");
+				break;
+			case "26":
+				currentRoom = masterRoomMap.get("MEETING_ROOM_TWO");
+				break;
+			case "27":
+				currentRoom = masterRoomMap.get("2ND_FLOOR_HALLWAY_(NORTH)");
+				break;
+			case "28":
+				currentRoom = masterRoomMap.get("MEETING_ROOM_ONE");
+				break;
+			case "29":
+				currentRoom = masterRoomMap.get("2ND_FLOOR_HALLWAY_(SOUTH)");
+				break;
+			case "30":
+				currentRoom = masterRoomMap.get("MEETING_ROOM_THREE");
+				break;
+			case "31":
+				currentRoom = masterRoomMap.get("3RD_FLOOR_HALLWAY");
+				break;
+			case "32":
+				currentRoom = masterRoomMap.get("LARGE_MEETING_ROOM");
+				break;
+			case "33":
+				currentRoom = masterRoomMap.get("MR._MATSUDA'S_OFFICE");
+				break;
+			case "34":
+				currentRoom = masterRoomMap.get("MR._YAGAMI'S_OFFICE");
+				break;
+			case "35":
+				currentRoom = masterRoomMap.get("4TH_FLOOR_HALLWAY");
+				break;
+			case "36":
+				currentRoom = masterRoomMap.get("KIRA_INVESTIGATION_ROOM");
+				break;
+			case "37":
+				currentRoom = masterRoomMap.get("L'S_OFFICE");
+				break;
+			default:
+				currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
+				break;
+			}
+		}
+		else {
+			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
+		}
+		Zork.print(currentRoom.longDescription()+"\n", 75);
+	}
+	
 }

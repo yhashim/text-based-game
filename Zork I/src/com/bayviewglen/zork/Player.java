@@ -10,13 +10,24 @@ public class Player {
 	private static int numKilled = peopleKilled.size();
 
 	public static void displayInventory() {
-		String returnString = "Inventory: Death Note";
+		String returnString = "Inventory: ";
 		Set keys = items.keySet();
-		if (keys.size() >= 1)
-			returnString += " ";
+//		if (keys.size() >= 1)
+//			returnString += " ";
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
-				returnString += ", " + iter.next().toString().toLowerCase();
-		}
+
+			String invItem = iter.next().toString();
+			returnString += invItem.toUpperCase().substring(0, 1);
+			invItem = invItem.substring(1);
+			while (invItem.indexOf(" ")>0) {
+				returnString += invItem.substring(0,invItem.indexOf(" ")+1);
+				invItem = invItem.substring(invItem.indexOf(" ")+1);
+				returnString += invItem.toUpperCase().substring(0, 1);
+				invItem = invItem.substring(1);
+			}
+			returnString += invItem;	
+			if (iter.hasNext())
+				returnString += ", ";		} 
 		Zork.print(returnString, 75);
 	}
 	
@@ -48,11 +59,13 @@ public class Player {
 	// if an item is already in the inventory, increments amount
 	public static void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
-			items.get(item.getItemName()).addAmount(amount);
+			//items.get(item.getItemName()).addAmount(amount);
+			Zork.print("The item already exists in inventory\n", 75);
 		}
 		else {
-			String putIn = item.getItemName().toUpperCase();
+			String putIn = item.getItemName();
 			items.put(putIn, item);
+
 		}
 	}
 	
@@ -71,7 +84,7 @@ public class Player {
 	// checks for an item in the inventory 
 	// return true if it is, false if not
 	public static boolean contains(String name) {
-		name = name.toUpperCase();
+		name = name.toLowerCase();
 		if (items.containsKey(name)) {
 			return true;
 		}	
@@ -91,13 +104,13 @@ public class Player {
 	}
 	
 	public static void removeItem(String name, int amount) {
-		String putIn = name.toUpperCase();
-		if (items.get(putIn).getAmount() == 1) {
+		String putIn = name.toLowerCase();
+		//if (items.get(putIn).getAmount() == 1) {
 			items.remove(putIn);
-		}
-		else {
-			items.get(putIn).setAmount(items.get(putIn).getAmount()-1); 
-		}
+		//}
+		//else {
+		//	items.get(putIn).setAmount(items.get(putIn).getAmount()-1); 
+		//}
 	}
 	
 }
