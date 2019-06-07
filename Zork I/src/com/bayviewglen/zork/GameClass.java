@@ -1,8 +1,10 @@
 package com.bayviewglen.zork;
 
 import java.awt.ItemSelectable;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -355,11 +357,12 @@ class Game {
 						currentRoom = nextRoom;
 						Zork.print(currentRoom.longDescription()+"\n", 75);
 						Zork.print("Ryuk: To enter the warehouse you must solve this riddle (the passcode is the answer).\nWhat begins and has no end? What is the ending of all that begins?", 75);
+						riddleSolve();
 						return;
 					}
 					if (Player.getEndGame() && currentRoom.getRoomName().toLowerCase().equals("mizuki-dori avenue")) {
 						// ryuk will give you a key (oldkey)
-						Player.addToInventory(oldKey, 1);
+						Player.addToInventory(masterCharacterMap.get("ryuk").getItem("oldKey"), 1);
 						// ryuk tells you it will give access to forest pathway
 						Zork.print("Ryuk: Here is an oldkey - this will give you access to the forest pathway. Good luck!", 75);
 					}
@@ -377,6 +380,23 @@ class Game {
 		else {
 			currentRoom = nextRoom;
 			Zork.print(currentRoom.longDescription()+"\n", 75);
+		}
+	}
+
+	private void riddleSolve() {
+		String inputLine = ""; // will hold the full input line...
+		Zork.print("\n> ", 75); // print prompt
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			inputLine = reader.readLine();
+		} catch (java.io.IOException exc) {
+			Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
+		}
+		String temp = inputLine;
+		if (temp.toLowerCase().equals("death")) {
+			
+		} else {
+			
 		}
 	}
 
