@@ -39,7 +39,7 @@ Room Description: You are standing in the living room. There is a large couch fa
 Exit Rooms: N-Dining Room, E-Foyer
 Locked: false
 Room Name: Back Yard
-Room Description: You are standing in the back yard. The back yard in enclosed by fencing. There are several plants along the sides of fence. Along the side of the house is a small bench.
+Room Description: You are standing in the back yard. The back yard is enclosed by fencing. There are several plants along the sides of fence. Along the side of the house is a small bench.
 Exit Rooms: S-Dining Room
 Locked: false
 Room Name: Front Yard
