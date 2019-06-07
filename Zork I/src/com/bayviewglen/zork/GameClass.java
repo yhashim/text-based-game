@@ -371,7 +371,6 @@ class Game {
 	
 	// prints the description of the item
 	private void examine(Command command) {
-		
 		String examinable = command.getObject();
 		if ((Player.contains(examinable)) || (currentRoom.contains(masterItemMap.get(examinable)))) {
 			String examinabledesc = masterItemMap.get(examinable).examine();
@@ -400,7 +399,7 @@ class Game {
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
 			currentRoom.removeItem(takeable, 1);
 			Player.addToInventory(masterItemMap.get(takeable), 1);
-			Zork.print("The " + takeable.toUpperCase().substring(0, 1) + takeable.substring(1) + " is now yours. Finders keepers!\n", 75);
+			Zork.print("The " + takeable.toLowerCase() + " is now yours. Finders keepers!\n", 75);
 		} else {
 			Zork.print("Sorry, we can't do that.\n", 75);
 		}
@@ -430,7 +429,7 @@ class Game {
 				// say that's the wrong passcode! come again later
 			}
 		} else {
-			Zork.print("There is no " + openable + " here.\n", 75);
+			Zork.print("There is no " + openable.toLowerCase() + " here.\n", 75);
 		}
 
 	}
@@ -461,10 +460,10 @@ class Game {
 
 				Player.removeItem(giveable, 1);
 				currentCharacter.addToInventory(masterItemMap.get(giveable));
-				Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.substring(1) + " was given to " + recipient + "!\n", 75);
+				Zork.print("The " + giveable.toLowerCase() + " was given to " + recipient + "!\n", 75);
 			}
 			else {
-				Zork.print("Sorry, " + recipient + " does not want that item.\n", 75);
+				Zork.print("Sorry, " + recipient.toUpperCase().substring(0, 1) + recipient.substring(1) + " does not want that item.\n", 75);
 			}
 		} else {
 			Zork.print("Sorry, we can't do that.\n", 75);
@@ -537,7 +536,7 @@ class Game {
 						Zork.print("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping\n", 75);						
 						break;
 					default:
-						Zork.print("There is nothing to read on the " + readable + ".\n", 75);
+						Zork.print("There is nothing to read on the " + readable.toLowerCase() + ".\n", 75);
 				}
 			}
 			else {
@@ -545,7 +544,7 @@ class Game {
 			}
 		}
 		else {
-			Zork.print("There is nothing to read on the " + readable + ".\n", 75);
+			Zork.print("There is nothing to read on the " + readable.toLowerCase() + ".\n", 75);
 		}
 				
 	}
@@ -559,12 +558,12 @@ class Game {
 	private void use(Command command) {
 		String usable = command.getObject();
 		if (!Player.contains(usable)) {
-			Zork.print("You can not use a " + usable.toUpperCase().substring(0, 1) + usable.substring(1) + " if you don't have one\n", 75);	
+			Zork.print("You can not use a " + usable.toLowerCase() + " if you don't have one\n", 75);	
 		} 
 		else
 		{
 			if (!masterItemMap.get(usable).use()) {
-				Zork.print("Please specifiy how you would like to use the " + usable + ".\n", 75);
+				Zork.print("Please specifiy how you would like to use the " + usable.toLowerCase() + ".\n", 75);
 			}
 			else
 			{
@@ -591,7 +590,7 @@ class Game {
 					Zork.print("The .....\n", 75);
 					break;
 				default:
-					Zork.print("Please specifiy how you would like to use the " + usable + ".\n", 75);
+					Zork.print("Please specifiy how you would like to use the " + usable.toLowerCase() + ".\n", 75);
 				}
 			}
 		}
@@ -629,7 +628,7 @@ class Game {
 			// if killings >= 5 display "New Mystery Killer Kira - series of murders seem to
 			// be connected to one killer"
 		} else {
-			Zork.print("You can't watch " + watchable + ", that would be boring!\n", 75);
+			Zork.print("You can't watch " + watchable.toLowerCase() + ", that would be boring!\n", 75);
 		}
 	}
 
@@ -646,7 +645,7 @@ class Game {
 			Player.removeItem(droppable, 1);
 			Zork.print(droppable.toUpperCase().substring(0, 1) + droppable.substring(1) + " dropped.\n", 75);
 		} else {
-			Zork.print("You have no " + droppable.toUpperCase().substring(0, 1) + droppable.substring(1) + " to drop.\n", 75);
+			Zork.print("You have no " + droppable.toLowerCase() + " to drop.\n", 75);
 		}
 
 	}
@@ -663,12 +662,12 @@ class Game {
 				Zork.print("Dont eat that! Ryuk wants that apple!\n", 75);
 			} else {
 				Player.removeItem(consumable, 1);
-				Zork.print("Crunchity munchity you ate the " + consumable.toUpperCase().substring(0, 1) + consumable.substring(1) + ".\n", 75);
+				Zork.print("Crunchity munchity you ate the " + consumable.toLowerCase() + ".\n", 75);
 			}
 		} else if (masterItemMap.get(consumable).eat()) {
-			Zork.print("You dont have " + consumable.toUpperCase().substring(0, 1) + consumable.substring(1) + " to eat...\n", 75);
+			Zork.print("You dont have " + consumable.toLowerCase() + " to eat...\n", 75);
 		} else {
-			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable.toUpperCase().substring(0, 1) + consumable.substring(1) + "!\n", 75);
+			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable.toLowerCase() + "!\n", 75);
 		}
 
 	}
