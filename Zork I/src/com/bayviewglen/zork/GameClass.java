@@ -349,6 +349,20 @@ class Game {
 				if (nextRoom == null)
 					Zork.print("There is no door in that direction!\n", 75);
 				else {
+					if (Player.getEndGame() && Player.contains("oldkey") && currentRoom.getRoomName().toLowerCase().equals("forest pathway")) {
+						Zork.print("You use your oldkey to enter the forest pathway!", 75);
+						// goes to forest pathway
+						currentRoom = nextRoom;
+						Zork.print(currentRoom.longDescription()+"\n", 75);
+						Zork.print("Ryuk: To enter the warehouse you must solve this riddle (the passcode is the answer).\nWhat begins and has no end? What is the ending of all that begins?", 75);
+						return;
+					}
+					if (Player.getEndGame() && currentRoom.getRoomName().toLowerCase().equals("mizuki-dori avenue")) {
+						// ryuk will give you a key (oldkey)
+						Player.addToInventory(oldKey, 1);
+						// ryuk tells you it will give access to forest pathway
+						Zork.print("Ryuk: Here is an oldkey - this will give you access to the forest pathway. Good luck!", 75);
+					}
 					currentRoom = nextRoom;
 					Zork.print(currentRoom.longDescription()+"\n", 75);
 				}
@@ -622,6 +636,9 @@ class Game {
 					"You let out a maniacal laugh. HAhAHaHA! \r\n", 75);
 		} else {
 			Zork.print("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!\n", 75);
+		}
+		if (Player.getNumKilled() == 10) {
+			Player.setEndGame();
 		}
 	}
 
