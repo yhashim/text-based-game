@@ -117,6 +117,10 @@ public class Player {
 	public static boolean getSisterMission() {
 		return sisterMission;
 	}
+
+	public static void setSisterMission(boolean b) {
+		sisterMission = true;
+	}
 	
 }
 

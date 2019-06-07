@@ -465,6 +465,10 @@ class Game {
 				Player.removeItem(giveable, 1);
 				currentCharacter.addToInventory(masterItemMap.get(giveable));
 				Zork.print("The " + giveable.toLowerCase() + " was given to " + recipient + "!\n", 75);
+				
+				if (giveable.toLowerCase().equals("flashlight")) {
+					Player.setSisterMission(true);
+				}
 			}
 			else {
 				Zork.print("Sorry, " + recipient.toUpperCase().substring(0, 1) + recipient.substring(1) + " does not want that item.\n", 75);
