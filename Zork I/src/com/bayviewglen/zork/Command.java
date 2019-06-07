@@ -60,9 +60,10 @@ class Command {
 			}
 		}
 		
-		cleanupCommandWords(commandWords);
+		//cleanupCommandWords(commandWords);
 	}
 	
+	/*
 	private void cleanupCommandWords(ArrayList<String> commandWords2) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < commandWords.size(); i++) {
@@ -72,6 +73,7 @@ class Command {
 			}
 		}
 	}
+	*/
 
 	/**
 	 * Return the command word of this command. If the command was not understood,
