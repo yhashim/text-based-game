@@ -401,6 +401,7 @@ class Game {
 			currentRoom.removeItem(takeable, 1);
 			if (takeable.equals("flashlight") && (!Player.getSisterMission())) {
 				Zork.print("Sayu: You can't take the flashlight until you find my teddy!\n", 75);
+				return;
 			}
 			Player.addToInventory(masterItemMap.get(takeable), 1);
 			Zork.print("The " + takeable.toLowerCase() + " is now yours. Finders keepers!\n", 75);
