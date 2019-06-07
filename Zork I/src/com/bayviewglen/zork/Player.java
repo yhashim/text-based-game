@@ -8,6 +8,7 @@ public class Player {
 	private static HashMap <String, Item> items = new HashMap <String, Item>();
 	private static ArrayList <String> peopleKilled = new ArrayList <String>();
 	private static int numKilled = peopleKilled.size();
+	private static boolean sisterMission = false;
 
 	public static void displayInventory() {
 		String returnString = "Inventory: ";
@@ -111,6 +112,10 @@ public class Player {
 		//else {
 		//	items.get(putIn).setAmount(items.get(putIn).getAmount()-1); 
 		//}
+	}
+
+	public static boolean getSisterMission() {
+		return sisterMission;
 	}
 	
 }
