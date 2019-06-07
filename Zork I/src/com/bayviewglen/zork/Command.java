@@ -80,6 +80,9 @@ class Command {
 	 * the result is null.
 	 */
 	public String getCommandWord() {
+		if (commandWord == null) {
+			return "";
+		}
 		return commandWord;
 	}
 
