@@ -43,9 +43,9 @@ class Parser {
 		String temp = inputLine;
 		while (inputLine.length() > 0) {
 			if (inputLine.indexOf(" ") > 0) {
-				input.add(inputLine.substring(0, inputLine.indexOf(" ")));
+				input.add(inputLine.toLowerCase().substring(0, inputLine.indexOf(" ")));
 			} else {
-				input.add(inputLine);
+				input.add(inputLine.toLowerCase());
 				inputLine = "";
 			}
 			inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
@@ -72,22 +72,17 @@ class Parser {
 			try {
 				Zork.print("\n> ", 75); // print prompt
 				inputLine = reader.readLine();
-				
-				
-				//to do: create a method for this!!!
 				temp = inputLine;
 				while (inputLine.length() > 0) {
 					if (inputLine.indexOf(" ") > 0) {
-						input.add(inputLine.substring(0, inputLine.indexOf(" ")));
+						input.add(inputLine.toLowerCase().substring(0, inputLine.indexOf(" ")));
 					} else {
-						input.add(inputLine);
+						input.add(inputLine.toLowerCase());
 						inputLine = "";
 					}
 					inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
 					// find way to end with the last word
 				}
-				// end of to do: method
-				
 				
 				// if first input word is 'quit', no need to remove BadWords
 				firstInput = input.get(0);
@@ -98,7 +93,8 @@ class Parser {
 							i--;
 						}
 					}
-				}
+				}	
+				
 			} catch (java.io.IOException exc) {
 				Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 			}
@@ -152,12 +148,26 @@ class Parser {
 
 	public static boolean stringIsItem(String string) {
 		// add names of items here
-		String[] gameItems = { "deathnote", "death note", "television", "tv", "computer", "drawer", "front door", "pen",
-				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "task force employee list",
-				"employee list", "flashlight", "teddy", "bear", "kira case file", "K-file",
-				"most wanted file", "T-file", "task force key card", "newspaper", "mr. m's keycard",
-				"slip of paper", "paper", "old key", "letter", "task force l's key", "l's key", "wanted poster",
-				"poster" };
+		String[] gameItems = { "deathnote", "death note", "television1", "television2", 
+				"computer1", "computer2", "computer3", "drawer", "pen", 
+				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employeelist",
+				"flashlight", "teddy", "k-file", "mw-file", "t-file", "key card", "newspaper",
+				"mkeycard", "paper", "oldkey", "letter", "lkey", "wantedposter"
+				// testing by Teleportation
+				,"1","2","3","4","5","6","7","8","9","10"
+				,"11","12","13","14","15","16","17","18","19","20"
+				,"21","22","23","24","25","26","27","28","29","30"
+				,"31","32","33","34","35","36","37"
+				};
+
+//		String[] gameItems = { "deathnote", "death note", "television", "tv", "computer1", "drawer", "front door", "pen",
+//				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employee list",
+//				"employee list", "flashlight", "teddy", "bear", "kira case file", "k-file",
+//				"most wanted file", "t-file", "key card", "newspaper", "mr. m's keycard",
+//				"slip of paper", "paper", "old key", "letter", "l's key", "l's key", "wanted poster",
+//				"poster" };
+
+		
 		string = string.toLowerCase();
 		for (int i = 0; i < gameItems.length; i++) {
 			if (string.equals(gameItems[i])) {
@@ -186,7 +196,7 @@ class Parser {
 		// separate them on lines based on their function
 		String[] commands = { "go", "walk", "proceed", "run", "write", "kill", "use", "read", "take", "seize",
 				"examine", "look", "watch", "unlock", "open", "give", "hand", "drop", "put down", "leave", "quit",
-				"finish", "retire", "help", "eat", "consume", "inventory" , "i" };
+				"finish", "retire", "help", "eat", "consume", "inventory" , "i", "teleport" };
 		string = string.toLowerCase();
 		for (int i = 0; i < commands.length; i++) {
 			if (string.equals(commands[i])) {

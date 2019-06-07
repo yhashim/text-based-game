@@ -8,6 +8,7 @@ import java.util.Iterator;
 class Character {
 	private String characterName;
 	private String startingLocation;
+	private String currentRoom;
 	private HashMap <String, Item> startingItems;
 	// private HashMap <String, Item> wantedItems;
 	private ArrayList<String> wantedItems;
@@ -75,6 +76,9 @@ class Character {
 		return speech;
 	}
 	
+	public void setCurrentRoom(String currentRoom) {
+		this.currentRoom = currentRoom;
+	}
 
 	public String getCharacterName() {
 		return characterName;
