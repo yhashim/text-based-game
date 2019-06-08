@@ -435,6 +435,9 @@ class Game {
 		}
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
 			//currentRoom.removeItem(takeable, 1);
+			if (takeable.equals("flashlight") && (masterCharacterMap.get("SAYU").contains("teddy"))) {
+				Player.setSisterMission(true);
+			}
 			if (takeable.equals("flashlight") && (!Player.getSisterMission())) {
 				Zork.print("Sayu: You can't take the flashlight until you find my teddy!\n", 75);
 				return;
@@ -744,7 +747,7 @@ class Game {
 				break;
 			case "5":
 				currentRoom = masterRoomMap.get("SISTER'S_ROOM");
-				currentCharacter = masterCharacterMap.get("SAYU_YAGAMI");
+				currentCharacter = masterCharacterMap.get("SAYU");
 				break;
 			case "6":
 				currentRoom = masterRoomMap.get("FOYER");

@@ -124,7 +124,7 @@ public class Player {
 	}
 
 	public static void setSisterMission(boolean b) {
-		sisterMission = true;
+		sisterMission = b;
 	}
 	
 	public static boolean getEndGame() {

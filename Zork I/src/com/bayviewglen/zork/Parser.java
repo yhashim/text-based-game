@@ -180,7 +180,7 @@ class Parser {
 	public static boolean stringIsCharacter(String string) {
 		// add names of characters here
 		String[] characterNames = { "Ryuk", "Arayoshi_Hatori", "Shingo_Mido", "Kiyomi_Takada", "Reiji_Namikawa",
-				"Mashiko_Kido", "Sayu_Yagami", "Takeshi_Ooi", "Touta_Matsuda", "Raye_Penber", "Naomi_Misora", "Soichiro_Yagami",
+				"Mashiko_Kido", "Sayu", "Takeshi_Ooi", "Touta_Matsuda", "Raye_Penber", "Naomi_Misora", "Soichiro_Yagami",
 				"L_Lawliet" };
 		string = string.toLowerCase();
 		for (int i = 0; i < characterNames.length; i++) {
