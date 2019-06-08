@@ -499,40 +499,38 @@ class Game {
 		}
 		
 		if (masterItemMap.get(giveable).give()) {
-			boolean wantsItem = false;
-			ArrayList<String> listOfWantedItems = currentCharacter.getWantedItems();
-			for (int i = 0; i < listOfWantedItems.size(); i++) {
-				if (listOfWantedItems.get(i).equals(giveable)) {
-					wantsItem = true;
-				}
-			}
-			String recipient = command.getCharacter();
-			if (wantsItem) {
 
-				Player.removeItem(giveable, 1);
-				currentCharacter.addToInventory(masterItemMap.get(giveable));
-				Zork.print("The " + giveable.toLowerCase() + " was given to " + recipient + "!\n", 75);
-				
-				if (giveable.toLowerCase().equals("flashlight")) {
-					Player.setSisterMission(true);
-				}
-			}
+			String recipient = command.getCharacter();
+			
+			if (currentCharacter == null)
+				Zork.print("No one is in the room.\n", 75);
 			else {
-				Zork.print("Sorry, " + recipient.toUpperCase().substring(0, 1) + recipient.substring(1) + " does not want that item.\n", 75);
+				boolean wantsItem = false;
+				ArrayList<String> listOfWantedItems = currentCharacter.getWantedItems();
+				for (int i = 0; i < listOfWantedItems.size(); i++) {
+					if (listOfWantedItems.get(i).equals(giveable)) {
+						wantsItem = true;
+					}
+				}				
+				String inRoomChar = currentCharacter.getCharacterName();
+				if (!inRoomChar.toUpperCase().equals(recipient.toUpperCase()))
+					Zork.print(recipient.toUpperCase().substring(0, 1) + recipient.substring(1) + " is not in the room. Only " + inRoomChar.toUpperCase().substring(0, 1) + inRoomChar.substring(1) + " is in the room.\n", 75);
+				else {
+					if (wantsItem) {
+						Player.removeItem(giveable, 1);
+						currentCharacter.addToInventory(masterItemMap.get(giveable));
+						Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.substring(1) + " was given to " + recipient + "!\n", 75);
+					}
+					else {
+						Zork.print("Sorry, " + recipient + " does not want that item.\n", 75);
+					}
+				}
+				
 			}
+			
 		} else {
 			Zork.print("Sorry, we can't do that.\n", 75);
 		}
-		
-		
-		
-		
-//		if (masterItemMap.get(giveable).give()) {
-//			Character.addToInventory(masterItemMap.get(giveable.toUpperCase()));
-//			Player.removeItem(giveable, 1);
-//		} else {
-//			Zork.print("You wouldn't want to give " + giveable + " away!\n", 75);
-//		}
 	}
 
 	// check if object is lockable
