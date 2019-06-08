@@ -345,7 +345,8 @@ class Game {
 				// we don't know where to go...
 				Zork.print("Sorry, I did not understand that. Please try again.\n", 75);
 				return;
-			} else {
+			} 
+			else {
 				Room previousRoom = currentRoom;
 				Room nextRoom = currentRoom.nextRoom(direction);
 				if (nextRoom == null)
@@ -367,8 +368,13 @@ class Game {
 						Zork.print("Ryuk: Here is an oldkey - this will give you access to the forest pathway. Good luck!", 75);
 					}
 					currentRoom = nextRoom;
-					
-					//currentCharacter = nextRoom.getCurrentCharacters(currentRoom);
+					String roomCharName = currentRoom.getRoomCharacter();
+					if (roomCharName.equals("none")) {
+						currentCharacter = null;
+					}
+					else {
+						currentCharacter = masterCharacterMap.get(currentRoom.getRoomCharacter());
+					}
 					Zork.print(currentRoom.longDescription()+"\n", 75);
 				}
 				return;

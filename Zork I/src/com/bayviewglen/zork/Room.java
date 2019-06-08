@@ -255,15 +255,14 @@ class Room {
 		return returnString;		
 	}
 		
-		
-//		for (Iterator iter = values.iterator(); iter.hasNext();) {
-//			Character n = (Character)iter;
-//			if (n.getStartingLocation().equals(roomName))
-//				returnString += " " + iter.next();
-//		}
-//		return returnString;
-//	}
-		
+	public String getRoomCharacter() {
+		String roomChar = "none";
+		Set keys = characters.keySet();
+		Iterator iter = keys.iterator();
+		if (iter.hasNext())
+			roomChar = iter.next().toString().toUpperCase();
+		return roomChar;
+	}
 		
 	// checks for an item in the inventory 
 		// return true if it is, false if not

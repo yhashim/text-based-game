@@ -30,7 +30,7 @@ public class Player {
 			returnString += invItem;	
 			if (iter.hasNext())
 				returnString += ", ";		} 
-		Zork.print(returnString, 75);
+		Zork.print(returnString + "\n", 75);
 	}
 	
 	//adds name to list of people killed 
