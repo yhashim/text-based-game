@@ -26,7 +26,7 @@ class Parser {
 
 	public Parser() {
 		commands = new CommandWords();
-	}
+	} 
 
 	public Command getCommand() {
 		String inputLine = ""; // will hold the full input line...

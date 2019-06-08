@@ -47,6 +47,15 @@ public class Player {
 		}
 	}
 	
+	public static boolean isKilled (String name) {
+		for (String p : peopleKilled) {
+			if (p.equals(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public static int numKilled() {
 		return numKilled;
 	}
@@ -127,7 +136,7 @@ public class Player {
 		sisterMission = b;
 	}
 	
-	public static boolean getEndGame() {
+	public static boolean getEndGame() { 
 		return endGame;
 	}
 	

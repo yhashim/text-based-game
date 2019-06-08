@@ -32,7 +32,7 @@ class Item {
 		if (allItems == null) {
 			allItems = new ArrayList<Item>();
 		}
-		allItems.add(this);
+		allItems.add(this); 
 	}
 
 	public Item() {

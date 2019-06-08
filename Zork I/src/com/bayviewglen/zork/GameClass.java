@@ -673,7 +673,7 @@ class Game {
 			Zork.print("You cannot simply write names down and indiscriminately kill! With great powers comes great responsibilities.\n", 75);
 			return;
 		}
-		String killable = command.getCharacter();
+		String killable = command.getCharacter(); 
 
 		if (killable.equals("sayu")) {
 			Zork.print("You monster!!! Not your sister!!!\n", 75);
@@ -685,6 +685,10 @@ class Game {
 			return;
 		}		
 		
+		if (Player.isKilled(killable)) {
+			Zork.print("You can't kill someone who is already dead!\n", 75);
+			return;
+		}
 		Player.addKill(killable);
 		Zork.print("You let out a maniacal laugh. HAhAHaHA! \r\n", 75);
 

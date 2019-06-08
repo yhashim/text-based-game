@@ -27,7 +27,7 @@ class Room {
 	private HashMap <String, Character> characters = new HashMap <String, Character>(); // stores item inventory of room. // fix
 	private ArrayList<Room> rooms =  new ArrayList<Room>();
 	
-	public ArrayList<Room> getRooms() {
+	public ArrayList<Room> getRooms() { 
 		return rooms;
 	}
 	
