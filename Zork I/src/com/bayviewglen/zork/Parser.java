@@ -151,7 +151,7 @@ class Parser {
 		String[] gameItems = { "deathnote", "death note", "television1", "television2", 
 				"computer1", "computer2", "computer3", "drawer", "pen", 
 				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employeelist",
-				"flashlight", "teddy", "mw-file", "t-file", "key card", "newspaper",
+				"flashlight", "teddy", "mw-file", "taxesfile", "key card", "newspaper",
 				"mkeycard", "paper", "oldkey", "letter", "lkey", "wantedposter"
 				// testing by Teleportation
 				,"1","2","3","4","5","6","7","8","9","10"
@@ -180,7 +180,7 @@ class Parser {
 	public static boolean stringIsCharacter(String string) {
 		// add names of characters here
 		String[] characterNames = { "Ryuk", "Arayoshi_Hatori", "Shingo_Mido", "Kiyomi_Takada", "Reiji_Namikawa",
-				"Mashiko_Kido", "Sayu", "Takeshi_Ooi", "Touta_Matsuda", "Raye_Penber", "Naomi_Misora", "Soichiro_Yagami",
+				"Masahiko_Kido", "Sayu", "Takeshi_Ooi", "Touta_Matsuda", "Raye_Penber", "Naomi_Misora", "Soichiro_Yagami",
 				"L_Lawliet" };
 		string = string.toLowerCase();
 		for (int i = 0; i < characterNames.length; i++) {
@@ -194,7 +194,7 @@ class Parser {
 	public static boolean stringIsCommand(String string) {
 		// add commands here
 		// separate them on lines based on their function
-		String[] commands = { "go", "walk", "proceed", "run", "write", "kill", "use", "read", "take", "seize",
+		String[] commands = { "go", "walk", "proceed", "run", "listen", "write", "kill", "use", "read", "take", "seize",
 				"examine", "look", "watch", "unlock", "open", "give", "hand", "drop", "put down", "leave", "quit",
 				"finish", "retire", "help", "eat", "consume", "inventory" , "i", "teleport" };
 		string = string.toLowerCase();

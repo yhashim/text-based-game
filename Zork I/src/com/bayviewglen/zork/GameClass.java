@@ -276,7 +276,9 @@ class Game {
 			printHelp();
 		} else if (commandWord.equals("inventory") || commandWord.equals("i")) {
 			Player.displayInventory();
-		} else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
+		} else if (commandWord.equals("listen")) {
+			listen();
+		}else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
 				|| commandWord.equals("run")) {
 			goRoom(command);
 		} else if ((commandWord.equals("take") || commandWord.equals("seize")) && command.getObject() != null) {
@@ -291,7 +293,7 @@ class Game {
 			read(command);
 		} else if (commandWord.equals("use") && command.getObject() !=null) {
 			use(command);
-		} else if ((commandWord.equals("write") || commandWord.equals("kill")) && (command.getCharacter() != null)) {
+		} else if (commandWord.equals("write") || commandWord.equals("kill")) {
 			write(command);
 		} else if (commandWord.equals("watch") && command.getObject() != null) {
 			watch(command);
@@ -485,6 +487,16 @@ class Game {
 
 	}
 
+	private void listen() {
+		if (currentRoom.equals(masterRoomMap.get("ANTEIKU_CAFE"))) {
+			Zork.print("Student: Did you hear? Someone was mudered on Green Odori Street yesterday! Apparently the killer, Masahiko Kida, used to work here!\n", 75);
+		}
+		else {
+			Zork.print("There's nothing to listen to here.\n", 75);
+		}
+	}
+	
+	
 	// check if item is giveable
 	// if yes, give to character they stated
 	// remove from player's inventory
@@ -556,16 +568,17 @@ class Game {
 				// player has item or it is in the room
 				switch(readable) {
 					case "deathnote":
-						Zork.print("List Of people killed: \n", 75);
+						Zork.print("People Killed:\n", 75);
+						Player.peopleKilled();
 						break;
 					case "computer1":
-						Zork.print("Dad's computer - keep out\n", 75);
+						Zork.print("Soichiro Yagami\n Password:\n", 75);
 						break;
 					case "computer2":
-						Zork.print("Matsuda's computer - keep out\n", 75);
+						Zork.print("Touta Matsuda\n Password:\n", 75);
 						break;
 					case "computer3":
-						Zork.print("Meeting Room computer - keep out\n", 75);
+						Zork.print("Task Force Computer\n Security Number:\n", 75);
 						break;
 					case "employeelist":
 						Zork.print("List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas\n", 75);
@@ -573,8 +586,8 @@ class Game {
 					case "mw-file":
 						Zork.print("This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n", 75);
 						break;
-					case "t-file":
-						Zork.print("List of ...\n", 75);						
+					case "taxesfile":
+						Zork.print("Are you sure this is the file you want?\n", 75);						
 						break;
 					case "newspaper":
 						Zork.print("On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article\n", 75);						
@@ -652,18 +665,29 @@ class Game {
 	// +1 to killings
 	// else, print - you cannot kill ___!
 	private void write(Command command) {
-		String killable = command.getCharacter();
 		if (!Player.contains("pen")) {
 			Zork.print("You cannot kill without a pen!\n", 75);
 			return;
 		}
-		if (!killable.toLowerCase().equals("ryuk")) {
-			Player.addKill(killable);
-			Zork.print(
-					"You let out a maniacal laugh. HAhAHaHA! \r\n", 75);
-		} else {
-			Zork.print("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!\n", 75);
+		if (command.getCharacter() == null)	{	
+			Zork.print("You cannot simply write names down and indiscriminately kill! With great powers comes great responsibilities.\n", 75);
+			return;
 		}
+		String killable = command.getCharacter();
+
+		if (killable.equals("sayu")) {
+			Zork.print("You monster!!! Not your sister!!!\n", 75);
+			return;
+		}
+		
+		if (killable.equals("ryuk")) {
+			Zork.print("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!\\n", 75);
+			return;
+		}		
+		
+		Player.addKill(killable);
+		Zork.print("You let out a maniacal laugh. HAhAHaHA! \r\n", 75);
+
 		if (Player.getNumKilled() == 10) {
 			Player.setEndGame();
 		}
@@ -674,14 +698,19 @@ class Game {
 	// else, say - you can't watch ___, that would be boring!
 	private void watch(Command command) {
 		String watchable = command.getObject();
-		if (masterItemMap.get(watchable.toUpperCase()).watch() && currentRoom.contains(masterItemMap.get(watchable.toUpperCase()))) {
-			// if killings < 5 display "Breaking News! \nSerial killer Arayoshi Hatori has
-			// just gone on another murder spree, killing a total of 10 students from the
-			// University of Tokyo and professor Miss Amane."
-			// if killings >= 5 display "New Mystery Killer Kira - series of murders seem to
-			// be connected to one killer"
-		} else {
-			Zork.print("You can't watch " + watchable.toLowerCase() + ", that would be boring!\n", 75);
+		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
+			if (Player.getNumKilled() < 5) {
+				Zork.print("\"Breaking news! Serial killer Arayoshi Hatori has just gone on another murder spree, killing a total of 10 students from the University of Tokyo.\"\n", 75);
+			}
+			else if (Player.getNumKilled() >= 5) {
+				Zork.print("New Mystery Killer Kira - series of murders seem to be connected to one killer.\n", 75);
+			}
+		} 
+		else if (masterItemMap.get(watchable).watch() && !currentRoom.contains(masterItemMap.get(watchable))) {
+			Zork.print("There is no " + watchable + " here to watch... are you okay?\n", 75);
+		}
+		else {
+			Zork.print("You can't watch a" + watchable.toLowerCase() + ", that would be boring!\n", 75);
 		}
 	}
 
@@ -724,6 +753,7 @@ class Game {
 		}
 
 	}
+	
 	private HashMap <String, Character> getMasterCharacterMap() {
 		return masterCharacterMap;
 	}

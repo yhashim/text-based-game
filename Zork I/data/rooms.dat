@@ -55,7 +55,7 @@ Room Description: You are standing on Pac Street. To the west, directly in front
 Exit Rooms: N-Green Odori Street, E-Pac Street (East), S-Meiji Dori Avenue, W-Anteiku Cafe
 Locked: false
 Room Name: Anteiku Cafe
-Room Description: You are standing in a small cafe. There are several coffee tables and chairs positioned around the room.
+Room Description: You are standing in a small cafe. There are several coffee tables and chairs positioned around the room. You see a group of students talking.
 Exit Rooms: E-Pac Street (West)
 Locked: false
 Room Name: Green Odori Street

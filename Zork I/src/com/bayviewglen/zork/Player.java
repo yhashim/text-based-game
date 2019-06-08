@@ -41,9 +41,9 @@ public class Player {
 	}
 	
 	//prints out list of peopleKilled
-	public static void peopleKilled(ArrayList <String> peopleKilled) {
+	public static void peopleKilled() {
 		for (String s : peopleKilled) {
-			Zork.print(s+"\n", 75);
+			Zork.print(s +"\n", 75);
 		}
 	}
 	
