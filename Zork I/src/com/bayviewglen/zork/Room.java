@@ -218,6 +218,11 @@ class Room {
 		return returnString;
 	}
 	
+	/*
+	public Character getCurrentCharacters(Room room) {
+		return characters.get(masterCharacterMap.get(.getStartingLocation().equals(room)));
+	}
+	*/
 	public String getCharacters() {
 		String returnString = "Characters:";
 		Set keys = characters.keySet();

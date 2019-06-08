@@ -362,11 +362,13 @@ class Game {
 					}
 					if (Player.getEndGame() && currentRoom.getRoomName().toLowerCase().equals("mizuki-dori avenue")) {
 						// ryuk will give you a key (oldkey)
-						Player.addToInventory(masterCharacterMap.get("ryuk").getItem("oldKey"), 1);
+						//Player.addToInventory(masterCharacterMap.get("ryuk").getItem("oldKey"), 1);
 						// ryuk tells you it will give access to forest pathway
 						Zork.print("Ryuk: Here is an oldkey - this will give you access to the forest pathway. Good luck!", 75);
 					}
 					currentRoom = nextRoom;
+					
+					//currentCharacter = nextRoom.getCurrentCharacters(currentRoom);
 					Zork.print(currentRoom.longDescription()+"\n", 75);
 				}
 				return;
@@ -432,11 +434,12 @@ class Game {
 			return;
 		}
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
-			currentRoom.removeItem(takeable, 1);
+			//currentRoom.removeItem(takeable, 1);
 			if (takeable.equals("flashlight") && (!Player.getSisterMission())) {
 				Zork.print("Sayu: You can't take the flashlight until you find my teddy!\n", 75);
 				return;
 			}
+			currentRoom.removeItem(takeable, 1);
 			Player.addToInventory(masterItemMap.get(takeable), 1);
 			Zork.print("The " + takeable.toLowerCase() + " is now yours. Finders keepers!\n", 75);
 		} else {
@@ -741,6 +744,7 @@ class Game {
 				break;
 			case "5":
 				currentRoom = masterRoomMap.get("SISTER'S_ROOM");
+				currentCharacter = masterCharacterMap.get("SAYU_YAGAMI");
 				break;
 			case "6":
 				currentRoom = masterRoomMap.get("FOYER");
