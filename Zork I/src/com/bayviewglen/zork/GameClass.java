@@ -741,15 +741,19 @@ class Game {
 			switch(roomNum) {
 			case "1":
 				currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
+				currentCharacter = masterCharacterMap.get("RYUK");
 				break;
 			case "2":
 				currentRoom = masterRoomMap.get("HALLWAY");
+				currentCharacter = null;
 				break;
 			case "3":
 				currentRoom = masterRoomMap.get("PARENT'S_ROOM");
+				currentCharacter = null;
 				break;
 			case "4":
 				currentRoom = masterRoomMap.get("FATHER'S_OFFICE");
+				currentCharacter = null;
 				break;
 			case "5":
 				currentRoom = masterRoomMap.get("SISTER'S_ROOM");
@@ -757,102 +761,135 @@ class Game {
 				break;
 			case "6":
 				currentRoom = masterRoomMap.get("FOYER");
+				currentCharacter = null;
 				break;
 			case "7":
 				currentRoom = masterRoomMap.get("KITCHEN");
+				currentCharacter = null;
 				break;
 			case "8":
 				currentRoom = masterRoomMap.get("DINING_ROOM");
+				currentCharacter = null;
 				break;
 			case "9":
 				currentRoom = masterRoomMap.get("LIVING_ROOM");
+				currentCharacter = null;
 				break;
 			case "10":
 				currentRoom = masterRoomMap.get("BACK_YARD");
+				currentCharacter = null;
 				break;
 			case "11":
 				currentRoom = masterRoomMap.get("FRONT_YARD");
+				currentCharacter = null;
 				break;
 			case "12":
 				currentRoom = masterRoomMap.get("PAC_STREET_(EAST)");
+				currentCharacter = null;
 				break;
 			case "13":
 				currentRoom = masterRoomMap.get("PAC_STREET_(WEST)");
+				currentCharacter = null;
 				break;
 			case "14":
 				currentRoom = masterRoomMap.get("ANTEIKU_CAFE");
+				currentCharacter = null;
 				break;
 			case "15":
 				currentRoom = masterRoomMap.get("GREEN_ODORI_STREET");
+				currentCharacter = null;
 				break;
 			case "16":
 				currentRoom = masterRoomMap.get("FRONT_OF_SCHOOL");
+				currentCharacter = null;
 				break;
 			case "17":
 				currentRoom = masterRoomMap.get("SIDE_OF_SCHOOL");
+				currentCharacter = null;
 				break;
 			case "18":
 				currentRoom = masterRoomMap.get("MEIJI_DORI_AVENUE");
+				currentCharacter = null;
 				break;
 			case "19":
 				currentRoom = masterRoomMap.get("MIZUKI_DORI_AVENUE");
+				currentCharacter = null;
 				break;
 			case "20":
 				currentRoom = masterRoomMap.get("MAIN_SQUARE");
+				currentCharacter = null;
 				break;
 			case "21":
 				currentRoom = masterRoomMap.get("FOREST_PATHWAY");
+				currentCharacter = null;
 				break;
 			case "22":
 				currentRoom = masterRoomMap.get("FRONT_OF_WAREHOUSE");
+				currentCharacter = null;
 				break;
 			case "23":
 				currentRoom = masterRoomMap.get("WAREHOUSE");
+				currentCharacter = null;
 				break;
 			case "24":
 				currentRoom = masterRoomMap.get("LOBBY");
+				currentCharacter = null;
 				break;
 			case "25":
 				currentRoom = masterRoomMap.get("2ND_FLOOR_HALLWAY");
+				currentCharacter = null;
 				break;
 			case "26":
 				currentRoom = masterRoomMap.get("MEETING_ROOM_TWO");
+				currentCharacter = null;
 				break;
 			case "27":
 				currentRoom = masterRoomMap.get("2ND_FLOOR_HALLWAY_(NORTH)");
+				currentCharacter = null;
 				break;
 			case "28":
 				currentRoom = masterRoomMap.get("MEETING_ROOM_ONE");
+				currentCharacter = null;
 				break;
 			case "29":
 				currentRoom = masterRoomMap.get("2ND_FLOOR_HALLWAY_(SOUTH)");
+				currentCharacter = null;
 				break;
 			case "30":
 				currentRoom = masterRoomMap.get("MEETING_ROOM_THREE");
+				currentCharacter = null;
 				break;
 			case "31":
 				currentRoom = masterRoomMap.get("3RD_FLOOR_HALLWAY");
+				currentCharacter = null;
 				break;
 			case "32":
 				currentRoom = masterRoomMap.get("LARGE_MEETING_ROOM");
+				currentCharacter = masterCharacterMap.get("NAOMI_MISORA");
 				break;
 			case "33":
 				currentRoom = masterRoomMap.get("MR._MATSUDA'S_OFFICE");
+				currentCharacter = null;
 				break;
 			case "34":
 				currentRoom = masterRoomMap.get("MR._YAGAMI'S_OFFICE");
+				currentCharacter = masterCharacterMap.get("SOICHIRO_YAGAMI");
 				break;
 			case "35":
 				currentRoom = masterRoomMap.get("4TH_FLOOR_HALLWAY");
+				currentCharacter = null;
 				break;
 			case "36":
 				currentRoom = masterRoomMap.get("KIRA_INVESTIGATION_ROOM");
+				currentCharacter = null;
 				break;
 			case "37":
 				currentRoom = masterRoomMap.get("L'S_OFFICE");
+				currentCharacter = null;
 				break;
 			default:
 				currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
+				currentCharacter = null;
 				break;
 			}
 		}
