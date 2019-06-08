@@ -94,12 +94,6 @@ Item Weight: 2
 Functions: take, give, drop, examine
 Starting Room: Back Yard
 Starting Character:
-Item Name: k-file
-Item Description: This is a large folder. On the cover, written in black letters is "The Kira Case File".
-Item Weight: 1
-Functions: take, read, drop, examine
-Starting Room: Father's Office
-Starting Character:
 Item Name: mw-file
 Item Description: This is a thin folder containing a single sheet of paper. On the sheet is a list of names, all of which are crossed out except for one, Kiyomi Takada.
 Item Weight: 1

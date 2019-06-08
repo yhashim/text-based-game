@@ -151,7 +151,7 @@ class Parser {
 		String[] gameItems = { "deathnote", "death note", "television1", "television2", 
 				"computer1", "computer2", "computer3", "drawer", "pen", 
 				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employeelist",
-				"flashlight", "teddy", "k-file", "mw-file", "t-file", "key card", "newspaper",
+				"flashlight", "teddy", "mw-file", "t-file", "key card", "newspaper",
 				"mkeycard", "paper", "oldkey", "letter", "lkey", "wantedposter"
 				// testing by Teleportation
 				,"1","2","3","4","5","6","7","8","9","10"

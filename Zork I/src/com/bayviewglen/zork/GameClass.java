@@ -570,9 +570,6 @@ class Game {
 					case "employeelist":
 						Zork.print("List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas\n", 75);
 						break;
-					case "k-file":
-						Zork.print("List of characters killed\n", 75);						
-						break;
 					case "mw-file":
 						Zork.print("This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n", 75);
 						break;
