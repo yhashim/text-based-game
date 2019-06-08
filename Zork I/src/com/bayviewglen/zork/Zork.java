@@ -8,11 +8,11 @@ public class Zork {
 
 	public static void main(String[] args) {
 		// Tutorial
-//		preGame();
+		// preGame();
 		// Type 'help' if you need help.
 		Game game = new Game();
+		Music.playMusic("LsTheme.wav");
 		game.play();
-		// Music.playMusic("com.bayviewglen.zork.Music/LightTheme.wav");
 	}
 
 	private static void preGame() {
