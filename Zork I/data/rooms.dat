@@ -109,7 +109,7 @@ Locked: false
 Room Name: 2nd Floor Hallway (North)
 Room Description: You are standing in the north end of the hallway. There is a meeting room to the east.
 Exit Rooms: E-Meeting Room One, S-2nd Floor Hallway
-Locked: true
+Locked: false
 Room Name: Meeting Room One
 Room Description: Inside the meeting room are two square tables.
 Exit Rooms: W-2nd Floor Hallway (North)
