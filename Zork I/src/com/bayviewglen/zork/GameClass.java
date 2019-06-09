@@ -103,11 +103,11 @@ class Game {
 				String characterName = characterScanner.nextLine();
 				characterName = characterName.split(":")[1].trim();
 				character.setCharacterName(characterName);
-				
+
 				// Put in starting location
-				//String startingLocation = characterScanner.nextLine();
-				//startingLocation = startingLocation.split(":")[1].trim();
-				//character.setStartingLocation(startingLocation);
+				// String startingLocation = characterScanner.nextLine();
+				// startingLocation = startingLocation.split(":")[1].trim();
+				// character.setStartingLocation(startingLocation);
 				String currentRoom = characterScanner.nextLine();
 				if (!currentRoom.equals("Starting location:")) {
 					currentRoom = currentRoom.split(": ")[1].trim();
@@ -117,9 +117,7 @@ class Game {
 				} else {
 					currentRoom = null;
 				}
-				
-				
-				
+
 				// Assign its functions
 				String[] functions = characterScanner.nextLine().split(":")[1].trim().split(", ");
 				for (String x : functions) {
@@ -183,17 +181,17 @@ class Game {
 					currentRoom = null;
 				}
 				// else {
-					// Read the Starting Character
-					String currentCharacter = itemScanner.nextLine();
-					if (!currentCharacter.equals("Starting Character:")) {
-						currentCharacter = currentCharacter.split(": ")[1].trim();
-						item.setCurrentCharacter(currentCharacter);
-						currentCharacter = currentCharacter.toUpperCase();
-						Character accessCharacter = masterCharacterMap.get(currentCharacter);
-						accessCharacter.addToInventory(item);
-					} else {
-						currentCharacter = null;
-					}
+				// Read the Starting Character
+				String currentCharacter = itemScanner.nextLine();
+				if (!currentCharacter.equals("Starting Character:")) {
+					currentCharacter = currentCharacter.split(": ")[1].trim();
+					item.setCurrentCharacter(currentCharacter);
+					currentCharacter = currentCharacter.toUpperCase();
+					Character accessCharacter = masterCharacterMap.get(currentCharacter);
+					accessCharacter.addToInventory(item);
+				} else {
+					currentCharacter = null;
+				}
 				// }
 				// This puts the item we created in the masterItemMap
 				masterItemMap.put(itemName.toLowerCase(), item);
@@ -234,7 +232,7 @@ class Game {
 			Command command = parser.getCommand();
 			finished = processCommand(command);
 		}
-		// System.out.println("Thank you for playing.  Good bye.");
+		// System.out.println("Thank you for playing. Good bye.");
 		Zork.print("Thank you for playing. Good bye.", 75);
 	}
 
@@ -247,7 +245,7 @@ class Game {
 //		System.out.println("Zork is a new, incredibly boring adventure game.");
 		Zork.print("The game will now commence. Type 'help' if you ever need help!\n", 75);
 		System.out.println();
-		Zork.print(currentRoom.longDescription()+"\n", 75);
+		Zork.print(currentRoom.longDescription() + "\n", 75);
 	}
 
 	/**
@@ -271,46 +269,46 @@ class Game {
 		//
 		else if (commandWord.equals("p")) {
 			goPreviousRoom();
-		}
-		else if (commandWord.equals("help")) {
+		} else if (commandWord.equals("help")) {
 			printHelp();
 		} else if (commandWord.equals("inventory") || commandWord.equals("i")) {
 			Player.displayInventory();
 		} else if (commandWord.equals("listen")) {
 			listen();
-		}else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
+		} else if (commandWord.equals("go") || commandWord.equals("walk") || commandWord.equals("proceed")
 				|| commandWord.equals("run")) {
 			goRoom(command);
 		} else if ((commandWord.equals("take") || commandWord.equals("seize")) && command.getObject() != null) {
 			take(command);
 		} else if (commandWord.equals("open") && command.getObject() != null) {
 			open(command);
-		} else if ((commandWord.equals("give") || commandWord.equals("hand")) && command.getObject() != null && command.getCharacter() != null) {
+		} else if ((commandWord.equals("give") || commandWord.equals("hand")) && command.getObject() != null
+				&& command.getCharacter() != null) {
 			give(command);
 		} else if (commandWord.equals("unlock")) {
 			unlock(command);
 		} else if (commandWord.equals("read") && command.getObject() != null) {
 			read(command);
-		} else if (commandWord.equals("use") && command.getObject() !=null) {
+		} else if (commandWord.equals("use") && command.getObject() != null) {
 			use(command);
 		} else if (commandWord.equals("write") || commandWord.equals("kill")) {
 			write(command);
 		} else if (commandWord.equals("watch") && command.getObject() != null) {
 			watch(command);
-		} else if ((commandWord.equals("drop") || commandWord.equals("put down") || commandWord.equals("leave")) && command.getObject() != null) {
+		} else if ((commandWord.equals("drop") || commandWord.equals("put down") || commandWord.equals("leave"))
+				&& command.getObject() != null) {
 			drop(command);
 		} else if ((commandWord.equals("eat") || commandWord.equals("consume")) && (command.getObject() != null)) {
 			eat(command);
 		} else if (commandWord.equals("examine") && command.getObject() != null) {
 			examine(command);
 		} else if (commandWord.equals("quit")) {
-			if  (command.hasSecondWord()) {
+			if (command.hasSecondWord()) {
 				Zork.print("If you would like to quit the game, simply type the word \"quit\"\n", 75);
 			} else {
 				return true; // signal that we want to quit
 			}
-				
-				
+
 //			if (command.hasSecondWord()) {
 //				Zork.print("Quit what?\n", 75);
 //			} else {
@@ -326,7 +324,7 @@ class Game {
 		return false;
 	}
 
-	// implementations of user commands:      
+	// implementations of user commands:
 	/**
 	 * Print out some help information. Here we print some stupid, cryptic message
 	 * and a list of the command words.
@@ -334,20 +332,18 @@ class Game {
 	private void printHelp() {
 		Zork.print("Your command words are:\n", 75);
 		// parser.showCommands();
-		Zork.print(
-				"Inventory/i: prints all items in your inventory\r\n" + 
-				"Go/walk/proceed/run: allows you to move (specify direction)\r\n" + 
-				"Take/seize: used to pick up items (specify item)\r\n" + 
-				"Open: used to open things (specify item)\r\n" + 
-				"Give/hand: used to give an item to someone else (specify item and reciever)\r\n" + 
-				"Unlock: used to unlock things (specify item)\r\n" + 
-				"Read: allows you to read anything (specify item)\r\n" + 
-				"Use: allows you to use an item (specify item)\r\n" + 
-				"Write/kill: how you can write, specifically in the death note (specify character)\r\n" + 
-				"Watch: allows you to watch something on a television or computer\r\n" + 
-				"Drop/put down/leave: allows you to put down the item you are holding\r\n" + 
-				"Eat/consume: allows you to eat food\r\n" + 
-				"Quit: allows you to quit the game\r\n", 75);
+		Zork.print("Inventory/i: prints all items in your inventory\r\n"
+				+ "Go/walk/proceed/run: allows you to move (specify direction)\r\n"
+				+ "Take/seize: used to pick up items (specify item)\r\n"
+				+ "Open: used to open things (specify item)\r\n"
+				+ "Give/hand: used to give an item to someone else (specify item and reciever)\r\n"
+				+ "Unlock: used to unlock things (specify item)\r\n"
+				+ "Read: allows you to read anything (specify item)\r\n"
+				+ "Use: allows you to use an item (specify item)\r\n"
+				+ "Write/kill: how you can write, specifically in the death note (specify character)\r\n"
+				+ "Watch: allows you to watch something on a television or computer\r\n"
+				+ "Drop/put down/leave: allows you to put down the item you are holding\r\n"
+				+ "Eat/consume: allows you to eat food\r\n" + "Quit: allows you to quit the game\r\n", 75);
 	}
 
 	/**
@@ -368,6 +364,13 @@ class Game {
 				if (nextRoom == null)
 					Zork.print("There is no door in that direction!\n", 75);
 				else {
+					if (Player.numKilled() == 5 && currentRoom.getRoomName().equals("LIGHTS_ROOM")){
+						Zork.print("Ryuk: Good. It seems you have done what I told you. Although, the task force has started to take an\r\n"
+								+ "interest in you. I suggest you do something about it, and quick. It seems as if they have hired the\r\n"
+								+ "world-renowned detective \"L\". Hmmm… I'll make you a deal. You kill 5 members of the Task Force,\r\n"
+								+ "return back here, and I'll give you a hint to find L's real name. Here, I managed to grab this from\r\n"
+								+ "your father's office. It looks to be an access card to the Task Force building.\r\n", 75);
+					}
 					if (Player.getEndGame() && Player.contains("oldkey") && currentRoom.getRoomName().toLowerCase().equals("forest pathway")) {
 						Zork.print("You use your oldkey to enter the forest pathway!", 75);
 						// goes to forest pathway
@@ -418,28 +421,27 @@ class Game {
 		}
 		String temp = inputLine;
 		if (temp.toLowerCase().equals("death")) {
-			
+
 		} else {
-			
+
 		}
 	}
 
 	private void goPreviousRoom() {
-		currentRoom = previousRoom; 
+		currentRoom = previousRoom;
 	}
-	
+
 	// prints the description of the item
 	private void examine(Command command) {
 		String examinable = command.getObject();
 		if ((Player.contains(examinable)) || (currentRoom.contains(masterItemMap.get(examinable)))) {
 			String examinabledesc = masterItemMap.get(examinable).examine();
 			Zork.print(examinabledesc + "\n", 75);
-		} 
-		else {
+		} else {
 			Zork.print("You can not examine something not in the room or you don't have...\n", 75);
 			return;
 		}
-			
+
 		return;
 	}
 
@@ -456,7 +458,7 @@ class Game {
 			return;
 		}
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
-			//currentRoom.removeItem(takeable, 1);
+			// currentRoom.removeItem(takeable, 1);
 			if (takeable.equals("flashlight") && (masterCharacterMap.get("SAYU").contains("teddy"))) {
 				Player.setSisterMission(true);
 			}
@@ -503,14 +505,14 @@ class Game {
 
 	private void listen() {
 		if (currentRoom.equals(masterRoomMap.get("ANTEIKU_CAFE"))) {
-			Zork.print("Student: Did you hear? Someone was mudered on Green Odori Street yesterday! Apparently the killer, Masahiko Kida, used to work here!\n", 75);
-		}
-		else {
+			Zork.print(
+					"Student: Did you hear? Someone was mudered on Green Odori Street yesterday! Apparently the killer, Masahiko Kida, used to work here!\n",
+					75);
+		} else {
 			Zork.print("There's nothing to listen to here.\n", 75);
 		}
 	}
-	
-	
+
 	// check if item is giveable
 	// if yes, give to character they stated
 	// remove from player's inventory
@@ -518,16 +520,16 @@ class Game {
 	// else, tell character they probably don't want to give it away
 	private void give(Command command) {
 		String giveable = command.getObject();
-		 
+
 		if (!Player.contains(giveable)) {
 			Zork.print("You can not give away what you don't have...\n", 75);
 			return;
 		}
-		
+
 		if (masterItemMap.get(giveable).give()) {
 
 			String recipient = command.getCharacter();
-			
+
 			if (currentCharacter == null)
 				Zork.print("No one is in the room.\n", 75);
 			else {
@@ -537,23 +539,25 @@ class Game {
 					if (listOfWantedItems.get(i).equals(giveable)) {
 						wantsItem = true;
 					}
-				}				
+				}
 				String inRoomChar = currentCharacter.getCharacterName();
 				if (!inRoomChar.toUpperCase().equals(recipient.toUpperCase()))
-					Zork.print(recipient.toUpperCase().substring(0, 1) + recipient.substring(1) + " is not in the room. Only " + inRoomChar.toUpperCase().substring(0, 1) + inRoomChar.substring(1) + " is in the room.\n", 75);
+					Zork.print(recipient.toUpperCase().substring(0, 1) + recipient.substring(1)
+							+ " is not in the room. Only " + inRoomChar.toUpperCase().substring(0, 1)
+							+ inRoomChar.substring(1) + " is in the room.\n", 75);
 				else {
 					if (wantsItem) {
 						Player.removeItem(giveable, 1);
 						currentCharacter.addToInventory(masterItemMap.get(giveable));
-						Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.substring(1) + " was given to " + recipient + "!\n", 75);
-					}
-					else {
+						Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.substring(1)
+								+ " was given to " + recipient + "!\n", 75);
+					} else {
 						Zork.print("Sorry, " + recipient + " does not want that item.\n", 75);
 					}
 				}
-				
+
 			}
-			
+
 		} else {
 			Zork.print("Sorry, we can't do that.\n", 75);
 		}
@@ -580,50 +584,54 @@ class Game {
 		if (masterItemMap.get(readable).read()) {
 			if (Player.contains(readable) || currentRoom.contains(masterItemMap.get(readable))) {
 				// player has item or it is in the room
-				switch(readable) {
-					case "deathnote":
-						Zork.print("People Killed:\n", 75);
-						Player.peopleKilled();
-						break;
-					case "computer1":
-						Zork.print("Soichiro Yagami\n Password:\n", 75);
-						break;
-					case "computer2":
-						Zork.print("Touta Matsuda\n Password:\n", 75);
-						break;
-					case "computer3":
-						Zork.print("Task Force Computer\n Security Number:\n", 75);
-						break;
-					case "employeelist":
-						Zork.print("List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas\n", 75);
-						break;
-					case "mw-file":
-						Zork.print("This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n", 75);
-						break;
-					case "taxesfile":
-						Zork.print("Are you sure this is the file you want?\n", 75);						
-						break;
-					case "newspaper":
-						Zork.print("On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article\n", 75);						
-						break;
-					case "letter":
-						Zork.print("The front of the letter reads: \nTo: L \nFrom: Naomi Misora\n", 75);						
-						break;
-					case "wantedposter":
-						Zork.print("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping\n", 75);						
-						break;
-					default:
-						Zork.print("There is nothing to read on the " + readable.toLowerCase() + ".\n", 75);
+				switch (readable) {
+				case "deathnote":
+					Zork.print("People Killed:\n", 75);
+					Player.peopleKilled();
+					break;
+				case "computer1":
+					Zork.print("Soichiro Yagami\n Password:\n", 75);
+					break;
+				case "computer2":
+					Zork.print("Touta Matsuda\n Password:\n", 75);
+					break;
+				case "computer3":
+					Zork.print("Task Force Computer\n Security Number:\n", 75);
+					break;
+				case "employeelist":
+					Zork.print(
+							"List Of Employees: \nTsugami Ohaba \nWatari Tailor \nMello Ryga \nRoger Ruvie \nL Lawliet \nKiyomi Takada \nNate River \nMail Jeevas\n",
+							75);
+					break;
+				case "mw-file":
+					Zork.print(
+							"This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n",
+							75);
+					break;
+				case "taxesfile":
+					Zork.print("Are you sure this is the file you want?\n", 75);
+					break;
+				case "newspaper":
+					Zork.print(
+							"On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article\n",
+							75);
+					break;
+				case "letter":
+					Zork.print("The front of the letter reads: \nTo: L \nFrom: Naomi Misora\n", 75);
+					break;
+				case "wantedposter":
+					Zork.print("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping\n", 75);
+					break;
+				default:
+					Zork.print("There is nothing to read on the " + readable.toLowerCase() + ".\n", 75);
 				}
-			}
-			else {
+			} else {
 				Zork.print("You can not read something not in the room or you don't have...\n", 75);
 			}
-		}
-		else {
+		} else {
 			Zork.print("There is nothing to read on the " + readable.toLowerCase() + ".\n", 75);
 		}
-				
+
 	}
 
 	// check if object is useable & if object is in inventory
@@ -635,22 +643,18 @@ class Game {
 	private void use(Command command) {
 		String usable = command.getObject();
 		if (!Player.contains(usable)) {
-			Zork.print("You can not use a " + usable.toLowerCase() + " if you don't have one\n", 75);	
-		} 
-		else
-		{
+			Zork.print("You can not use a " + usable.toLowerCase() + " if you don't have one\n", 75);
+		} else {
 			if (!masterItemMap.get(usable).use()) {
 				Zork.print("Please specifiy how you would like to use the " + usable.toLowerCase() + ".\n", 75);
-			}
-			else
-			{
+			} else {
 				switch (usable) {
 				case "flashlight":
 					if (currentRoom.getRoomName().equals("Warehouse")) {
-						Zork.print("The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.\n", 75);
-					}
-					else
-					{
+						Zork.print(
+								"The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.\n",
+								75);
+					} else {
 						Zork.print("The space in front of you lights up.\n", 75);
 					}
 					break;
@@ -683,22 +687,24 @@ class Game {
 			Zork.print("You cannot kill without a pen!\n", 75);
 			return;
 		}
-		if (command.getCharacter() == null)	{	
-			Zork.print("You cannot simply write names down and indiscriminately kill! With great powers comes great responsibilities.\n", 75);
+		if (command.getCharacter() == null) {
+			Zork.print(
+					"You cannot simply write names down and indiscriminately kill! With great powers comes great responsibilities.\n",
+					75);
 			return;
 		}
-		String killable = command.getCharacter(); 
+		String killable = command.getCharacter();
 
 		if (killable.equals("sayu")) {
 			Zork.print("You monster!!! Not your sister!!!\n", 75);
 			return;
 		}
-		
+
 		if (killable.equals("ryuk")) {
 			Zork.print("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!\r\n", 75);
 			return;
-		}		
-		
+		}
+
 		if (Player.isKilled(killable)) {
 			Zork.print("You can't kill someone who is already dead!\n", 75);
 			return;
@@ -718,16 +724,15 @@ class Game {
 		String watchable = command.getObject();
 		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
 			if (Player.getNumKilled() < 5) {
-				Zork.print("\"Breaking news! Serial killer Arayoshi Hatori has just gone on another murder spree, killing a total of 10 students from the University of Tokyo.\"\n", 75);
-			}
-			else if (Player.getNumKilled() >= 5) {
+				Zork.print(
+						"\"Breaking news! Serial killer Arayoshi Hatori has just gone on another murder spree, killing a total of 10 students from the University of Tokyo.\"\n",
+						75);
+			} else if (Player.getNumKilled() >= 5) {
 				Zork.print("New Mystery Killer Kira - series of murders seem to be connected to one killer.\n", 75);
 			}
-		} 
-		else if (masterItemMap.get(watchable).watch() && !currentRoom.contains(masterItemMap.get(watchable))) {
+		} else if (masterItemMap.get(watchable).watch() && !currentRoom.contains(masterItemMap.get(watchable))) {
 			Zork.print("There is no " + watchable + " here to watch... are you okay?\n", 75);
-		}
-		else {
+		} else {
 			Zork.print("You can't watch a" + watchable.toLowerCase() + ", that would be boring!\n", 75);
 		}
 	}
@@ -758,7 +763,8 @@ class Game {
 	private void eat(Command command) {
 		String consumable = command.getObject();
 		if (masterItemMap.get(consumable).eat() && Player.contains(consumable)) {
-			if (consumable.equals("mcintosh") || consumable.equals("fuji") || consumable.equals("honeycrisp") || consumable.equals("braeburn")) {
+			if (consumable.equals("mcintosh") || consumable.equals("fuji") || consumable.equals("honeycrisp")
+					|| consumable.equals("braeburn")) {
 				Zork.print("Dont eat that! Ryuk wants that apple!\n", 75);
 			} else {
 				Player.removeItem(consumable, 1);
@@ -767,21 +773,21 @@ class Game {
 		} else if (masterItemMap.get(consumable).eat()) {
 			Zork.print("You dont have " + consumable.toLowerCase() + " to eat...\n", 75);
 		} else {
-			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable.toLowerCase() + "!\n", 75);
+			Zork.print("Dishonour on you! You filthy human - you can't eat the " + consumable.toLowerCase() + "!\n",
+					75);
 		}
 
 	}
-	
-	private HashMap <String, Character> getMasterCharacterMap() {
+
+	private HashMap<String, Character> getMasterCharacterMap() {
 		return masterCharacterMap;
 	}
 
 	// teleport testing
 	private void goToRoom(Command command) {
 		String roomNum = command.getObject();
-		if (roomNum != null)
-		{
-			switch(roomNum) {
+		if (roomNum != null) {
+			switch (roomNum) {
 			case "1":
 				currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 				currentCharacter = masterCharacterMap.get("RYUK");
@@ -935,11 +941,10 @@ class Game {
 				currentCharacter = null;
 				break;
 			}
-		}
-		else {
+		} else {
 			currentRoom = masterRoomMap.get("LIGHT'S_ROOM");
 		}
-		Zork.print(currentRoom.longDescription()+"\n", 75);
+		Zork.print(currentRoom.longDescription() + "\n", 75);
 	}
-	
+
 }
