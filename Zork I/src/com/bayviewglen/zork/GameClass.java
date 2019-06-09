@@ -913,4 +913,5 @@ class Game {
 		}
 		Zork.print(currentRoom.longDescription() + "\n", 75);
 	}
+}
 
