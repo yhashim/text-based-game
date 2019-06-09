@@ -275,13 +275,9 @@ class Game {
 			goRoom(command);
 		} else if ((commandWord.equals("take") || commandWord.equals("seize")) && command.getObject() != null) {
 			take(command);
-		} else if (commandWord.equals("open") && command.getObject() != null) {
-			open(command);
 		} else if ((commandWord.equals("give") || commandWord.equals("hand")) && command.getObject() != null
 				&& command.getCharacter() != null) {
 			give(command);
-		} else if (commandWord.equals("unlock")) {
-			unlock(command);
 		} else if (commandWord.equals("read") && command.getObject() != null) {
 			read(command);
 		} else if (commandWord.equals("use") && command.getObject() != null) {
@@ -442,11 +438,8 @@ class Game {
 	}
 
 	// check if object is in currentRoom
-	// if yes:
-	// remove object from room's inventory
+	// if yes, remove object from room's inventory
 	// add object to player inventory
-	// else
-	// tell player that it is not there
 	private void take(Command command) {
 		String takeable = command.getObject();
 		if (Player.contains(takeable)) {
@@ -474,33 +467,8 @@ class Game {
 
 	}
 
-	// check if specified object is in room
-	// if yes, check if it is openable
-	// check if locked
-	// if openable and unlocked, open and print out contents
-	// else
-	// ask for key
-	// else, tell them it is not there
-	private void open(Command command) {
-		String openable = command.getObject();
-		if (currentRoom.contains(masterItemMap.get(openable))) {
-			if (masterItemMap.get(openable).open()) {
-				
-			} 
-			else {
-				Zork.print("Please enter the passcode: ", 75);
-				// take input
-				// if input == passcode for specific door
-				// door condition is unlocked
-				// else
-				// say that's the wrong passcode! come again later
-			}
-		} else {
-			Zork.print("There is no " + openable.toLowerCase() + " here.\n", 75);
-		}
-
-	}
-
+	// check if the currentRoom is the cafe
+	// if yes, print specific text
 	private void listen() {
 		if (currentRoom.equals(masterRoomMap.get("ANTEIKU_CAFE"))) {
 			Zork.print(
@@ -511,11 +479,10 @@ class Game {
 		}
 	}
 
-	// check if item is giveable
+	// check if item is giveable and character is in room
 	// if yes, give to character they stated
 	// remove from player's inventory
 	// add to character's inventory
-	// else, tell character they probably don't want to give it away
 	private void give(Command command) {
 		String giveable = command.getObject();
 
@@ -553,30 +520,15 @@ class Game {
 						Zork.print("Sorry, " + recipient + " does not want that item.\n", 75);
 					}
 				}
-
 			}
-
 		} else {
 			Zork.print("Sorry, we can't do that.\n", 75);
 		}
 	}
 
-	// check if object is lockable
-	// if true, check if key is in inventory
-	// unlock
-	// if no key
-	// ask player to find key
-	private void unlock(Command command) {
-		String unlockable = command.getObject();
-		if (masterItemMap.get(unlockable.toUpperCase()).unlock()) {
-
-		}
-
-	}
-
 	// check if object is readable
 	// if true, display text of specified object
-	// else, tell player there is nothing to read on ___ object
+	// else, tell player there is nothing to read on object
 	private void read(Command command) {
 		String readable = command.getObject();
 		if (masterItemMap.get(readable).read()) {
@@ -625,7 +577,7 @@ class Game {
 					break;
 				case "mw-file":
 					Zork.print(
-							"This is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n",
+							"\"Most Wanted File\"\nThis is a long list of names. All of the names have been crossed out except for one: Kiyomi Takada\n",
 							75);
 					break;
 				case "taxesfile":
@@ -657,12 +609,7 @@ class Game {
 
 	}
 
-	// check if object is useable & if object is in inventory
-	// check which useable object it is
-	// if it is a flashlight, do flashlight thing (make sure that all other
-	// parameters such as location are correct, etc.)
-	// if... until all the useables are done
-	// else, explain it cannot be used
+	// check if object is useable and if object is in inventory
 	private void use(Command command, Boolean placedFlashlight) {
 		String usable = command.getObject();
 		if (!Player.contains(usable)) {
@@ -696,7 +643,6 @@ class Game {
 
 	// checks if player has pen
 	// checks if valid character name was entered
-	
 	private boolean write(Command command) {
 		if (!Player.contains("pen")) {
 			Zork.print("You cannot kill without a pen!\n", 75);
@@ -760,13 +706,13 @@ class Game {
 							75);
 				}
 				else 
-					Zork.print("New Mystery Killer Kira - series of murders seem to be connected to one killer.\n", 75);
+					Zork.print("\"New Mystery Killer Kira - series of murders seem to be connected to one killer.\"\n", 75);
 				break;
 			case "television2":
-				if (Player.getNumKilled() >= 5) 
+				if (Player.getNumKilled() < 5) 
 					Zork.print("\"Shingo Mido and his crew robbed Mitsubishi bank. This their second robbery this month.\"", 75);
 				else 
-					Zork.print("New Mystery Killer Kira - series of murders seem to be connected to one killer.\n", 75);
+					Zork.print("\"New Mystery Killer Kira - series of murders seem to be connected to one killer.\"\n", 75);
 				break;
 			}
 		}	
@@ -813,12 +759,6 @@ class Game {
 		}
 
 	}
-
-	/*
-	private HashMap<String, Character> getMasterCharacterMap() {
-		return masterCharacterMap;
-	}
-	*/
 
 	// teleport testing
 	private void goToRoom(Command command) {
