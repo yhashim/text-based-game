@@ -333,7 +333,21 @@ class Game {
 	 */
 	private void printHelp() {
 		Zork.print("Your command words are:\n", 75);
-		parser.showCommands();
+		// parser.showCommands();
+		Zork.print(
+				"Inventory/i: prints all items in your inventory\r\n" + 
+				"Go/walk/proceed/run: allows you to move (specify direction)\r\n" + 
+				"Take/seize: used to pick up items (specify item)\r\n" + 
+				"Open: used to open things (specify item)\r\n" + 
+				"Give/ hand: used to give an item to someone else (specify item and reciever)\r\n" + 
+				"Unlock: used to unlock things (specify item)\r\n" + 
+				"Read: allows you to read anything (specify item)\r\n" + 
+				"Use: allows you to use an item (specify item)\r\n" + 
+				"Write/kill: how you can write, specifically in the death note (specify character)\r\n" + 
+				"Watch: allows you to watch something on a television or computer\r\n" + 
+				"Drop/put down/leave: allows you to put down the item you are holding\r\n" + 
+				"Eat/consume: allows you to eat food\r\n" + 
+				"Quit: allows you to quit the game", 75);
 	}
 
 	/**
