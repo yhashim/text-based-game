@@ -231,7 +231,7 @@ class Game {
 		Player.addToInventory(masterItemMap.get("deathnote"), 1);
 		
 		//testing
-		Player.addToInventory(masterItemMap.get("flashlight"), 1);
+		//Player.addToInventory(masterItemMap.get("flashlight"), 1);
 		//
 		
 		//boolean finished = false;
@@ -397,7 +397,7 @@ class Game {
 					else {
 						currentCharacter = masterCharacterMap.get(currentRoom.getRoomCharacter());
 					}
-					//testing
+					/*testing
 					if (currentRoom.getRoomName().equals("Light's Room")){
 					Player.addKill("Arayoshi_Hatori");
 					Player.addKill("Shingo_Mido");
@@ -410,7 +410,7 @@ class Game {
 					Player.addKill("Raye_Penber");
 					Player.addKill("Soichiro_Yagami");
 					}
-					//
+					*/
 					Zork.print(currentRoom.longDescription()+"\n", 75);
 					
 					if (Player.numKilled() == 5 && currentRoom.getRoomName().equals("Light's Room")){

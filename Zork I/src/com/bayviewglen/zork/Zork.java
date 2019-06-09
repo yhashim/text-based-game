@@ -15,7 +15,7 @@ public class Zork {
 		// Tutorial
 		//preGame();		
 		Game game = new Game();
-		Music.playMusic("C:\\LightTheme.wav");
+		//Music.playMusic("C:\\LightTheme.wav");
 		game.play();
 	}
 
