@@ -256,15 +256,13 @@ class Game {
 			return false;
 		}
 		
-		// testing
+		/* testing
 		else if (commandWord.equals("teleport")) {
 			goToRoom(command);
 		}
-		//
+		*/
 		
-		else if (commandWord.equals("p")) {
-			goPreviousRoom();
-		} else if (commandWord.equals("help")) {
+		else if (commandWord.equals("help")) {
 			printHelp();
 		} else if (commandWord.equals("inventory") || commandWord.equals("i")) {
 			Player.displayInventory();
@@ -315,9 +313,7 @@ class Game {
 		Zork.print("Inventory/i: prints all items in your inventory\r\n"
 				+ "Go/walk/proceed/run: allows you to move (specify direction)\r\n"
 				+ "Take/seize: used to pick up items (specify item)\r\n"
-				+ "Open: used to open things (specify item)\r\n"
 				+ "Give/hand: used to give an item to someone else (specify item and reciever)\r\n"
-				+ "Unlock: used to unlock things (specify item)\r\n"
 				+ "Read: allows you to read anything (specify item)\r\n"
 				+ "Use: allows you to use an item (specify item)\r\n"
 				+ "Write/kill: how you can write, specifically in the death note (specify character)\r\n"
@@ -339,7 +335,6 @@ class Game {
 				return;
 			} 
 			else {
-				Room previousRoom = currentRoom;
 				Room nextRoom = currentRoom.nextRoom(direction);
 				if (nextRoom == null) {
 					Zork.print("There is no door in that direction!\n", 75);
@@ -413,14 +408,9 @@ class Game {
 						Zork.print("\n", 75);
 					}
 				}
-					
 				return;
 			}
 		}
-	}
-
-	private void goPreviousRoom() {
-		currentRoom = previousRoom;
 	}
 
 	// prints the description of the item
@@ -629,7 +619,7 @@ class Game {
 								"The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.\n",
 								75);
 						String temp = currentRoom.getItems();
-						Zork.print(temp, 75);
+						Zork.print(temp + "\n", 75);
 					} else {
 						Zork.print("The space in front of you lights up.\n", 75);
 					}
@@ -736,7 +726,6 @@ class Game {
 		} else {
 			Zork.print("You have no " + droppable.toLowerCase() + " to drop.\n", 75);
 		}
-
 	}
 
 	// check if object is edible and is in the player's inventory
