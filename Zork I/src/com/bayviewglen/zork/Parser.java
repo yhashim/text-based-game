@@ -22,9 +22,11 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 class Parser {
+	// instance variable
 	private CommandWords commands; // holds all valid command words!
 
 	public Parser() {
+		// how we set up the parser
 		commands = new CommandWords();
 	} 
 
@@ -36,14 +38,16 @@ class Parser {
 		Zork.print("\n> ", 75); // print prompt
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			inputLine = reader.readLine();
+			inputLine = reader.readLine(); // takes in the user's input through the reader
 		} catch (java.io.IOException exc) {
 			Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 		}
 		String temp = inputLine;
-		while (inputLine.length() > 0) {
+		while (inputLine.length() > 0) { 
+			// we only look at the inputLine if it has info, otherwise we would get nullPointers
 			if (inputLine.indexOf(" ") > 0) {
 				input.add(inputLine.toLowerCase().substring(0, inputLine.indexOf(" ")));
+				// separates by spacing
 			} else {
 				input.add(inputLine.toLowerCase());
 				inputLine = "";
@@ -63,6 +67,13 @@ class Parser {
 			}
 		}
 		
+		// there are only 5 types of words we need from the player
+		// this is the info we need to do things
+			// character (for interaction)
+			// item (to use or interact)
+			// command (to do something)
+			// location (to go somewhere)
+			// adjective (to make the game seem more interactive - the details you want matter kind of thing)
 		String word1, word2, word3, word4, word5;
 		while (input.size() == 0) {
 			// if all the elements from input list are deleted, they were all irrelevant!
@@ -99,11 +110,13 @@ class Parser {
 				Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 			}
 		}
+		// set the words with the information that remains
 		word1 = input.get(0);
 		word2 = null;
 		word3 = null;
 		word4 = null;
 		word5 = null;
+		// use if statements to ensure we do not throw any null pointers
 		if (input.size() > 1) {
 			word2 = input.get(1);
 		}
@@ -117,7 +130,6 @@ class Parser {
 			word5 = input.get(4);
 		}
 		return new Command(word1, word2, word3, word4, word5);
-		// need return statement or else method will crash!
 	}
 
 	/*
@@ -130,11 +142,15 @@ class Parser {
 		if (!stringIsCommand(string) && !stringIsCharacter(string) && !stringIsItem(string) && !stringIsAdverb(string)
 				&& !stringIsDirection(string)) {
 			return true;
+			// if the word we have is not anything relevant, we don't need to consider it
 		} else {
 			return false;
 		}
 	}
-
+	
+	/*
+	 * Return true if a word in a player's input is an adverb
+	 */
 	public static boolean stringIsAdverb(String string) {
 		// a word is an adverb if it ends with "ly"
 		string = string.toLowerCase();
@@ -145,9 +161,12 @@ class Parser {
 		}
 		return false;
 	}
-
+	
+	/*
+	 * Return true if a word in a player's input is an item
+	 */
 	public static boolean stringIsItem(String string) {
-		// add names of items here
+		// all item names
 		String[] gameItems = { "deathnote", "death note", "television1", "television2", 
 				"computer1", "computer2", "computer3", "pen", 
 				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employeelist",
@@ -160,14 +179,6 @@ class Parser {
 				,"31","32","33","34","35","36","37"
 				};
 
-//		String[] gameItems = { "deathnote", "death note", "television", "tv", "computer1", "drawer", "front door", "pen",
-//				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employee list",
-//				"employee list", "flashlight", "teddy", "bear", "kira case file", "k-file",
-//				"most wanted file", "t-file", "key card", "newspaper", "mr. m's keycard",
-//				"slip of paper", "paper", "old key", "letter", "l's key", "l's key", "wanted poster",
-//				"poster" };
-
-		
 		string = string.toLowerCase();
 		for (int i = 0; i < gameItems.length; i++) {
 			if (string.equals(gameItems[i])) {
@@ -176,7 +187,10 @@ class Parser {
 		}
 		return false;
 	}
-
+	
+	/*
+	 * Return true if a word in a player's input is a character name
+	 */
 	public static boolean stringIsCharacter(String string) {
 		// add names of characters here
 		String[] characterNames = { "Ryuk", "Arayoshi_Hatori", "Shingo_Mido", "Kiyomi_Takada", "Reiji_Namikawa",
@@ -190,10 +204,12 @@ class Parser {
 		}
 		return false;
 	}
-
+	
+	/*
+	 * Return true if a word in a player's input is a valid command
+	 */
 	public static boolean stringIsCommand(String string) {
-		// add commands here
-		// separate them on lines based on their function
+		// all valid commands
 		String[] commands = { "go", "walk", "proceed", "run", "listen", "write", "kill", "use", "read", "take", "seize",
 				"examine", "look", "watch", "unlock", "open", "give", "hand", "drop", "put down", "leave", "quit",
 				"finish", "retire", "help", "eat", "consume", "inventory" , "i", "teleport" };
@@ -205,9 +221,12 @@ class Parser {
 		}
 		return false;
 	}
-
+	
+	/*
+	 * Return true if a word in a player's input is a valid direction
+	 */
 	public static boolean stringIsDirection(String string) {
-		// add directions here
+		// all valid directions
 		String[] directions = { "north", "east", "south", "west", "down", "up"};
 		string = string.toLowerCase();
 		for (int i = 0; i < directions.length; i++) {
