@@ -206,7 +206,6 @@ class Game {
 			initCharacters("data/Characters.dat");
 			currentCharacter = masterCharacterMap.get("RYUK");
 			initItems("data/Items.dat");
-			Hints.populate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
