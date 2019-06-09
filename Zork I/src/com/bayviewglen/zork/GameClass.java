@@ -23,7 +23,7 @@ import java.util.Scanner;
  * To play this game, create an instance of this class and call the "play"
  * routine.
  * 
- * This main class creates and initialises all the others: it creates all rooms,
+ * This main class creates and initializes all the others: it creates all rooms,
  * creates the parser and starts the game. It also evaluates the commands that
  * the parser returns.
  * 
@@ -33,11 +33,14 @@ class Game {
 	private Room currentRoom;
 	private Room previousRoom;
 	private Character currentCharacter;
+	private static boolean placedFlashlight;
+	private boolean finished;
+	
 	// This is a MASTER object that contains all of the rooms and is easily
 	// accessible.
 	// The key will be the name of the room -> no spaces (Use all caps and
 	// underscore -> Great Room would have a key of GREAT_ROOM
-	// In a hashmap keys are case sensitive.
+	// In a hashmap, keys are case sensitive.
 	// masterRoomMap.get("GREAT_ROOM") will return the Room Object that is the Great
 	// Room (assuming you have one)
 	private HashMap<String, Room> masterRoomMap;
@@ -79,8 +82,7 @@ class Game {
 				HashMap<String, String> tempExits = exits.get(key);
 				for (String s : tempExits.keySet()) {
 					// s = direction
-					// value is the room.
-
+					// value is the room
 					String roomName2 = tempExits.get(s.trim());
 					Room exitRoom = masterRoomMap.get(roomName2.toUpperCase().replaceAll(" ", "_"));
 					roomTemp.setExit(s.trim().charAt(0), exitRoom);
@@ -103,11 +105,7 @@ class Game {
 				String characterName = characterScanner.nextLine();
 				characterName = characterName.split(":")[1].trim();
 				character.setCharacterName(characterName);
-
 				// Put in starting location
-				// String startingLocation = characterScanner.nextLine();
-				// startingLocation = startingLocation.split(":")[1].trim();
-				// character.setStartingLocation(startingLocation);
 				String currentRoom = characterScanner.nextLine();
 				if (!currentRoom.equals("Starting location:")) {
 					currentRoom = currentRoom.split(": ")[1].trim();
@@ -117,7 +115,6 @@ class Game {
 				} else {
 					currentRoom = null;
 				}
-
 				// Assign its functions
 				String[] functions = characterScanner.nextLine().split(":")[1].trim().split(", ");
 				for (String x : functions) {
@@ -127,14 +124,13 @@ class Game {
 				List<String> wantedItems2 = Arrays.asList(characterScanner.nextLine().split(":")[1].trim().split(", "));
 				for (String x : wantedItems2) {
 					character.addToWantedItems(x);
-					// character.addToWantedItems(Item.getItem(x));
 				}
 				// Character's speech
 				String[] speech = characterScanner.nextLine().split(":")[1].trim().split(", ");
 				for (String x : speech) {
 					character.addToSpeech(x);
 				}
-				// This puts the character we created in the masterCharacterMap
+				// this puts the character we created in the masterCharacterMap
 				masterCharacterMap.put(characterName.toUpperCase(), character);
 			}
 			characterScanner.close();
@@ -180,7 +176,6 @@ class Game {
 				} else {
 					currentRoom = null;
 				}
-				// else {
 				// Read the Starting Character
 				String currentCharacter = itemScanner.nextLine();
 				if (!currentCharacter.equals("Starting Character:")) {
@@ -192,7 +187,6 @@ class Game {
 				} else {
 					currentCharacter = null;
 				}
-				// }
 				// This puts the item we created in the masterItemMap
 				masterItemMap.put(itemName.toLowerCase(), item);
 			}
@@ -213,7 +207,6 @@ class Game {
 			currentCharacter = masterCharacterMap.get("RYUK");
 			initItems("data/Items.dat");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		parser = new Parser();
@@ -224,15 +217,17 @@ class Game {
 	 */
 	public void play() {
 		printWelcome();
-		// Enter the main command loop. Here we repeatedly read commands and
-		// execute them until the game is over.
+		// enter the main command loop - here we repeatedly read commands
+		// and execute them until the game is over
+		
+		// adds the deathnote to players inventory
 		Player.addToInventory(masterItemMap.get("deathnote"), 1);
-		boolean finished = false;
+		
+		//boolean finished = false;
 		while (!finished) {
 			Command command = parser.getCommand();
 			finished = processCommand(command);
 		}
-		// System.out.println("Thank you for playing. Good bye.");
 		Zork.print("Thank you for playing. Good bye.", 75);
 	}
 
@@ -240,9 +235,6 @@ class Game {
 	 * Print out the opening message for the player.
 	 */
 	private void printWelcome() {
-//		System.out.println();
-//		System.out.println("Welcome to Zork!");
-//		System.out.println("Zork is a new, incredibly boring adventure game.");
 		Zork.print("The game will now commence. Type 'help' if you ever need help!\n", 75);
 		System.out.println();
 		Zork.print(currentRoom.longDescription() + "\n", 75);
@@ -262,11 +254,13 @@ class Game {
 			goRoom(command);
 			return false;
 		}
+		
 		// testing
 		else if (commandWord.equals("teleport")) {
 			goToRoom(command);
 		}
 		//
+		
 		else if (commandWord.equals("p")) {
 			goPreviousRoom();
 		} else if (commandWord.equals("help")) {
@@ -290,9 +284,9 @@ class Game {
 		} else if (commandWord.equals("read") && command.getObject() != null) {
 			read(command);
 		} else if (commandWord.equals("use") && command.getObject() != null) {
-			use(command);
+			use(command, Game.placedFlashlight);
 		} else if (commandWord.equals("write") || commandWord.equals("kill")) {
-			write(command);
+			return write(command);
 		} else if (commandWord.equals("watch") && command.getObject() != null) {
 			watch(command);
 		} else if ((commandWord.equals("drop") || commandWord.equals("put down") || commandWord.equals("leave"))
@@ -308,16 +302,6 @@ class Game {
 			} else {
 				return true; // signal that we want to quit
 			}
-
-//			if (command.hasSecondWord()) {
-//				Zork.print("Quit what?\n", 75);
-//			} else {
-//				return true; // signal that we want to quit
-//			}
-//		} else if (commandWord.equals("eat")) {
-//			if (command.hasSecondWord()) {
-//				eat(command);
-//			}
 		} else {
 			Zork.print("I don't know what you mean...\n", 75);
 		}
@@ -331,7 +315,6 @@ class Game {
 	 */
 	private void printHelp() {
 		Zork.print("Your command words are:\n", 75);
-		// parser.showCommands();
 		Zork.print("Inventory/i: prints all items in your inventory\r\n"
 				+ "Go/walk/proceed/run: allows you to move (specify direction)\r\n"
 				+ "Take/seize: used to pick up items (specify item)\r\n"
@@ -361,35 +344,13 @@ class Game {
 			else {
 				Room previousRoom = currentRoom;
 				Room nextRoom = currentRoom.nextRoom(direction);
-				if (nextRoom == null)
+				if (nextRoom == null) {
 					Zork.print("There is no door in that direction!\n", 75);
+				}
+				else if (nextRoom.isLocked() && !nextRoom.canUnlock(nextRoom)) {
+					Zork.print("This room is locked!\n", 75);
+				}
 				else {
-					if (Player.numKilled() == 5 && currentRoom.getRoomName().equals("LIGHTS_ROOM")){
-						currentRoom = nextRoom;
-						Zork.print(currentRoom.longDescription()+"\n", 75);
-						Zork.print("Ryuk: Good. It seems you have done what I told you. Although, the task force has started to take an\r\n"
-								+ "interest in you. I suggest you do something about it, and quick. It seems as if they have hired the\r\n"
-								+ "world-renowned detective \"L\". Hmmm… I'll make you a deal. You kill 5 members of the Task Force,\r\n"
-								+ "return back here, and I'll give you a hint to find L's real name. Here, I managed to grab this from\r\n"
-								+ "your father's office. It looks to be an access card to the Task Force building.\r\n", 75);
-						Character ryuk = masterCharacterMap.get("RYUK");
-						ryuk.removeFromInventory("keycard");
-					}
-					if (Player.getEndGame() && Player.contains("oldkey") && currentRoom.getRoomName().toLowerCase().equals("forest pathway")) {
-						Zork.print("You use your oldkey to enter the forest pathway!", 75);
-						// goes to forest pathway
-						currentRoom = nextRoom;
-						Zork.print(currentRoom.longDescription()+"\n", 75);
-						Zork.print("Ryuk: To enter the warehouse you must solve this riddle (the passcode is the answer).\nWhat begins and has no end? What is the ending of all that begins?", 75);
-						riddleSolve();
-						return;
-					}
-					if (Player.getEndGame() && currentRoom.getRoomName().toLowerCase().equals("mizuki-dori avenue")) {
-						// ryuk will give you a key (oldkey)
-						//Player.addToInventory(masterCharacterMap.get("ryuk").getItem("oldKey"), 1);
-						// ryuk tells you it will give access to forest pathway
-						Zork.print("Ryuk: Here is an oldkey - this will give you access to the forest pathway. Good luck!", 75);
-					}
 					currentRoom = nextRoom;
 					String roomCharName = currentRoom.getRoomCharacter();
 					if (roomCharName.equals("none")) {
@@ -398,36 +359,60 @@ class Game {
 					else {
 						currentCharacter = masterCharacterMap.get(currentRoom.getRoomCharacter());
 					}
+					
 					Zork.print(currentRoom.longDescription()+"\n", 75);
+					
+					// executes once the player has returned to Light's Room after completing Ryuk's first mission
+					// adds keycard item to player inventory
+					// displays player inventory
+					if (Player.numKilled() == 5 && currentRoom.getRoomName().equals("Light's Room")){
+						Zork.print("\nRyuk: Good. It seems you have done what I told you. Although, the task force has started to take an\r\n"
+								+ "interest in you. I suggest you do something about it, and quick. It seems as if they have hired the\r\n"
+								+ "world-renowned detective \"L\". Hmmm… I'll make you a deal. You eliminate 5 members of the Task Force,\r\n"
+								+ "return back here, and I'll give you a hint to find L's real name. Here, I managed to grab this from\r\n"
+								+ "your father's office. It looks to be an access card to the Task Force building.\r\n", 75);
+						
+						Character ryuk = masterCharacterMap.get("RYUK");
+						ryuk.removeFromInventory("keycard");
+						Player.addToInventory(masterItemMap.get("keycard"), 1);
+						
+						Zork.print("\n", 75);
+						Player.displayInventory();
+						Zork.print("\n", 75);
+					}
+					
+					
+					if (Player.numKilled() == 10 && currentRoom.getRoomName().equals("Light's Room")) {
+						Zork.print("\nRyuk: Well done! Now, as I promised, I will help you find L's real name. You must go to the warehouse on forest pathway. I will give you the first key which will give you access to the forest pathway. However, I'm not just going to let you into the warehouse so easily.  The warehouse requires a code. I'll be generous and give you a hint: What begins and has no end? What is the ending of all that begins?\n", 75);
+						
+						Character ryuk = masterCharacterMap.get("RYUK");
+						ryuk.removeFromInventory("oldkey");
+						Player.addToInventory(masterItemMap.get("oldkey"), 1);
+						
+						Zork.print("\n", 75);
+						Player.displayInventory();
+						Zork.print("\n", 75);
+					}
+					if (currentRoom.getRoomName().equals("Mr. Yagami's Office")) {
+						Zork.print("\nMr. Yagami: Oh, hello Light. I'm sorry I can't talk right now. I'm very busy. I'll try to be home early tonight.\n", 75);
+					}
+					if (currentRoom.getRoomName().equals("Large Meeting Room")) {
+						Zork.print("\nTask Force Lady: Hello! You must be Light. I work with your father. Could you do me a favour by dropping this letter off at L's Office for me? Here is the key to his office.\n", 75);
+						Character naomi = masterCharacterMap.get("NAOMI MISORA");
+						
+						naomi.removeFromInventory("lkey");
+						naomi.removeFromInventory("letter");
+						Player.addToInventory(masterItemMap.get("lkey"), 1);
+						Player.addToInventory(masterItemMap.get("letter"),1);
+						
+						Zork.print("\n", 75);
+						Player.displayInventory();
+						Zork.print("\n", 75);
+					}
 				}
+					
 				return;
 			}
-		}
-		direction = command.getDirection();
-		// Try to leave current room.
-		Room nextRoom = currentRoom.nextRoom(direction);
-		if (nextRoom == null)
-			Zork.print("There is no door!\n", 75);
-		else {
-			currentRoom = nextRoom;
-			Zork.print(currentRoom.longDescription()+"\n", 75);
-		}
-	}
-
-	private void riddleSolve() {
-		String inputLine = ""; // will hold the full input line...
-		Zork.print("\n> ", 75); // print prompt
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		try {
-			inputLine = reader.readLine();
-		} catch (java.io.IOException exc) {
-			Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
-		}
-		String temp = inputLine;
-		if (temp.toLowerCase().equals("death")) {
-
-		} else {
-
 		}
 	}
 
@@ -490,10 +475,9 @@ class Game {
 		String openable = command.getObject();
 		if (currentRoom.contains(masterItemMap.get(openable))) {
 			if (masterItemMap.get(openable).open()) {
-				if (openable.equals("drawer")) {
-					Zork.print("In the drawer you see a small slip of paper.\n", 75);
-				}
-			} else {
+				
+			} 
+			else {
 				Zork.print("Please enter the passcode: ", 75);
 				// take input
 				// if input == passcode for specific door
@@ -594,13 +578,35 @@ class Game {
 					Player.peopleKilled();
 					break;
 				case "computer1":
-					Zork.print("Soichiro Yagami\n Password:\n", 75);
+					Zork.print("Task Force\nSoichiro Yagami\nLocked\n", 75);
 					break;
 				case "computer2":
-					Zork.print("Touta Matsuda\n Password:\n", 75);
+					Zork.print("Task Force\nTouta Matsuda\nLocked\n", 75);
 					break;
 				case "computer3":
-					Zork.print("Task Force Computer\n Security Number:\n", 75);
+					BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+					String inputSecNum;
+					boolean enteringSecNum = true;
+					while (enteringSecNum) {
+						Zork.print("Task Force Computer\n Enter Security Number: \n Enter <'quit'> to cancel\n", 75);
+						try {
+							Zork.print("\n> ", 75); // print prompt
+							inputSecNum = reader.readLine();
+							if (inputSecNum.toLowerCase().equals("quit")) 
+								enteringSecNum = false;
+							else {
+								if (inputSecNum.toLowerCase().equals("6708")) {
+									Zork.print("Task Force Computer unlocked\n Welcome back Raye Penber\n \n", 75);
+									enteringSecNum = false;
+								}
+								else
+									Zork.print("Security Number is incorrect\n \n", 75);
+							}
+						} catch (java.io.IOException exc) {
+							Zork.print("There was an error during reading of Security Number.\n", 75);
+						}
+					}
+					Zork.print("You have finished reading the computer\n", 75);
 					break;
 				case "employeelist":
 					Zork.print(
@@ -617,7 +623,7 @@ class Game {
 					break;
 				case "newspaper":
 					Zork.print(
-							"On the front of the newpaper is an article: \nNew Mystery Killer Kira \nOver the past few weeks there have been a series of murders that seem to be connected to one person... see inside for full article\n",
+							"Task force member Takeshi Ooi awarded for his commendable performance last week at...\n",
 							75);
 					break;
 				case "letter":
@@ -625,6 +631,9 @@ class Game {
 					break;
 				case "wantedposter":
 					Zork.print("!Wanted! \nReiji Namikawa \n Crime: chlid kidnapping\n", 75);
+					break;
+				case "paper":
+					Zork.print("6708\n", 75);
 					break;
 				default:
 					Zork.print("There is nothing to read on the " + readable.toLowerCase() + ".\n", 75);
@@ -644,7 +653,7 @@ class Game {
 	// parameters such as location are correct, etc.)
 	// if... until all the useables are done
 	// else, explain it cannot be used
-	private void use(Command command) {
+	private void use(Command command, Boolean placedFlashlight) {
 		String usable = command.getObject();
 		if (!Player.contains(usable)) {
 			Zork.print("You can not use a " + usable.toLowerCase() + " if you don't have one\n", 75);
@@ -655,24 +664,18 @@ class Game {
 				switch (usable) {
 				case "flashlight":
 					if (currentRoom.getRoomName().equals("Warehouse")) {
+						if (!placedFlashlight) {
+							currentRoom.addToInventory(masterItemMap.get("employeelist"), 1);
+							placedFlashlight = true;
+						}
 						Zork.print(
 								"The space in front of you lights up. To the left there are cabinets covered with tarps. In front of you, a desk sits in the middle of the room.\n",
 								75);
+						String temp = currentRoom.getItems();
+						Zork.print(temp, 75);
 					} else {
 						Zork.print("The space in front of you lights up.\n", 75);
 					}
-					break;
-				case "keycard":
-					Zork.print("The .....\n", 75);
-					break;
-				case "mkeycard":
-					Zork.print("The .....\n", 75);
-					break;
-				case "oldkey":
-					Zork.print("The .....\n", 75);
-					break;
-				case "lkey":
-					Zork.print("The .....\n", 75);
 					break;
 				default:
 					Zork.print("Please specifiy how you would like to use the " + usable.toLowerCase() + ".\n", 75);
@@ -681,49 +684,61 @@ class Game {
 		}
 	}
 
-	// check if character is killable
-	// if true, remove character from its room
-	// remove character from character array
-	// +1 to killings
-	// else, print - you cannot kill ___!
-	private void write(Command command) {
+	// checks if player has pen
+	// checks if valid character name was entered
+	
+	private boolean write(Command command) {
 		if (!Player.contains("pen")) {
 			Zork.print("You cannot kill without a pen!\n", 75);
-			return;
+			return false;
 		}
 		if (command.getCharacter() == null) {
 			Zork.print(
 					"You cannot simply write names down and indiscriminately kill! With great powers comes great responsibilities.\n",
 					75);
-			return;
+			return false;
 		}
+		
 		String killable = command.getCharacter();
 
 		if (killable.equals("sayu")) {
 			Zork.print("You monster!!! Not your sister!!!\n", 75);
-			return;
+			return false;
 		}
 
 		if (killable.equals("ryuk")) {
 			Zork.print("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!\r\n", 75);
-			return;
+			return false;
 		}
 
 		if (Player.isKilled(killable)) {
 			Zork.print("You can't kill someone who is already dead!\n", 75);
-			return;
+			return false;
 		}
+		
 		Player.addKill(killable);
 		Zork.print("You let out a maniacal laugh. HAhAHaHA! \r\n", 75);
 
-		if (Player.getNumKilled() == 10) {
-			Player.setEndGame();
+		// story line transitional checks
+		if (Player.getNumKilled() == 5) {
+			Zork.print("You've completed your goal! Remember, you have to return to Ryuk now.", 75);
 		}
+		
+		if (Player.getNumKilled() == 10) {
+			Zork.print("You've completed your goal! It's time to return to Ryuk.", 75);
+		}
+		
+		if (killable.equals("l_lawliet")) {
+			Zork.print("\nRyuk: Yes! Yes! Well done Light! Now that you have eliminated L you can continue to bring justice to the world!\n", 75);
+			Zork.print("\nCongratulations. You have completed the game.\n", 75);
+
+			return true;
+		}
+		return false;
 	}
 
-	// check if object is watchable (basically tv) & in the currentRoom
-	// if yes, display text of what you see on tv
-	// else, say - you can't watch ___, that would be boring!
+	// check if object is watchable and is in currentRoom
+	// if yes, print text
 	private void watch(Command command) {
 		String watchable = command.getObject();
 		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
@@ -742,9 +757,7 @@ class Game {
 	}
 
 	// check if object is in player's inventory
-	// if yes, remove from inventory
-	// add to currentRoom inventory
-	// else, state they do not even have this object to put down
+	// if yes, remove from inventory and add to currentRoom inventory
 	private void drop(Command command) {
 		String droppable = command.getObject();
 		if (droppable.equals("deathnote") || droppable.equals("death note")) {
@@ -759,11 +772,8 @@ class Game {
 
 	}
 
-	// check if object is edible
-	// if an apple, state - Ryuk wants that apple!
-	// else, remove object from room inventory or personal inventory and say -
-	// yummy!
-	// else, print - dishonour on you! filthy human - you can't eat a ___!
+	// check if object is edible and is in the player's inventory
+	// if yes, eat the item 
 	private void eat(Command command) {
 		String consumable = command.getObject();
 		if (masterItemMap.get(consumable).eat() && Player.contains(consumable)) {
@@ -783,9 +793,11 @@ class Game {
 
 	}
 
+	/*
 	private HashMap<String, Character> getMasterCharacterMap() {
 		return masterCharacterMap;
 	}
+	*/
 
 	// teleport testing
 	private void goToRoom(Command command) {
@@ -885,6 +897,7 @@ class Game {
 				currentCharacter = null;
 				break;
 			case "24":
+				Player.addToInventory(masterItemMap.get("keycard"), 1);
 				currentRoom = masterRoomMap.get("LOBBY");
 				currentCharacter = null;
 				break;

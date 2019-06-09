@@ -96,14 +96,14 @@ Exit Rooms: N-Front Of Warehouse
 Locked: true
 Room Name: Lobby
 Room Description: You are standing in the lobby of the Task Force building. There is an elevator leading up, however, it appears to need some sort of card to use it.
-Exit Rooms: U-2nd Floor Hallway
+Exit Rooms: E-Mizuki Dori Avenue, U-2nd Floor Hallway
 Locked: false
 Room Name: 2nd Floor Hallway
 Room Description: You are on the 2nd floor of the building. There is an elevator in the hallway. A meeting room is directly in front of you to the east. There are several meeting rooms further down the hallway.
 Exit Rooms: N-2nd Floor Hallway (North), E-Meeting Room Two, S-2nd Floor Hallway (South), U-3rd Floor Hallway, D-Lobby
 Locked: true
 Room Name: Meeting Room Two
-Room Description: Inside the meeting room is a small round table and several chairs.
+Room Description: Inside the meeting room is a small round table and several chairs. You see that there are files left on the table, and jackets on the back of the chairs. There must have been a meeting in here.
 Exit Rooms: W-2nd Floor Hallway
 Locked: false
 Room Name: 2nd Floor Hallway (North)
@@ -125,7 +125,7 @@ Locked: false
 Room Name: 3rd Floor Hallway
 Room Description: You are on the 3rd floor of the building. There is an elevator here. A large meeting room is directly in front of you to the east. To the north and south are two private offices. There are plaques next to these rooms.
 Exit Rooms: N-Mr. Matsuda's Office, E-Large Meeting Room, S-Mr. Yagami's Office, U-4th Floor Hallway, D-2nd Floor Hallway
-Locked: true
+Locked: false
 Room Name: Large Meeting Room
 Room Description: You are standing in a very large meeting room. In the center of the room is a large rectangular table.
 Exit Rooms: W-3rd Floor Hallway
@@ -137,16 +137,16 @@ Locked: true
 Room Name: Mr. Yagami's Office
 Room Description: This is Mr. Yagami's office. There is a large desk in the center of the room.
 Exit Rooms: N-3rd Floor Hallway
-Locked: true
+Locked: false
 Room Name: 4th Floor Hallway
 Room Description: You are on the 4th floor of the building. There is an elevator here. To the north is a large room. There is a plaque next to the door that reads "Kira Investigation Room". There is a private office to the south. The plaque next to the door reads "L's Office".
 Exit Rooms: N-Kira Investigation Room, S-L's Office, D-3rd Floor Hallway
-Locked: true
+Locked: false
 Room Name: Kira Investigation Room
 Room Description: This is the meeting room designated to the Kira case. There is a large television against the wall and a long table in front of it. 
 Exit Rooms: S-4th Floor Hallway
 Locked: false
 Room Name: L's Office
-Room Description: You are standing in a small room. There are cabinets lined against every wall in the room. Papers are messily lying on a desk in the center of the room. In the very centre of the desk is a plate with a slice of strawberry shortcake. 
+Room Description: You are standing in a small room. There are cabinets lined against every wall in the room. Papers are messily lying on a desk in the center of the room.
 Exit Rooms: N-4th Floor Hallway
 Locked: true
