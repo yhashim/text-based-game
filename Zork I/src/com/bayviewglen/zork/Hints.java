@@ -9,9 +9,13 @@ public class Hints {
 	public String getHint() {
 		String hint = "";
 		if (Player.getNumKilled() < 5) {
-			// hint = get random hint from group 1
+			int index = (int) (Math.random() * group1.size());
+			hint = group1.get(index);
+			group1.remove(group1.get(index));
 		} else {
-			// hint = get random hint from group 2
+			int index = (int) (Math.random() * group2.size());
+			hint = group1.get(index);
+			group1.remove(group1.get(index));
 		}
 		return hint;
 	}
