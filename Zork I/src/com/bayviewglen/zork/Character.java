@@ -48,7 +48,12 @@ class Character {
 			items.put(item.getItemName(), item);
 		}
 	}
-
+	
+	public void removeFromInventory(String item) {
+		if (items.containsKey(item)) {
+			items.remove(item);
+		}
+	}
 	
 	public void addToWantedItems(String x) {
 		wantedItems.add(x);	

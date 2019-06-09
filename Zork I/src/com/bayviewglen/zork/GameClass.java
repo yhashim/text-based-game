@@ -365,11 +365,15 @@ class Game {
 					Zork.print("There is no door in that direction!\n", 75);
 				else {
 					if (Player.numKilled() == 5 && currentRoom.getRoomName().equals("LIGHTS_ROOM")){
+						currentRoom = nextRoom;
+						Zork.print(currentRoom.longDescription()+"\n", 75);
 						Zork.print("Ryuk: Good. It seems you have done what I told you. Although, the task force has started to take an\r\n"
 								+ "interest in you. I suggest you do something about it, and quick. It seems as if they have hired the\r\n"
 								+ "world-renowned detective \"L\". Hmmm… I'll make you a deal. You kill 5 members of the Task Force,\r\n"
 								+ "return back here, and I'll give you a hint to find L's real name. Here, I managed to grab this from\r\n"
 								+ "your father's office. It looks to be an access card to the Task Force building.\r\n", 75);
+						Character ryuk = masterCharacterMap.get("RYUK");
+						ryuk.removeFromInventory("keycard");
 					}
 					if (Player.getEndGame() && Player.contains("oldkey") && currentRoom.getRoomName().toLowerCase().equals("forest pathway")) {
 						Zork.print("You use your oldkey to enter the forest pathway!", 75);
