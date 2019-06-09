@@ -695,7 +695,7 @@ class Game {
 		}
 		
 		if (killable.equals("ryuk")) {
-			Zork.print("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!\\n", 75);
+			Zork.print("Ryuk: You abominable human! I thought you were smarter than this! I AM IMMORTAL!\r\n", 75);
 			return;
 		}		
 		
