@@ -45,6 +45,9 @@ public class Player {
 		for (String s : peopleKilled) {
 			Zork.print(s +"\n", 75);
 		}
+		if (peopleKilled.isEmpty()) {
+			Zork.print("You have not killed anyone.\n", 75);
+		}
 	}
 	
 	public static boolean isKilled (String name) {
