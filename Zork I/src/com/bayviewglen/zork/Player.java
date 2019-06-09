@@ -9,7 +9,6 @@ public class Player {
 	private static ArrayList <String> peopleKilled = new ArrayList <String>();
 	private static int numKilled = peopleKilled.size();
 	private static boolean sisterMission = false;
-	private static boolean endGame = false;
 
 	public static void displayInventory() {
 		String returnString = "Inventory: ";
@@ -119,12 +118,7 @@ public class Player {
 	
 	public static void removeItem(String name, int amount) {
 		String putIn = name.toLowerCase();
-		//if (items.get(putIn).getAmount() == 1) {
 			items.remove(putIn);
-		//}
-		//else {
-		//	items.get(putIn).setAmount(items.get(putIn).getAmount()-1); 
-		//}
 	}
 	
 	public static int getNumKilled() {
@@ -139,18 +133,7 @@ public class Player {
 		sisterMission = b;
 	}
 	
-	public static boolean getEndGame() { 
-		return endGame;
-	}
 	
-	public static void setEndGame() {
-		endGame = true;
-		Zork.print("Congratulations! You have killed 10 characters. Now, you must kill the final boss, L, by discovering his name.\n", 75);
-		Zork.print("In order to find L's name you must go to the warehouse on forest pathway which is near Mizuki-Dori Avenue! Ryuk will be waiting there!\n", 75);
-		// player goes to Mizuki-Dori avenue in front of forest pathway
-		// character enters forest pathway
-		// then ryuk has a riddle to help character enter the warehouse
-	}
 	
 }
 

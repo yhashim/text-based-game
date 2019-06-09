@@ -23,7 +23,7 @@ import java.util.Scanner;
  * To play this game, create an instance of this class and call the "play"
  * routine.
  * 
- * This main class creates and initialises all the others: it creates all rooms,
+ * This main class creates and initializes all the others: it creates all rooms,
  * creates the parser and starts the game. It also evaluates the commands that
  * the parser returns.
  * 
@@ -215,7 +215,6 @@ class Game {
 			currentCharacter = masterCharacterMap.get("RYUK");
 			initItems("data/Items.dat");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		parser = new Parser();
@@ -239,7 +238,6 @@ class Game {
 			Command command = parser.getCommand();
 			finished = processCommand(command);
 		}
-		// System.out.println("Thank you for playing. Good bye.");
 		Zork.print("Thank you for playing. Good bye.", 75);
 	}
 
@@ -269,11 +267,13 @@ class Game {
 			goRoom(command);
 			return false;
 		}
+		
 		// testing
 		else if (commandWord.equals("teleport")) {
 			goToRoom(command);
 		}
 		//
+		
 		else if (commandWord.equals("p")) {
 			goPreviousRoom();
 		} else if (commandWord.equals("help")) {
@@ -315,16 +315,6 @@ class Game {
 			} else {
 				return true; // signal that we want to quit
 			}
-
-//			if (command.hasSecondWord()) {
-//				Zork.print("Quit what?\n", 75);
-//			} else {
-//				return true; // signal that we want to quit
-//			}
-//		} else if (commandWord.equals("eat")) {
-//			if (command.hasSecondWord()) {
-//				eat(command);
-//			}
 		} else {
 			Zork.print("I don't know what you mean...\n", 75);
 		}
@@ -368,27 +358,13 @@ class Game {
 			else {
 				Room previousRoom = currentRoom;
 				Room nextRoom = currentRoom.nextRoom(direction);
-				if (nextRoom == null)
+				if (nextRoom == null) {
 					Zork.print("There is no door in that direction!\n", 75);
+				}
 				else if (nextRoom.isLocked() && !nextRoom.canUnlock(nextRoom)) {
 					Zork.print("This room is locked!\n", 75);
 				}
 				else {
-					if (Player.getEndGame() && Player.contains("oldkey") && currentRoom.getRoomName().toLowerCase().equals("forest pathway")) {
-						Zork.print("You use your oldkey to enter the forest pathway!", 75);
-						// goes to forest pathway
-						currentRoom = nextRoom;
-						Zork.print(currentRoom.longDescription()+"\n", 75);
-						Zork.print("Ryuk: To enter the warehouse you must solve this riddle (the passcode is the answer).\nWhat begins and has no end? What is the ending of all that begins?", 75);
-						riddleSolve();
-						return;
-					}
-					if (Player.getEndGame() && currentRoom.getRoomName().toLowerCase().equals("mizuki-dori avenue")) {
-						// ryuk will give you a key (oldkey)
-						//Player.addToInventory(masterCharacterMap.get("ryuk").getItem("oldKey"), 1);
-						// ryuk tells you it will give access to forest pathway
-						Zork.print("Ryuk: Here is an oldkey - this will give you access to the forest pathway. Good luck!", 75);
-					}
 					currentRoom = nextRoom;
 					String roomCharName = currentRoom.getRoomCharacter();
 					if (roomCharName.equals("none")) {
@@ -397,20 +373,7 @@ class Game {
 					else {
 						currentCharacter = masterCharacterMap.get(currentRoom.getRoomCharacter());
 					}
-					/*testing
-					if (currentRoom.getRoomName().equals("Light's Room")){
-					Player.addKill("Arayoshi_Hatori");
-					Player.addKill("Shingo_Mido");
-					Player.addKill("Kiyomi_Takada");
-					Player.addKill("Reiji_Namikawa");
-					Player.addKill("Masahiko_Kida");
-					Player.addKill("Takeshi_Ooi");
-					Player.addKill("Naomi_Misora");
-					Player.addKill("Touta_Matsuda");
-					Player.addKill("Raye_Penber");
-					Player.addKill("Soichiro_Yagami");
-					}
-					*/
+					
 					Zork.print(currentRoom.longDescription()+"\n", 75);
 					
 					if (Player.numKilled() == 5 && currentRoom.getRoomName().equals("Light's Room")){
@@ -472,8 +435,8 @@ class Game {
 		}
 		*/
 	}
-	
 
+	/*
 	private void riddleSolve() {
 		String inputLine = ""; // will hold the full input line...
 		Zork.print("\n> ", 75); // print prompt
@@ -490,6 +453,7 @@ class Game {
 
 		}
 	}
+	*/
 
 	private void goPreviousRoom() {
 		currentRoom = previousRoom;
@@ -759,11 +723,9 @@ class Game {
 		}
 	}
 
-	// check if character is killable
-	// if true, remove character from its room
-	// remove character from character array
-	// +1 to killings
-	// else, print - you cannot kill ___!
+	// checks if player has pen
+	// checks if valid character name was entered
+	
 	private void write(Command command) {
 		if (!Player.contains("pen")) {
 			Zork.print("You cannot kill without a pen!\n", 75);
@@ -775,6 +737,7 @@ class Game {
 					75);
 			return;
 		}
+		
 		String killable = command.getCharacter();
 
 		if (killable.equals("sayu")) {
@@ -791,9 +754,11 @@ class Game {
 			Zork.print("You can't kill someone who is already dead!\n", 75);
 			return;
 		}
+		
 		Player.addKill(killable);
 		Zork.print("You let out a maniacal laugh. HAhAHaHA! \r\n", 75);
 
+		// story line transitional checks
 		if (Player.getNumKilled() == 5) {
 			Zork.print("You've completed your goal! Remember, you have to return to Ryuk now.", 75);
 		}
@@ -804,19 +769,14 @@ class Game {
 		
 		if (killable.equals("L_Lawliet")) {
 			Zork.print("\nRyuk: Yes! Yes! Well done Light! Now that you have eliminated L you can continue to bring justice to the world!\n", 75);
-			Zork.print("\nCongratulations. You have completed the game.", 75);
-			finished = true;
-		}
-		
-		//?
-		if (Player.getNumKilled() == 10) {
-			Player.setEndGame();
+			Zork.print("\nCongratulations. You have completed the game.\n", 75);
+
+			//quit game 
 		}
 	}
 
-	// check if object is watchable (basically tv) & in the currentRoom
-	// if yes, display text of what you see on tv
-	// else, say - you can't watch ___, that would be boring!
+	// check if object is watchable and is in currentRoom
+	// if yes, print text
 	private void watch(Command command) {
 		String watchable = command.getObject();
 		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
@@ -835,9 +795,7 @@ class Game {
 	}
 
 	// check if object is in player's inventory
-	// if yes, remove from inventory
-	// add to currentRoom inventory
-	// else, state they do not even have this object to put down
+	// if yes, remove from inventory and add to currentRoom inventory
 	private void drop(Command command) {
 		String droppable = command.getObject();
 		if (droppable.equals("deathnote") || droppable.equals("death note")) {
@@ -852,11 +810,8 @@ class Game {
 
 	}
 
-	// check if object is edible
-	// if an apple, state - Ryuk wants that apple!
-	// else, remove object from room inventory or personal inventory and say -
-	// yummy!
-	// else, print - dishonour on you! filthy human - you can't eat a ___!
+	// check if object is edible and is in the player's inventory
+	// if yes, eat the item 
 	private void eat(Command command) {
 		String consumable = command.getObject();
 		if (masterItemMap.get(consumable).eat() && Player.contains(consumable)) {
@@ -876,13 +831,12 @@ class Game {
 
 	}
 
+	/*
 	private HashMap<String, Character> getMasterCharacterMap() {
 		return masterCharacterMap;
 	}
+	*/
 
-	//public void setFinished() {
-	//	finished = true;
-	//}
 	// teleport testing
 	private void goToRoom(Command command) {
 		String roomNum = command.getObject();
