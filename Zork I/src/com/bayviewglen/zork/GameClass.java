@@ -394,7 +394,7 @@ class Game {
 					// executes when player enters large meeting room
 					if (currentRoom.getRoomName().equals("Large Meeting Room")) {
 						Zork.print(
-								"\nTask Force Lady: Hello! You must be Light. I work with your father. Could you do me a favour by dropping this letter off at L's Office for me? Here is the key to his office.\n",
+								"\nTask Force Lady: Hello! You must be Light. I work with your father.\r\nCould you do me a favour by dropping this letter off at L's Office for me? Here is the key to his office.\n",
 								75);
 						Character naomi = masterCharacterMap.get("NAOMI MISORA");
 
