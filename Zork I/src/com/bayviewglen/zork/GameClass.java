@@ -511,7 +511,8 @@ class Game {
 						Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.substring(1)
 								+ " was given to " + recipient + "!\n", 75);
 						if (recipient.toLowerCase().equals("ryuk") && (giveable.toLowerCase().equals("mcintosh") 
-								|| giveable.toLowerCase().equals("honeycrisp") || giveable.toLowerCase().equals("fuji"))) {
+								|| giveable.toLowerCase().equals("honeycrisp") || giveable.toLowerCase().equals("fuji")
+								|| giveable.toLowerCase().equals("braeburn"))) {
 							Zork.print("Ryuk: Thank you so much! Here's a hint to help you out:\r\n" + Hints.getHint(), 75);
 						}
 					} else {
