@@ -254,13 +254,9 @@ class Game {
 		if (command.getDirection() != null) {
 			goRoom(command);
 			return false;
-		}
-
-		/*
-		 * testing else if (commandWord.equals("teleport")) { goToRoom(command); }
-		 */
-
-		else if (commandWord.equals("help")) {
+		} else if (commandWord.equals("teleport")) {
+			goToRoom(command);
+		} else if (commandWord.equals("help")) {
 			printHelp();
 		} else if (commandWord.equals("inventory") || commandWord.equals("i")) {
 			Player.displayInventory();
@@ -510,10 +506,11 @@ class Game {
 						currentCharacter.addToInventory(masterItemMap.get(giveable));
 						Zork.print("The " + giveable.toUpperCase().substring(0, 1) + giveable.substring(1)
 								+ " was given to " + recipient + "!\n", 75);
-						if (recipient.toLowerCase().equals("ryuk") && (giveable.toLowerCase().equals("mcintosh") 
+						if (recipient.toLowerCase().equals("ryuk") && (giveable.toLowerCase().equals("mcintosh")
 								|| giveable.toLowerCase().equals("honeycrisp") || giveable.toLowerCase().equals("fuji")
 								|| giveable.toLowerCase().equals("braeburn"))) {
-							Zork.print("Ryuk: Thank you so much! Here's a hint to help you out:\r\n" + Hints.getHint(), 75);
+							Zork.print("Ryuk: Thank you so much! Here's a hint to help you out:\r\n" + Hints.getHint(),
+									75);
 						}
 					} else {
 						Zork.print("Sorry, " + recipient + " does not want that item.\n", 75);
