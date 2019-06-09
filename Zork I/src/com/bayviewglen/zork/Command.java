@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * should probably be changed to be an item rather than a String.
  */
 class Command {
-	// variables
+	// instance variables
 	private ArrayList<String> commandWords;
 	private String commandWord;
 	private String character;
@@ -37,13 +37,17 @@ class Command {
 	 * this was a command that is not recognized by this game
 	 */
 	public Command(String word1, String word2, String word3, String word4, String word5) {
+		// make a new arraylist to hold info
 		commandWords = new ArrayList<String>();
+		// add all valid words to this list
 		commandWords.add(word1);
 		commandWords.add(word2);
 		commandWords.add(word3);
 		commandWords.add(word4);
 		commandWords.add(word5);
 		
+		// iterates through this list to assign to the correct var
+		// this allows the player to write what they want in any order
 		for (String w : commandWords) {
 			if (w != null) {
 				if (Parser.stringIsCommand(w)) {
@@ -59,21 +63,7 @@ class Command {
 				}
 			}
 		}
-		
-		//cleanupCommandWords(commandWords);
 	}
-	
-	/*
-	private void cleanupCommandWords(ArrayList<String> commandWords2) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < commandWords.size(); i++) {
-			if (commandWords.get(i) == null) {
-				commandWords.remove(i);
-				i--;
-			}
-		}
-	}
-	*/
 
 	/**
 	 * Return the command word of this command. If the command was not understood,
