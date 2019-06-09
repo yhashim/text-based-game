@@ -17,28 +17,22 @@ Functions: watch, examine
 Starting Room: Main Square
 Starting Character:
 Item Name: computer1
-Item Description: This is a computer. A password is required to unlock it.
+Item Description: This is a computer.
 Item Weight: 30
-Functions: unlock, read, examine
+Functions: read, examine
 Starting Room: Father's Office
 Starting Character:
 Item Name: computer2
-Item Description: This is a computer. A password is required to unlock it.
+Item Description: This is a computer.
 Item Weight: 30
-Functions: unlock, read, examine
+Functions: read, examine
 Starting Room: Mr. Matsuda's Office
 Starting Character:
 Item Name: computer3
-Item Description: This is a computer. A password is required to unlock it.
+Item Description: This is a computer.
 Item Weight: 30
-Functions: unlock, read, examine
+Functions: read, examine
 Starting Room: Meeting Room One
-Starting Character:
-Item Name: drawer
-Item Description: This is a drawer.
-Item Weight: 30
-Functions: open, examine
-Starting Room: Mr. Matsuda's Office
 Starting Character:
 Item Name: pen
 Item Description: This is a black pen that is used as a writing utensil.
@@ -80,7 +74,7 @@ Item Name: employeelist
 Item Description: This is a list of all the employees in the task force.
 Item Weight: 1
 Functions: read, take, drop, examine
-Starting Room: Warehouse
+Starting Room:
 Starting Character:
 Item Name: flashlight
 Item Description: This is a flashlight, it is used to illuminate rooms and areas that are dark.
@@ -109,7 +103,7 @@ Starting Character:
 Item Name: keycard
 Item Description: This is your father's task force key card. "Task Force Mr. Yagami" is in black letters on the back of the key card.
 Item Weight: 2
-Functions: take, drop, examine, use
+Functions: take, drop, examine
 Starting Room:
 Starting Character: Ryuk
 Item Name: newspaper
@@ -121,19 +115,19 @@ Starting Character:
 Item Name: mkeycard
 Item Description: This is a key card. "Task Force Mr. M" is in black letters on the back of the key card.
 Item Weight: 2
-Functions: take, use, drop, examine
+Functions: take, drop, examine
 Starting Room: Meeting Room Two
 Starting Character:
 Item Name: paper
 Item Description: This is a small slip of paper. Written on it in pencil are the numbers "6708".
 Item Weight: 1
-Functions: take, examine, drop
+Functions: take, examine, drop, read
 Starting Room: Mr. Matsuda's Office
 Starting Character:
 Item Name: oldkey
 Item Description: This is an old key. It will give you access to the forest pathway.
 Item Weight: 2
-Functions: take, examine, drop, use
+Functions: take, examine, drop
 Starting Room:
 Starting Character: Ryuk
 Item Name: letter
@@ -145,7 +139,7 @@ Starting Character: Naomi Misora
 Item Name: lkey
 Item Description: This is a modern looking key. Engraved on both sides is the letter "L".
 Item Weight: 1
-Functions: use, take, drop, examine
+Functions: take, drop, examine
 Starting Room:
 Starting Character: Naomi Misora
 Item Name: wantedposter 

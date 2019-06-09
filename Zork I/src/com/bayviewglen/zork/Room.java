@@ -15,6 +15,8 @@ package com.bayviewglen.zork;
  * to the neighbouring room, or null if there is no exit in that direction.
  */
 import java.util.Set;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,6 +38,7 @@ class Room {
 	}
 
 	private boolean isLocked;
+	private boolean canUnlock;
 
 	/**
 	 * Create a room described "description". Initially, it has no exits.
@@ -119,7 +122,45 @@ class Room {
 		// return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + getCharacters() + "\n" + exitString();
 		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString() + "\n" + getCharacters();
 	}
-
+	public boolean isLocked() {
+		return isLocked;
+	}
+	
+	public boolean canUnlock(Room nextRoom){
+		if (nextRoom.getRoomName().equals("2nd Floor Hallway") && Player.contains("keycard")) {
+			return true;
+		}
+		else if (nextRoom.getRoomName().equals("Mr. Matsuda's Office") && Player.contains("mkeycard")) {
+			return true;
+		}
+		else if (nextRoom.getRoomName().equals("L's Office") && Player.contains("lkey")) {
+			return true;
+		}
+		else if (nextRoom.getRoomName().equals("Forest Pathway") && Player.contains("oldkey")) {
+			return true;
+		}
+		else if (nextRoom.getRoomName().equals("Warehouse")) {
+			Zork.print("There is a security key pad on the door to the Warehouse.\n", 75);
+			BufferedReader keyPadReader = new BufferedReader(new InputStreamReader(System.in));
+			String inputPadNum;
+			Zork.print("Enter a valid security password to unlock.\n> ", 75); 
+			try {
+				inputPadNum = keyPadReader.readLine();
+				if (inputPadNum.toLowerCase().equals("death")) {
+					Zork.print("The Warehouse door is unlocked.\n> ", 75); 
+					return true;
+				}
+				else {
+					Zork.print("Invalid security password!\n> ", 75); 
+					return false;
+				}
+			}
+			catch (java.io.IOException exc) {
+				Zork.print("There was an error during reading of Security Password.\n", 75);
+			}
+		}
+		return false;
+	}
 	/**
 	 * Return a string describing the room's exits, for example "Exits: north west
 	 * ".
@@ -239,7 +280,13 @@ class Room {
 				returnString += ", ";
 			
 			// possible function
+		
 			String roomChar = iter.next().toString();
+			
+			if (roomChar.equals("Naomi Misora")) {
+				roomChar = "Task Force Lady";
+			}
+			
 			returnString += roomChar.toUpperCase().substring(0, 1);
 			roomChar = roomChar.substring(1);
 			while (roomChar.indexOf(" ")>0) {

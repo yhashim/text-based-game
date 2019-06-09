@@ -149,7 +149,7 @@ class Parser {
 	public static boolean stringIsItem(String string) {
 		// add names of items here
 		String[] gameItems = { "deathnote", "death note", "television1", "television2", 
-				"computer1", "computer2", "computer3", "drawer", "pen", 
+				"computer1", "computer2", "computer3", "pen", 
 				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employeelist",
 				"flashlight", "teddy", "mw-file", "taxesfile", "keycard", "newspaper",
 				"mkeycard", "paper", "oldkey", "letter", "lkey", "wantedposter"
