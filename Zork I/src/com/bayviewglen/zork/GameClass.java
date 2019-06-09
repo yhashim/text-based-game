@@ -381,7 +381,9 @@ class Game {
 						Zork.print("\n", 75);
 					}
 					
-					
+					// executes once the player has returned to Light's Room after completing Ryuk's second mission
+					// adds oldkey item to player inventory
+					// display player inventory
 					if (Player.numKilled() == 10 && currentRoom.getRoomName().equals("Light's Room")) {
 						Zork.print("\nRyuk: Well done! Now, as I promised, I will help you find L's real name. You must go to the warehouse on forest pathway. I will give you the first key which will give you access to the forest pathway. However, I'm not just going to let you into the warehouse so easily.  The warehouse requires a code. I'll be generous and give you a hint: What begins and has no end? What is the ending of all that begins?\n", 75);
 						
@@ -393,9 +395,13 @@ class Game {
 						Player.displayInventory();
 						Zork.print("\n", 75);
 					}
+					
+					// executes when player enters Mr. Yagami's Office
 					if (currentRoom.getRoomName().equals("Mr. Yagami's Office")) {
 						Zork.print("\nMr. Yagami: Oh, hello Light. I'm sorry I can't talk right now. I'm very busy. I'll try to be home early tonight.\n", 75);
 					}
+					
+					// executes when player enters large meeting room
 					if (currentRoom.getRoomName().equals("Large Meeting Room")) {
 						Zork.print("\nTask Force Lady: Hello! You must be Light. I work with your father. Could you do me a favour by dropping this letter off at L's Office for me? Here is the key to his office.\n", 75);
 						Character naomi = masterCharacterMap.get("NAOMI MISORA");
@@ -447,7 +453,10 @@ class Game {
 			return;
 		}
 		if (currentRoom.contains(masterItemMap.get(takeable)) && masterItemMap.get(takeable).take()) {
-			// currentRoom.removeItem(takeable, 1);
+			if (takeable.equals("taxesfile")) {
+				Zork.print("Really? You want the taxes file? Foolish human...\n", 75);
+				return;
+			}
 			if (takeable.equals("flashlight") && (masterCharacterMap.get("SAYU").contains("teddy"))) {
 				Player.setSisterMission(true);
 			}
@@ -742,14 +751,25 @@ class Game {
 	private void watch(Command command) {
 		String watchable = command.getObject();
 		if (masterItemMap.get(watchable).watch() && currentRoom.contains(masterItemMap.get(watchable))) {
-			if (Player.getNumKilled() < 5) {
-				Zork.print(
-						"\"Breaking news! Serial killer Arayoshi Hatori has just gone on another murder spree, killing a total of 10 students from the University of Tokyo.\"\n",
-						75);
-			} else if (Player.getNumKilled() >= 5) {
-				Zork.print("New Mystery Killer Kira - series of murders seem to be connected to one killer.\n", 75);
+			switch (watchable) {
+			case "television1":
+				if (Player.getNumKilled() < 5) {
+					Zork.print(
+							"\"Breaking news! Serial killer Arayoshi Hatori has just gone on another murder spree, killing a total of 10 students from the University of Tokyo.\"\n",
+							75);
+				}
+				else 
+					Zork.print("New Mystery Killer Kira - series of murders seem to be connected to one killer.\n", 75);
+				break;
+			case "television2":
+				if (Player.getNumKilled() >= 5) 
+					Zork.print("\"Shingo Mido and his crew robbed Mitsubishi bank. This their second robbery this month.\"", 75);
+				else 
+					Zork.print("New Mystery Killer Kira - series of murders seem to be connected to one killer.\n", 75);
+				break;
 			}
-		} else if (masterItemMap.get(watchable).watch() && !currentRoom.contains(masterItemMap.get(watchable))) {
+		}	
+		else if (masterItemMap.get(watchable).watch() && !currentRoom.contains(masterItemMap.get(watchable))) {
 			Zork.print("There is no " + watchable + " here to watch... are you okay?\n", 75);
 		} else {
 			Zork.print("You can't watch a" + watchable.toLowerCase() + ", that would be boring!\n", 75);
