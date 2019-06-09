@@ -339,7 +339,7 @@ class Game {
 				"Go/walk/proceed/run: allows you to move (specify direction)\r\n" + 
 				"Take/seize: used to pick up items (specify item)\r\n" + 
 				"Open: used to open things (specify item)\r\n" + 
-				"Give/ hand: used to give an item to someone else (specify item and reciever)\r\n" + 
+				"Give/hand: used to give an item to someone else (specify item and reciever)\r\n" + 
 				"Unlock: used to unlock things (specify item)\r\n" + 
 				"Read: allows you to read anything (specify item)\r\n" + 
 				"Use: allows you to use an item (specify item)\r\n" + 
@@ -347,7 +347,7 @@ class Game {
 				"Watch: allows you to watch something on a television or computer\r\n" + 
 				"Drop/put down/leave: allows you to put down the item you are holding\r\n" + 
 				"Eat/consume: allows you to eat food\r\n" + 
-				"Quit: allows you to quit the game", 75);
+				"Quit: allows you to quit the game\r\n", 75);
 	}
 
 	/**
