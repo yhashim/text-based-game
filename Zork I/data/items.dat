@@ -89,7 +89,7 @@ Functions: take, give, drop, examine
 Starting Room: Back Yard
 Starting Character:
 Item Name: mw-file
-Item Description: This is a thin folder containing a single sheet of paper. On the sheet is a list of names, all of which are crossed out except for one, Kiyomi Takada.
+Item Description: This is a thin folder containing a single sheet of paper. On the sheet is a list of names, all of <br>which are crossed out except for one, Kiyomi Takada.
 Item Weight: 1
 Functions: take, read, drop, examine
 Starting Room: Father's Office
@@ -101,15 +101,15 @@ Functions: take, drop, examine, read
 Starting Room: Father's Office
 Starting Character:
 Item Name: keycard
-Item Description: This is your father's task force key card. "Task Force Mr. Yagami" is in black letters on the back of the key card.
+Item Description: This is your father's task force key card. "Task Force Mr. Yagami" is in black letters on the back <br>of the key card.
 Item Weight: 2
 Functions: take, drop, examine
 Starting Room:
 Starting Character: Ryuk
 Item Name: newspaper
-Item Description: This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his commendable performance last week at…
+Item Description: This is a newspaper. On the cover is an article: Task force member Takeshi Ooi awarded for his <br>commendable performance last week at…
 Item Weight: 1
-Functions: take, open, drop, examine, read
+Functions: take, drop, examine, read
 Starting Room: Dining Room
 Starting Character:
 Item Name: mkeycard

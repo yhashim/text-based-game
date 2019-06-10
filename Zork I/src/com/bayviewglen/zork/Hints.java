@@ -13,7 +13,7 @@ public class Hints {
 	 * depending on stage of game. They cannot access all the hints (we do not want
 	 * to help the player too much or the game will be boring).
 	 */
-	public String getHint() {
+	public static String getHint() {
 		String hint = "";
 		if (Player.getNumKilled() < 5) {
 			int index = (int) (Math.random() * group1.size());
