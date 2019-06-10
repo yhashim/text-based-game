@@ -10,7 +10,6 @@ class Item {
 	private String description;
 	private String currentRoom;
 	private String currentCharacter;
-	private int amount;
 	private double weight;
 	private ArrayList<String> functions; // stores functions of this item.
 
@@ -18,10 +17,8 @@ class Item {
 	private boolean isTakeable;
 	private boolean isConsumable;
 	private boolean isUsable;
-	private boolean isUnlockable;
 	private boolean isReadable;
 	private boolean isWatchable;
-	private boolean isOpenable;
 
 	private static ArrayList<Item> allItems;
 
@@ -36,7 +33,7 @@ class Item {
 	}
 
 	public Item() {
-		// default constructor.
+		// default constructor
 		itemName = "DEFAULT ITEM";
 		description = "DEFAULT DESCRIPTION";
 		functions = new ArrayList<String>();
@@ -44,11 +41,9 @@ class Item {
 
 	public void addFunction(String function) throws Exception {
 		functions.add(function);
-		// this.setBoolean(function);
 	}
 
 	public void setBoolean(String function) {
-		// for (int i = 0; i < functions.size(); i++) {
 		if (function.equals("give")) {
 			isGiveable = true;
 		} else if (function.equals("take")) {
@@ -57,16 +52,11 @@ class Item {
 			isConsumable = true;
 		} else if (function.equals("use")) {
 			isUsable = true;
-		} else if (function.equals("unlock")) {
-			isUnlockable = true;
 		} else if (function.equals("read")) {
 			isReadable = true;
 		} else if (function.equals("watch")) {
 			isWatchable = true;
-		} else if (function.equals("open")) {
-			isOpenable = true;
 		}
-		// }
 	}
 
 	public static Item getItem(String string) {
@@ -99,9 +89,6 @@ class Item {
 	 */
 	private String functionString() {
 		String returnString = "Functions:";
-//		Set keys = functions.keySet();
-//		for (Iterator iter = keys.iterator(); iter.hasNext();)
-//			returnString += " " + iter.next();
 		return returnString;
 	}
 
@@ -134,18 +121,6 @@ class Item {
 		this.weight = weight;
 	}
 
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int newAmount) {
-		this.amount = newAmount;
-	}
-
-	public void addAmount(int amount) {
-		this.amount += amount;
-	}
-
 	public String examine() {
 		return description;
 	}
@@ -153,17 +128,9 @@ class Item {
 	public boolean take() {
 		return isTakeable;
 	}
-
-	public boolean open() {
-		return isOpenable;
-	}
-
+	
 	public boolean give() {
 		return isGiveable;
-	}
-
-	public boolean unlock() {
-		return isUnlockable;
 	}
 
 	public boolean read() {

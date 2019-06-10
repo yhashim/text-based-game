@@ -67,7 +67,7 @@ public class Player {
 		return false;
 	}
 
-	// returns numKilled (imporant for game milestones)
+	// returns numKilled (important for game milestones)
 	public static int numKilled() {
 		return numKilled;
 	}
@@ -80,10 +80,8 @@ public class Player {
 	}
 
 	// adds an item to the inventory
-	// if an item is already in the inventory, increments amount
-	public static void addToInventory(Item item, int amount) {
+	public static void addToInventory(Item item) {
 		if (items.containsKey(item.getItemName())) {
-			// items.get(item.getItemName()).addAmount(amount);
 			Zork.print("The item already exists in inventory\n", 75);
 		} else {
 			String putIn = item.getItemName();
@@ -114,7 +112,7 @@ public class Player {
 	}
 
 	// removes an item from inventory
-	public static void removeItem(String name, int amount) {
+	public static void removeItem(String name) {
 		String putIn = name.toLowerCase();
 		items.remove(putIn);
 	}

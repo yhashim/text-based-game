@@ -119,9 +119,9 @@ class Room {
 	 * Exits: north west
 	 */
 	public String longDescription() {
-		// return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + getCharacters() + "\n" + exitString();
 		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString() + "\n" + getCharacters();
 	}
+	
 	public boolean isLocked() {
 		return isLocked;
 	}
@@ -143,11 +143,11 @@ class Room {
 			Zork.print("There is a security key pad on the door to the Warehouse.\n", 75);
 			BufferedReader keyPadReader = new BufferedReader(new InputStreamReader(System.in));
 			String inputPadNum;
-			Zork.print("Enter a valid security password to unlock.\n> ", 75); 
+			Zork.print("Enter a valid security password to unlock.\n\n> ", 75); 
 			try {
 				inputPadNum = keyPadReader.readLine();
 				if (inputPadNum.toLowerCase().equals("death")) {
-					Zork.print("The Warehouse door is unlocked.\n> ", 75); 
+					Zork.print("The Warehouse door is unlocked.\n", 75); 
 					return true;
 				}
 				else {
@@ -211,7 +211,6 @@ class Room {
 	
 	public void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
-			//items.get(item.getItemName()).addAmount(amount);
 			Zork.print("The item already exists in the room\n", 75);
 		}
 		else {
