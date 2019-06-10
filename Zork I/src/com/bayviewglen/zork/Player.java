@@ -48,7 +48,9 @@ public class Player {
 	// prints out list of peopleKilled
 	public static void peopleKilled() {
 		for (String s : peopleKilled) {
-			s = s.substring(0, 1).toUpperCase() + s.substring(1, s.indexOf("_")) + " " + s.substring(s.indexOf("_") + 1, s.indexOf("_") + 2).toUpperCase() + s.substring(s.indexOf("_") + 2);
+			s = s.substring(0, 1).toUpperCase() + s.substring(1, s.indexOf("_")) + " "
+					+ s.substring(s.indexOf("_") + 1, s.indexOf("_") + 2).toUpperCase()
+					+ s.substring(s.indexOf("_") + 2);
 			Zork.print(s + "\n", 75);
 		}
 		if (peopleKilled.isEmpty()) {
