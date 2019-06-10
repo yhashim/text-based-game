@@ -13,7 +13,7 @@ public class Zork {
 
 	public static void main(String[] args) {
 		// Tutorial
-		//preGame();		
+		preGame();		
 		Game game = new Game();
 		//Music.playMusic("C:\\LightTheme.wav");
 		game.play();
