@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-// https://stackoverflow.com/questions/24104313/how-do-i-make-a-delay-in-java
 
 public class Zork {
 	private static int lapse = 75;

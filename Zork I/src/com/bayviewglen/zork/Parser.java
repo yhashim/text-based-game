@@ -211,7 +211,7 @@ class Parser {
 	public static boolean stringIsCommand(String string) {
 		// all valid commands
 		String[] commands = { "listen", "write", "kill", "use", "read", "take", "seize",
-				"examine", "look", "watch", "unlock", "open", "give", "hand", "drop", "put down", "leave", "quit",
+				"examine", "look", "watch", "give", "hand", "drop", "put down", "leave", "quit",
 				"finish", "retire", "help", "eat", "consume", "inventory" , "i", "teleport" };
 		string = string.toLowerCase();
 		for (int i = 0; i < commands.length; i++) {

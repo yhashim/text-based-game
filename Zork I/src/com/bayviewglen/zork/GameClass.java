@@ -765,6 +765,10 @@ class Game {
 	}
 
 	/* teleport testing
+	 * this function was implemented to allow us to "teleport" to rooms in the game
+	 * this made it easier for us to test our code
+	 * each room was given a corresponding number
+	 * one would use the following convention to teleport: "teleport 1"
 	private void goToRoom(Command command) {
 		String roomNum = command.getObject();
 		if (roomNum != null) {

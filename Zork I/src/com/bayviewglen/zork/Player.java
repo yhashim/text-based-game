@@ -66,7 +66,7 @@ public class Player {
 		return false;
 	}
 
-	// returns numKilled (imporant for game milestones)
+	// returns numKilled (important for game milestones)
 	public static int numKilled() {
 		return numKilled;
 	}
