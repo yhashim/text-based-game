@@ -28,7 +28,7 @@ class Parser {
 	public Parser() {
 		// how we set up the parser
 		commands = new CommandWords();
-	} 
+	}
 
 	public Command getCommand() {
 		String inputLine = ""; // will hold the full input line...
@@ -43,8 +43,9 @@ class Parser {
 			Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 		}
 		String temp = inputLine;
-		while (inputLine.length() > 0) { 
-			// we only look at the inputLine if it has info, otherwise we would get nullPointers
+		while (inputLine.length() > 0) {
+			// we only look at the inputLine if it has info, otherwise we would get
+			// nullPointers
 			if (inputLine.indexOf(" ") > 0) {
 				input.add(inputLine.toLowerCase().substring(0, inputLine.indexOf(" ")));
 				// separates by spacing
@@ -55,7 +56,7 @@ class Parser {
 			inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
 			// find way to end with the last word
 		}
-		
+
 		// if first input word is 'quit', no need to remove BadWords
 		String firstInput = input.get(0);
 		if (!firstInput.equals("quit")) {
@@ -66,14 +67,15 @@ class Parser {
 				}
 			}
 		}
-		
+
 		// there are only 5 types of words we need from the player
 		// this is the info we need to do things
-			// character (for interaction)
-			// item (to use or interact)
-			// command (to do something)
-			// location (to go somewhere)
-			// adjective (to make the game seem more interactive - the details you want matter kind of thing)
+		// character (for interaction)
+		// item (to use or interact)
+		// command (to do something)
+		// location (to go somewhere)
+		// adjective (to make the game seem more interactive - the details you want
+		// matter kind of thing)
 		String word1, word2, word3, word4, word5;
 		while (input.size() == 0) {
 			// if all the elements from input list are deleted, they were all irrelevant!
@@ -94,7 +96,7 @@ class Parser {
 					inputLine = inputLine.substring(inputLine.indexOf(" ") + 1);
 					// find way to end with the last word
 				}
-				
+
 				// if first input word is 'quit', no need to remove BadWords
 				firstInput = input.get(0);
 				if (!firstInput.equals("quit")) {
@@ -104,8 +106,8 @@ class Parser {
 							i--;
 						}
 					}
-				}	
-				
+				}
+
 			} catch (java.io.IOException exc) {
 				Zork.print("There was an error during reading: " + exc.getMessage() + "\n", 75);
 			}
@@ -147,7 +149,7 @@ class Parser {
 			return false;
 		}
 	}
-	
+
 	/*
 	 * Return true if a word in a player's input is an adverb
 	 */
@@ -161,23 +163,20 @@ class Parser {
 		}
 		return false;
 	}
-	
+
 	/*
 	 * Return true if a word in a player's input is an item
 	 */
 	public static boolean stringIsItem(String string) {
 		// all item names
-		String[] gameItems = { "deathnote", "death note", "television1", "television2", 
-				"computer1", "computer2", "computer3", "pen", 
-				"mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employeelist",
-				"flashlight", "teddy", "mw-file", "taxesfile", "keycard", "newspaper",
-				"mkeycard", "paper", "oldkey", "letter", "lkey", "wantedposter"
+		String[] gameItems = { "deathnote", "death note", "television1", "television2", "computer1", "computer2",
+				"computer3", "pen", "mcintosh", "braeburn", "honeycrisp", "fuji", "chips", "employeelist", "flashlight",
+				"teddy", "mw-file", "taxesfile", "keycard", "newspaper", "mkeycard", "paper", "oldkey", "letter",
+				"lkey", "wantedposter"
 				// testing by Teleportation
-				,"1","2","3","4","5","6","7","8","9","10"
-				,"11","12","13","14","15","16","17","18","19","20"
-				,"21","22","23","24","25","26","27","28","29","30"
-				,"31","32","33","34","35","36","37"
-				};
+				, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18",
+				"19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35",
+				"36", "37" };
 
 		string = string.toLowerCase();
 		for (int i = 0; i < gameItems.length; i++) {
@@ -187,15 +186,15 @@ class Parser {
 		}
 		return false;
 	}
-	
+
 	/*
 	 * Return true if a word in a player's input is a character name
 	 */
 	public static boolean stringIsCharacter(String string) {
 		// add names of characters here
 		String[] characterNames = { "Ryuk", "Arayoshi_Hatori", "Shingo_Mido", "Kiyomi_Takada", "Reiji_Namikawa",
-				"Masahiko_Kida", "Sayu", "Takeshi_Ooi", "Touta_Matsuda", "Raye_Penber", "Naomi_Misora", "Soichiro_Yagami",
-				"L_Lawliet" };
+				"Masahiko_Kida", "Sayu", "Takeshi_Ooi", "Touta_Matsuda", "Raye_Penber", "Naomi_Misora",
+				"Soichiro_Yagami", "L_Lawliet" };
 		string = string.toLowerCase();
 		for (int i = 0; i < characterNames.length; i++) {
 			if (string.equals(characterNames[i].toLowerCase())) {
@@ -204,15 +203,15 @@ class Parser {
 		}
 		return false;
 	}
-	
+
 	/*
 	 * Return true if a word in a player's input is a valid command
 	 */
 	public static boolean stringIsCommand(String string) {
 		// all valid commands
-		String[] commands = { "listen", "write", "kill", "use", "read", "take", "seize",
-				"examine", "look", "watch", "give", "hand", "drop", "put down", "leave", "quit",
-				"finish", "retire", "help", "eat", "consume", "inventory" , "i", "teleport" };
+		String[] commands = { "listen", "write", "kill", "use", "read", "take", "seize", "examine", "look", "watch",
+				"give", "hand", "drop", "put down", "leave", "quit", "finish", "retire", "help", "eat", "consume",
+				"inventory", "i", "teleport" };
 		string = string.toLowerCase();
 		for (int i = 0; i < commands.length; i++) {
 			if (string.equals(commands[i])) {
@@ -221,13 +220,13 @@ class Parser {
 		}
 		return false;
 	}
-	
+
 	/*
 	 * Return true if a word in a player's input is a valid direction
 	 */
 	public static boolean stringIsDirection(String string) {
 		// all valid directions
-		String[] directions = { "north", "east", "south", "west", "down", "up"};
+		String[] directions = { "north", "east", "south", "west", "down", "up" };
 		string = string.toLowerCase();
 		for (int i = 0; i < directions.length; i++) {
 			if (string.equals(directions[i])) {

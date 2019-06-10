@@ -45,7 +45,7 @@ class Command {
 		commandWords.add(word3);
 		commandWords.add(word4);
 		commandWords.add(word5);
-		
+
 		// iterates through this list to assign to the correct var
 		// this allows the player to write what they want in any order
 		for (String w : commandWords) {
@@ -56,7 +56,7 @@ class Command {
 					character = w;
 				} else if (Parser.stringIsItem(w)) {
 					object = w;
-				} else if (Parser.stringIsAdverb(w)){
+				} else if (Parser.stringIsAdverb(w)) {
 					adverb = w;
 				} else if (Parser.stringIsDirection(w)) {
 					direction = w;
@@ -85,8 +85,8 @@ class Command {
 	}
 
 	/**
-	 * Return the object of this command. If the object was not understood,
-	 * the result is null.
+	 * Return the object of this command. If the object was not understood, the
+	 * result is null.
 	 */
 	public String getObject() {
 		return object;
@@ -99,10 +99,9 @@ class Command {
 	public String getAdverb() {
 		return adverb;
 	}
-	
+
 	/**
-	 * Return the direction. If the command was
-	 * not understood, the result is null.
+	 * Return the direction. If the command was not understood, the result is null.
 	 */
 	public String getDirection() {
 		return direction;
@@ -112,20 +111,21 @@ class Command {
 	 * Return true if this command was not understood.
 	 */
 	public boolean isUnknown() {
-		return ((commandWord == null) && (direction == null) && (adverb == null) && (object == null) && (character == null));
+		return ((commandWord == null) && (direction == null) && (adverb == null) && (object == null)
+				&& (character == null));
 	}
-	
+
 	public boolean hasSecondWord() {
 		String secondWord = commandWords.get(1);
 		if (secondWord != null)
 			return true;
-		else 
+		else
 			return false;
-		//return (commandWords.size()>=2);
+		// return (commandWords.size()>=2);
 	}
-	
+
 	public String toString() {
-		return commandWord.substring(0,1).toUpperCase() + commandWord.substring(1).toLowerCase();
+		return commandWord.substring(0, 1).toUpperCase() + commandWord.substring(1).toLowerCase();
 	}
 
 }

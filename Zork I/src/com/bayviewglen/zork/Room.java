@@ -25,15 +25,16 @@ class Room {
 	private String roomName;
 	private String description;
 	private HashMap<String, Room> exits; // stores exits of this room. // fix
-	private HashMap <String, Item> items = new HashMap <String, Item>(); // stores item inventory of room. // fix
-	private HashMap <String, Character> characters = new HashMap <String, Character>(); // stores item inventory of room. // fix
-	private ArrayList<Room> rooms =  new ArrayList<Room>();
-	
-	public ArrayList<Room> getRooms() { 
+	private HashMap<String, Item> items = new HashMap<String, Item>(); // stores item inventory of room. // fix
+	private HashMap<String, Character> characters = new HashMap<String, Character>(); // stores item inventory of room.
+																						// // fix
+	private ArrayList<Room> rooms = new ArrayList<Room>();
+
+	public ArrayList<Room> getRooms() {
 		return rooms;
 	}
-	
-	public HashMap <String, Item> getRoomItems(){
+
+	public HashMap<String, Item> getRoomItems() {
 		return items;
 	}
 
@@ -119,48 +120,44 @@ class Room {
 	 * Exits: north west
 	 */
 	public String longDescription() {
-		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString() + "\n" + getCharacters();
+		return "Room: " + roomName + "\n\n" + description + "\n" + getItems() + "\n" + exitString() + "\n"
+				+ getCharacters();
 	}
-	
+
 	public boolean isLocked() {
 		return isLocked;
 	}
-	
-	public boolean canUnlock(Room nextRoom){
+
+	public boolean canUnlock(Room nextRoom) {
 		if (nextRoom.getRoomName().equals("2nd Floor Hallway") && Player.contains("keycard")) {
 			return true;
-		}
-		else if (nextRoom.getRoomName().equals("Mr. Matsuda's Office") && Player.contains("mkeycard")) {
+		} else if (nextRoom.getRoomName().equals("Mr. Matsuda's Office") && Player.contains("mkeycard")) {
 			return true;
-		}
-		else if (nextRoom.getRoomName().equals("L's Office") && Player.contains("lkey")) {
+		} else if (nextRoom.getRoomName().equals("L's Office") && Player.contains("lkey")) {
 			return true;
-		}
-		else if (nextRoom.getRoomName().equals("Forest Pathway") && Player.contains("oldkey")) {
+		} else if (nextRoom.getRoomName().equals("Forest Pathway") && Player.contains("oldkey")) {
 			return true;
-		}
-		else if (nextRoom.getRoomName().equals("Warehouse")) {
+		} else if (nextRoom.getRoomName().equals("Warehouse")) {
 			Zork.print("There is a security key pad on the door to the Warehouse.\n", 75);
 			BufferedReader keyPadReader = new BufferedReader(new InputStreamReader(System.in));
 			String inputPadNum;
-			Zork.print("Enter a valid security password to unlock.\n\n> ", 75); 
+			Zork.print("Enter a valid security password to unlock.\n\n> ", 75);
 			try {
 				inputPadNum = keyPadReader.readLine();
 				if (inputPadNum.toLowerCase().equals("death")) {
-					Zork.print("The Warehouse door is unlocked.\n", 75); 
+					Zork.print("The Warehouse door is unlocked.\n", 75);
 					return true;
-				}
-				else {
-					Zork.print("Invalid security password!\n> ", 75); 
+				} else {
+					Zork.print("Invalid security password!\n> ", 75);
 					return false;
 				}
-			}
-			catch (java.io.IOException exc) {
+			} catch (java.io.IOException exc) {
 				Zork.print("There was an error during reading of Security Password.\n", 75);
 			}
 		}
 		return false;
 	}
+
 	/**
 	 * Return a string describing the room's exits, for example "Exits: north west
 	 * ".
@@ -196,38 +193,33 @@ class Room {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public boolean getLock () {
+
+	public boolean getLock() {
 		return isLocked;
 	}
-	
-	public void setLock (Boolean isLocked) {
+
+	public void setLock(Boolean isLocked) {
 		this.isLocked = isLocked;
 	}
-	
+
 	public void addToCharacterList(Character characterItem) {
-			characters.put(characterItem.getCharacterName(), characterItem);
+		characters.put(characterItem.getCharacterName(), characterItem);
 	}
-	
+
 	public void addToInventory(Item item, int amount) {
 		if (items.containsKey(item.getItemName())) {
 			Zork.print("The item already exists in the room\n", 75);
-		}
-		else {
+		} else {
 			items.put(item.getItemName(), item);
 		}
 	}
-	
-	// checks for an item in the inventory 
+
+	// checks for an item in the inventory
 	// return item if it is, null if not
 	/*
-	public Item getItem(String name) {
-		if (items.containsKey(name)) {
-			return items.get(name);
-		}
-		return null;
-	}
-	*/
+	 * public Item getItem(String name) { if (items.containsKey(name)) { return
+	 * items.get(name); } return null; }
+	 */
 	public String getItems() {
 		String returnString = "Items:";
 		Set keys = items.keySet();
@@ -236,33 +228,33 @@ class Room {
 		int numItems = 0;
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
 
-			if (numItems ==0)
+			if (numItems == 0)
 				returnString += " ";
 			else
 				returnString += ", ";
-			
+
 			// possible function
 			String invItem = iter.next().toString();
 			returnString += invItem.toUpperCase().substring(0, 1);
 			invItem = invItem.substring(1);
-			while (invItem.indexOf(" ")>0) {
-				returnString += invItem.substring(0,invItem.indexOf(" ")+1);
-				invItem = invItem.substring(invItem.indexOf(" ")+1);
+			while (invItem.indexOf(" ") > 0) {
+				returnString += invItem.substring(0, invItem.indexOf(" ") + 1);
+				invItem = invItem.substring(invItem.indexOf(" ") + 1);
 				returnString += invItem.toUpperCase().substring(0, 1);
 				invItem = invItem.substring(1);
 			}
-			returnString += invItem;	
-			
-			numItems ++;
+			returnString += invItem;
+
+			numItems++;
 		}
 		return returnString;
 	}
-	
+
 	/*
-	public Character getCurrentCharacters(Room room) {
-		return characters.get(masterCharacterMap.get(.getStartingLocation().equals(room)));
-	}
-	*/
+	 * public Character getCurrentCharacters(Room room) { return
+	 * characters.get(masterCharacterMap.get(.getStartingLocation().equals(room)));
+	 * }
+	 */
 	public String getCharacters() {
 		String returnString = "Characters:";
 		Set keys = characters.keySet();
@@ -273,34 +265,34 @@ class Room {
 		int numCharacters = 0;
 		for (Iterator iter = keys.iterator(); iter.hasNext();) {
 
-			if (numCharacters ==0)
+			if (numCharacters == 0)
 				returnString += " ";
 			else
 				returnString += ", ";
-			
+
 			// possible function
-		
+
 			String roomChar = iter.next().toString();
-			
+
 			if (roomChar.equals("Naomi Misora")) {
 				roomChar = "Task Force Lady";
 			}
-			
+
 			returnString += roomChar.toUpperCase().substring(0, 1);
 			roomChar = roomChar.substring(1);
-			while (roomChar.indexOf(" ")>0) {
-				returnString += roomChar.substring(0,roomChar.indexOf(" ")+1);
-				roomChar = roomChar.substring(roomChar.indexOf(" ")+1);
+			while (roomChar.indexOf(" ") > 0) {
+				returnString += roomChar.substring(0, roomChar.indexOf(" ") + 1);
+				roomChar = roomChar.substring(roomChar.indexOf(" ") + 1);
 				returnString += roomChar.toUpperCase().substring(0, 1);
 				roomChar = roomChar.substring(1);
 			}
-			returnString += roomChar;	
-			
-			numCharacters ++;
+			returnString += roomChar;
+
+			numCharacters++;
 		}
-		return returnString;		
+		return returnString;
 	}
-		
+
 	public String getRoomCharacter() {
 		String roomChar = "none";
 		Set keys = characters.keySet();
@@ -309,18 +301,18 @@ class Room {
 			roomChar = iter.next().toString().toUpperCase();
 		return roomChar;
 	}
-		
-	// checks for an item in the inventory 
-		// return true if it is, false if not
-		public boolean contains(Item item) {
-			if (items.containsValue(item)) {
-				return true;
-			}	
-			
-			return false;
+
+	// checks for an item in the inventory
+	// return true if it is, false if not
+	public boolean contains(Item item) {
+		if (items.containsValue(item)) {
+			return true;
 		}
-	
+
+		return false;
+	}
+
 	public void removeItem(String name, int amount) {
-			items.remove(name.toLowerCase());
+		items.remove(name.toLowerCase());
 	}
 }
